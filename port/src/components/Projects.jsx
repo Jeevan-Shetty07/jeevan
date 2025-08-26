@@ -8,13 +8,16 @@ import { Autoplay, Pagination } from "swiper/modules";
 import carpool1 from "../assets/carpool1.png";
 import carpool2 from "../assets/carpool2.png";
 import carpool3 from "../assets/carpool3.png";
+import event1 from "../assets/event1.png";
+import event2 from "../assets/event2.png";
+import event3 from "../assets/event3.png";
 
 export default function Projects() {
   const projects = [
     {
       title: "Carpooling System",
       desc: "Ride-sharing platform with route optimization and booking.",
-      github: "https://github.com/Jeevan-Shetty07",
+      github: "https://github.com/Jeevan-Shetty07/carpoooling",
       images: [carpool1, carpool2, carpool3],
     },
     {
@@ -32,7 +35,7 @@ export default function Projects() {
       title: "Portfolio Website",
       desc: "Responsive portfolio built with React, Tailwind & AOS.",
       github: "https://github.com/Jeevan-Shetty07/portfolio",
-      images: ["/assets/port1.png", "/assets/port2.png", "/assets/port3.png"],
+      images: [event1,event2,event3],
     },
   ];
 

@@ -68,7 +68,7 @@ export default function About() {
           </span>
           , and{" "}
           <span className="text-blue-400 hover:scale-110 inline-block transition">
-            Bootstrap
+            Javascript
           </span>
           .
         </span>

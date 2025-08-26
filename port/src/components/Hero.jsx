@@ -34,17 +34,16 @@ function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
 
 export default function Hero() {
   const roles = [
-  "💻 Web Developer",
-  "☕ DSA in Java",
-  "🔢 DSA in C",
-  "⚛️ React Developer",
-  "🐘 PHP",
-  "🗄️ Database Handling (SQL)",
-  "🎨 Bootstrap",
-  "🌊 Tailwind CSS",
-  "📝 HTML & CSS",
-];
-
+    "💻 Web Developer",
+    "☕ DSA in Java",
+    "🔢 DSA in C",
+    "⚛️ React Developer",
+    "🐘 PHP",
+    "🗄️ Database Handling (SQL)",
+    "🎨 Bootstrap",
+    "🌊 Tailwind CSS",
+    "📝 HTML & CSS",
+  ];
 
   return (
     <section
@@ -72,8 +71,8 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 0.9 }}
           className="text-lg md:text-xl mt-4 text-gray-300"
         >
-          A passionate <span className="font-semibold">developer</span> who builds
-          modern, responsive apps with{" "}
+          A passionate <span className="font-semibold">developer</span> who
+          builds modern, responsive apps with{" "}
           <span className="text-blue-400">Javascript, React, PHP and SQL</span>.
         </motion.p>
 
@@ -96,6 +95,7 @@ export default function Hero() {
         >
           <a
             href="/resume.pdf"
+            download="Jeevan_Shetty_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 hover:scale-105 transition"

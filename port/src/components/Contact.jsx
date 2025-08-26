@@ -6,19 +6,20 @@ export default function Contact() {
     {
       name: "Instagram",
       icon: <FaInstagram />,
-      link: "https://instagram.com/YOUR_INSTAGRAM",
+      link: "https://www.instagram.com/g1shetty07/",
       color: "hover:text-pink-500 hover:shadow-pink-500/50",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
-      link: "https://linkedin.com/in/YOUR_LINKEDIN",
+      link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
       color: "hover:text-blue-500 hover:shadow-blue-500/50",
     },
     {
       name: "Gmail",
       icon: <FaEnvelope />,
-      link: "mailto:jeevanshetty9481@gmail.com",
+      // Open Gmail compose in browser instead of relying on mail client
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com",
       color: "hover:text-red-500 hover:shadow-red-500/50",
     },
     {

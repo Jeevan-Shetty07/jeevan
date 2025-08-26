@@ -126,7 +126,7 @@ export default function Hero() {
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/jeevan-shetty-241613229/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500 transition"
@@ -134,7 +134,7 @@ export default function Hero() {
             <FaLinkedin />
           </a>
           <a
-            href="mailto:jeevanshetty9481@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com"
             className="hover:text-red-500 transition"
           >
             <FaEnvelope />

@@ -11,11 +11,28 @@ import "aos/dist/aos.css";
 function Root() {
   useEffect(() => {
     AOS.init({
-      duration: 800,       // animation duration
-      easing: "ease-out",  // smooth easing
-      once: true,          // animate only once
-      offset: 40,          // trigger offset
+      duration: 800,
+      easing: "ease-out",
+      once: true,
+      offset: 40,
+      // Responsive settings
+      disable: function() {
+        // Disable animations on mobile for better performance
+        const maxWidth = 768;
+        return window.innerWidth < maxWidth;
+      }
     });
+
+    // Refresh AOS when window is resized
+    const handleResize = () => {
+      AOS.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (

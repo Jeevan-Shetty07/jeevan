@@ -13,10 +13,10 @@ export default function Home() {
       <Navbar />
 
       {/* Sections */}
-      <main className="pt-20"> {/* padding to avoid navbar overlap */}
-        <section id="hero" className="min-h-screen flex items-center justify-center">
+      <main className="pt-20"> {/* padding so navbar doesn't overlap */}
+        {/* <section id="home" className="min-h-screen flex items-center justify-center">
           <Hero />
-        </section>
+        </section> */}
 
         <section id="about" className="py-20">
           <About />
@@ -36,4 +36,3 @@ export default function Home() {
     </div>
   );
 }
-

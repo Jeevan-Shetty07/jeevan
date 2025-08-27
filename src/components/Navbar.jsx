@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
   const links = ["home", "about", "projects", "contact"];
+
+  // Track active section while scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200; // offset for navbar
+      links.forEach((link) => {
+        const section = document.getElementById(link);
+        if (section) {
+          const top = section.offsetTop;
+          const bottom = top + section.offsetHeight;
+          if (scrollPos >= top && scrollPos < bottom) {
+            setActive(link);
+          }
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-90 backdrop-blur-md shadow-lg z-50">
@@ -16,7 +37,7 @@ export default function Navbar() {
           transition={{ duration: 0.6 }}
           className="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-400 tracking-wide cursor-pointer hover:scale-105 transition"
         >
-          G1Shetty
+          G1Shetty07
         </motion.h1>
 
         {/* Desktop Menu */}
@@ -30,7 +51,9 @@ export default function Navbar() {
             >
               <a
                 href={`#${link}`}
-                className="relative group transition-colors"
+                className={`relative group transition-colors ${
+                  active === link ? "text-blue-400" : ""
+                }`}
               >
                 {link.charAt(0).toUpperCase() + link.slice(1)}
                 <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
@@ -62,7 +85,9 @@ export default function Navbar() {
               <a
                 key={link}
                 href={`#${link}`}
-                className="hover:text-blue-400 transition"
+                className={`hover:text-blue-400 transition ${
+                  active === link ? "text-blue-400" : ""
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.charAt(0).toUpperCase() + link.slice(1)}

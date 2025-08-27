@@ -8,19 +8,19 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-90 backdrop-blur-md shadow-lg z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <motion.h1
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-2xl md:text-3xl font-extrabold text-blue-400 tracking-wide cursor-pointer hover:scale-105 transition"
+          className="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-400 tracking-wide cursor-pointer hover:scale-105 transition"
         >
           G1Shetty07
         </motion.h1>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-gray-300 font-medium text-lg">
+        <ul className="hidden md:flex space-x-6 lg:space-x-10 text-gray-300 font-medium text-base lg:text-lg">
           {links.map((link, idx) => (
             <motion.li
               key={link}
@@ -56,7 +56,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed top-0 right-0 h-screen w-3/4 bg-black bg-opacity-95 backdrop-blur-md shadow-lg flex flex-col justify-center items-center space-y-8 text-gray-300 text-xl"
+            className="md:hidden fixed top-0 right-0 h-screen w-2/3 sm:w-1/2 bg-black bg-opacity-95 backdrop-blur-md shadow-lg flex flex-col justify-center items-center space-y-8 text-gray-300 text-lg sm:text-xl"
           >
             {links.map((link) => (
               <a

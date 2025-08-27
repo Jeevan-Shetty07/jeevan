@@ -2,6 +2,7 @@ import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { FaReact, FaPhp, FaDatabase, FaJs } from "react-icons/fa";
+import "./about.css";
 
 export default function About() {
   const skillIcons = [
@@ -14,7 +15,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 sm:px-12 bg-black overflow-hidden"
+      className="m-0  pt-0 relative min-h-screen flex flex-col justify-center items-center text-center px-6 sm:px-12 bg-black overflow-hidden"
     >
       {/* Background bubbles */}
       <div className="absolute -top-12 -left-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>

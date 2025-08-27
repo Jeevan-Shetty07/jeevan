@@ -52,13 +52,14 @@ export default function Footer() {
           <FaInstagram />
         </a>
         <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com"
+        target="_blank"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan"
           className="hover:text-red-500 transition transform hover:scale-125"
         >
           <FaEnvelope />
         </a>
         <a
-          href="https://wa.me/9353819063"
+          href="https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB       "
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-green-500 transition transform hover:scale-125"

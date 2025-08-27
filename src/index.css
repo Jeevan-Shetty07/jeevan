@@ -25,3 +25,16 @@ html {
   background-size: 200% 200%;
   animation: gradient-x 4s ease infinite;
 }
+/* Reset default heading & body spacing */
+
+/* Reset browser defaults */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+section{
+  padding-top: 0 !important;
+}
+

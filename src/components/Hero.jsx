@@ -69,7 +69,7 @@ export default function Hero() {
     {
   name: "WhatsApp",
   icon: <FaWhatsapp />,
-  link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B",
+  link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB",
   color: "hover:text-green-500 hover:shadow-green-500/50",
 }
 ,
@@ -84,7 +84,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative w-full h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 bg-black text-white overflow-hidden"
+      className="relative m-0 w-full h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 bg-black text-white overflow-hidden"
     >
       {/* Background Bubbles */}
       <div className="absolute -top-20 -left-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>

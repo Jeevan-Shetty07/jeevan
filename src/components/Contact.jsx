@@ -18,13 +18,13 @@ export default function Contact() {
     {
       name: "Gmail",
       icon: <FaEnvelope />,
-      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com",
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
       color: "hover:text-red-500 hover:shadow-red-500/50",
     },
     {
       name: "WhatsApp",
       icon: <FaWhatsapp />,
-      link: "https://wa.me/9353819063",
+      link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB",
       color: "hover:text-green-500 hover:shadow-green-500/50",
     },
   ];

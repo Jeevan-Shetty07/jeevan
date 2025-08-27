@@ -16,7 +16,7 @@ export default function Navbar() {
           transition={{ duration: 0.6 }}
           className="text-2xl md:text-3xl font-extrabold text-blue-400 tracking-wide cursor-pointer hover:scale-105 transition"
         >
-          G1Shetty
+          G1Shetty07
         </motion.h1>
 
         {/* Desktop Menu */}

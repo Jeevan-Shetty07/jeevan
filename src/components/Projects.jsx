@@ -41,24 +41,24 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-12 bg-black text-white overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 bg-black text-white overflow-hidden"
     >
       {/* Background bubbles */}
-      <div className="absolute -top-20 -left-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
-      <div className="absolute -bottom-20 -right-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute -top-12 -left-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute -bottom-12 -right-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
 
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-14 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
+        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
       >
         🚀 Projects
       </motion.h2>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl w-full z-10 relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl w-full z-10 relative">
         {projects.map((proj, index) => (
           <motion.div
             key={index}
@@ -82,7 +82,6 @@ export default function Projects() {
                     alt={`${proj.title} ${i + 1}`}
                     className="w-full h-40 sm:h-48 md:h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-50 transition-opacity duration-300 flex items-center justify-center text-white text-sm sm:text-base font-semibold">
                     {proj.title}
                   </div>
@@ -91,10 +90,8 @@ export default function Projects() {
             </Swiper>
 
             {/* Project Info */}
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 text-blue-400">
-              {proj.title}
-            </h3>
-            <p className="text-sm sm:text-base text-gray-300 mb-6">{proj.desc}</p>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-blue-400">{proj.title}</h3>
+            <p className="text-sm sm:text-base text-gray-300 mb-4">{proj.desc}</p>
             <a
               href={proj.github}
               target="_blank"

@@ -14,18 +14,18 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 sm:px-12 py-12 bg-black overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 sm:px-12 bg-black overflow-hidden"
     >
       {/* Background bubbles */}
-      <div className="absolute -top-20 -left-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-20 -right-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -top-12 -left-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-12 -right-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>
 
       {/* Animated gradient heading */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl md:text-5xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x z-10 relative"
+        className="text-4xl md:text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x z-10 relative"
       >
         🌟 About Me
       </motion.h2>
@@ -43,7 +43,7 @@ export default function About() {
         wrapper="h3"
         cursor={true}
         repeat={Infinity}
-        className="text-xl md:text-2xl font-semibold text-blue-400 mb-8 z-10 relative"
+        className="text-xl md:text-2xl font-semibold text-blue-400 mb-6 z-10 relative"
       />
 
       {/* Main content */}
@@ -51,7 +51,7 @@ export default function About() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="max-w-3xl text-gray-300 text-lg md:text-xl leading-relaxed mb-8 z-10 relative"
+        className="max-w-3xl text-gray-300 text-lg md:text-xl leading-relaxed mb-6 z-10 relative"
       >
         I love crafting{" "}
         <span className="font-semibold text-white hover:text-blue-400 transition">
@@ -66,7 +66,7 @@ export default function About() {
 
       {/* Skills section with icons */}
       <motion.div
-        className="flex flex-wrap justify-center gap-6 mb-8 z-10 relative"
+        className="flex flex-wrap justify-center gap-6 mb-6 z-10 relative"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
@@ -94,8 +94,8 @@ export default function About() {
         <span className="text-blue-400 hover:text-green-400 transition font-semibold">
           DSA in C & Java
         </span>{" "}
-        📚 to sharpen my problem-solving skills.  
-        <span className="block mt-2 text-pink-400 animate-pulse">💡 Fun fact: I code better at 3 AM!</span>
+        📚 to sharpen my problem-solving skills.
+        <span className="block mt-2 text-pink-400 animate-pulse"></span>
       </motion.p>
     </section>
   );

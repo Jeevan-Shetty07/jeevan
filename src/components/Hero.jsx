@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import myphoto from "../assets/myphoto.jpg";
 import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaInstagram,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import  resume from "../assets/resume.pdf"
 
 /* Typewriter effect */
 function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
@@ -50,6 +45,40 @@ export default function Hero() {
     "🎨 Bootstrap",
     "🌊 Tailwind CSS",
     "📝 HTML & CSS",
+  ];
+
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: <FaGithub />,
+      link: "https://github.com/Jeevan-Shetty07",
+      color: "hover:text-gray-400 hover:shadow-gray-400/50",
+    },
+    {
+      name: "LinkedIn",
+      icon: <FaLinkedin />,
+      link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
+      color: "hover:text-blue-500 hover:shadow-blue-500/50",
+    },
+    {
+      name: "Instagram",
+      icon: <FaInstagram />,
+      link: "https://instagram.com/g1shetty07",
+      color: "hover:text-pink-500 hover:shadow-pink-500/50",
+    },
+    {
+  name: "WhatsApp",
+  icon: <FaWhatsapp />,
+  link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B",
+  color: "hover:text-green-500 hover:shadow-green-500/50",
+}
+,
+    {
+      name: "Gmail",
+      icon: <FaEnvelope />,
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
+      color: "hover:text-red-500 hover:shadow-red-500/50",
+    },
   ];
 
   return (
@@ -101,7 +130,7 @@ export default function Hero() {
             className="mt-6 flex flex-wrap gap-4 justify-center lg:justify-start"
           >
             <a
-              href="/resume.pdf"
+              href={resume}
               download="Jeevan_Shetty_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -117,17 +146,18 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.9 }}
-            className="flex gap-5 sm:gap-6 mt-8 justify-center lg:justify-start text-2xl sm:text-3xl flex-wrap"
-          >
-            <FaGithub className="hover:text-gray-400 transition" />
-            <FaLinkedin className="hover:text-blue-500 transition" />
-            <FaInstagram className="hover:text-pink-500 transition" />
-            <FaWhatsapp className="hover:text-green-500 transition" />
-            <FaEnvelope className="hover:text-red-500 transition" />
+          <motion.div className="flex gap-5 sm:gap-6 mt-8 justify-center lg:justify-start text-2xl sm:text-3xl flex-wrap">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${social.color} transition`}
+              >
+                {social.icon}
+              </a>
+            ))}
           </motion.div>
         </div>
 

@@ -30,16 +30,18 @@ export default function Navbar() {
   }, []);
 
   // Smooth scroll
-  const handleScrollTo = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      window.scrollTo({
-        top: section.offsetTop - 60,
-        behavior: "smooth",
-      });
-    }
-    setIsOpen(false);
-  };
+ const handleScrollTo = (id) => {
+  const section = document.getElementById(id);
+  if (section) {
+    const navbarHeight = document.querySelector("nav").offsetHeight; // dynamic height
+    window.scrollTo({
+      top: section.offsetTop - navbarHeight - 10, // extra 10px for spacing
+      behavior: "smooth",
+    });
+  }
+  setIsOpen(false);
+};
+
 
   return (
     <nav

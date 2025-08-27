@@ -30,10 +30,11 @@ export default function Contact() {
   ];
 
   return (
-    <section
-      id="contact"
-      className="relative min-h-screen flex flex-col justify-center items-center px-6 py-16 bg-black overflow-hidden"
-    >
+ <section
+  id="contact"
+  className="relative md:pt-40 min-h-screen flex flex-col justify-center items-center px-6 py-16 bg-black overflow-hidden "
+>
+
       {/* Background Bubbles */}
       <div className="absolute -top-20 -left-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-20 -right-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>

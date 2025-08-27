@@ -1,5 +1,11 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaEnvelope,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -26,7 +32,7 @@ export default function Footer() {
           <FaGithub />
         </a>
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/jeevan-shetty-241613229/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-blue-500 transition transform hover:scale-125"
@@ -34,7 +40,7 @@ export default function Footer() {
           <FaLinkedin />
         </a>
         <a
-          href="https://instagram.com/YOUR_INSTAGRAM"
+          href="https://instagram.com/g1shetty07"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-pink-500 transition transform hover:scale-125"
@@ -42,10 +48,18 @@ export default function Footer() {
           <FaInstagram />
         </a>
         <a
-          href="mailto:jeevanshetty9481@gmail.com"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com"
           className="hover:text-red-500 transition transform hover:scale-125"
         >
           <FaEnvelope />
+        </a>
+        <a
+          href="https://wa.me/9353819063"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-green-500 transition transform hover:scale-125"
+        >
+          <FaWhatsapp />
         </a>
       </div>
 
@@ -56,3 +70,4 @@ export default function Footer() {
     </footer>
   );
 }
+  

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaInstagram,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 /* Typewriter effect */
 function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
@@ -132,6 +138,22 @@ export default function Hero() {
             className="hover:text-blue-500 transition"
           >
             <FaLinkedin />
+          </a>
+          <a
+            href="https://instagram.com/g1shetty07"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-500 transition"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://wa.me/9342440221"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-green-500 transition"
+          >
+            <FaWhatsapp />
           </a>
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com"

@@ -11,6 +11,9 @@ import carpool3 from "../assets/carpool3.png";
 import event1 from "../assets/event1.png";
 import event2 from "../assets/event2.png";
 import event3 from "../assets/event3.png";
+import port1 from "../assets/port1.png";
+import port2 from "../assets/port2.png"
+import port3 from "../assets/port3.png"
 
 export default function Projects() {
   const projects = [
@@ -25,10 +28,9 @@ export default function Projects() {
       desc: "Full booking system for catering, decoration & venues.",
       github: "https://github.com/Jeevan-Shetty07/EventManagementSystem",
       images: [
-        "/assets/event1.png",
-        "/assets/event2.png",
-        "/assets/event3.png",
-        "/assets/event4.png",
+       port1,
+        port2,
+       port3
       ],
     },
     {

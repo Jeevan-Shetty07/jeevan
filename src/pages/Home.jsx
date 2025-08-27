@@ -14,9 +14,9 @@ export default function Home() {
 
       {/* Sections */}
       <main className="pt-20"> {/* padding so navbar doesn't overlap */}
-        {/* <section id="home" className="min-h-screen flex items-center justify-center">
+        <section id="home" className="min-h-screen  flex items-center justify-center">
           <Hero />
-        </section> */}
+        </section>
 
         <section id="about" className="py-20">
           <About />

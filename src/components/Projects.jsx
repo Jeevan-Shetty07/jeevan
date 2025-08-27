@@ -5,6 +5,7 @@ import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { motion } from "framer-motion";
 import carpool1 from "../assets/carpool1.png";
 import carpool2 from "../assets/carpool2.png";
 import carpool3 from "../assets/carpool3.png";
@@ -12,8 +13,8 @@ import event1 from "../assets/event1.png";
 import event2 from "../assets/event2.png";
 import event3 from "../assets/event3.png";
 import port1 from "../assets/port1.png";
-import port2 from "../assets/port2.png"
-import port3 from "../assets/port3.png"
+import port2 from "../assets/port2.png";
+import port3 from "../assets/port3.png";
 
 export default function Projects() {
   const projects = [
@@ -27,41 +28,44 @@ export default function Projects() {
       title: "Event Management System",
       desc: "Full booking system for catering, decoration & venues.",
       github: "https://github.com/Jeevan-Shetty07/EventManagementSystem",
-      images: [
-       port1,
-        port2,
-       port3
-      ],
+      images: [port1, port2, port3],
     },
     {
       title: "Portfolio Website",
       desc: "Responsive portfolio built with React, Tailwind & AOS.",
       github: "https://github.com/Jeevan-Shetty07/portfolio",
-      images: [event1,event2,event3],
+      images: [event1, event2, event3],
     },
   ];
 
   return (
     <section
       id="projects"
-      className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-12 sm:py-16 bg-black text-white"
+      className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-12 bg-black text-white overflow-hidden"
     >
+      {/* Background bubbles */}
+      <div className="absolute -top-20 -left-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute -bottom-20 -right-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+
       {/* Heading */}
-      <h2
-        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-10 sm:mb-14 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center"
-        data-aos="fade-down"
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-14 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
       >
         🚀 Projects
-      </h2>
+      </motion.h2>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl w-full z-10 relative">
         {projects.map((proj, index) => (
-          <div
+          <motion.div
             key={index}
-            className="relative p-5 sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 transition-transform duration-300"
-            data-aos="zoom-in-up"
-            data-aos-delay={index * 200}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            className="relative p-5 sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 transition-transform duration-300 group"
           >
             {/* Image Slider */}
             <Swiper
@@ -69,15 +73,19 @@ export default function Projects() {
               autoplay={{ delay: 2500, disableOnInteraction: false }}
               pagination={{ clickable: true }}
               loop={true}
-              className="rounded-lg overflow-hidden mb-4"
+              className="rounded-lg overflow-hidden mb-4 relative"
             >
               {proj.images.map((img, i) => (
-                <SwiperSlide key={i}>
+                <SwiperSlide key={i} className="relative">
                   <img
                     src={img}
                     alt={`${proj.title} ${i + 1}`}
-                    className="w-full h-40 sm:h-48 md:h-56 object-cover"
+                    className="w-full h-40 sm:h-48 md:h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-50 transition-opacity duration-300 flex items-center justify-center text-white text-sm sm:text-base font-semibold">
+                    {proj.title}
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -86,9 +94,7 @@ export default function Projects() {
             <h3 className="text-xl sm:text-2xl font-bold mb-3 text-blue-400">
               {proj.title}
             </h3>
-            <p className="text-sm sm:text-base text-gray-300 mb-6">
-              {proj.desc}
-            </p>
+            <p className="text-sm sm:text-base text-gray-300 mb-6">{proj.desc}</p>
             <a
               href={proj.github}
               target="_blank"
@@ -97,7 +103,7 @@ export default function Projects() {
             >
               <FaGithub /> View on GitHub
             </a>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

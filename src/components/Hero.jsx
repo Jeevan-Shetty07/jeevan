@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import myphoto from "../assets/myphoto.jpg";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -172,7 +173,7 @@ export default function Hero() {
         className="z-10 flex-1 mt-10 md:mt-0 flex justify-center"
       >
         <motion.img
-          src="./myphoto.jpg" 
+          src={myphoto}
           alt="Jeevan Shetty"
           className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-gray-800 shadow-xl object-cover"
           animate={{ y: [0, -12, 0] }}

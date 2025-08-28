@@ -27,7 +27,7 @@ export default function Projects() {
     {
       title: "Event Management System",
       desc: "Full booking system for catering, decoration & venues.",
-      github: "https://github.com/Jeevan-Shetty07/EventManagementSystem",
+      github: "https://github.com/Jeevan-Shetty07/EventManagemnet",
       images: [port1, port2, port3],
     },
     {

@@ -15,7 +15,7 @@ import event3 from "../assets/event3.png";
 import port1 from "../assets/port1.png";
 import port2 from "../assets/port2.png";
 import port3 from "../assets/port3.png";
-
+import "./project.css"
 export default function Projects() {
   const projects = [
     {
@@ -41,7 +41,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 bg-black text-white overflow-hidden"
+      className="relative  min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 bg-black text-white overflow-hidden"
     >
       {/* Background bubbles */}
       <div className="absolute -top-12 -left-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
@@ -52,20 +52,20 @@ export default function Projects() {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
+        className="text-3xl pt-10  sm:text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
       >
         🚀 Projects
       </motion.h2>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl w-full z-10 relative">
+      <div className="grid pb-14 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl w-full z-10 relative">
         {projects.map((proj, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="relative p-5 sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 transition-transform duration-300 group"
+            className="relative p-5  sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 transition-transform duration-300 group"
           >
             {/* Image Slider */}
             <Swiper

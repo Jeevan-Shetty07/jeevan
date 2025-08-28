@@ -6,14 +6,24 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const links = ["home", "about", "projects", "contact"];
 
-  // Track active section while scrolling
+  // Track scroll + active section
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 200; // offset for navbar
+      const scrollPos = window.scrollY + 200;
       setScrolled(window.scrollY > 50);
+
+      // Progress bar calculation
+      const totalHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+
+      // Active section detection
       links.forEach((link) => {
         const section = document.getElementById(link);
         if (section) {
@@ -25,23 +35,23 @@ export default function Navbar() {
         }
       });
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Smooth scroll
- const handleScrollTo = (id) => {
-  const section = document.getElementById(id);
-  if (section) {
-    const navbarHeight = document.querySelector("nav").offsetHeight; // dynamic height
-    window.scrollTo({
-      top: section.offsetTop - navbarHeight - 10, // extra 10px for spacing
-      behavior: "smooth",
-    });
-  }
-  setIsOpen(false);
-};
-
+  const handleScrollTo = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const navbarHeight = document.querySelector("nav").offsetHeight;
+      window.scrollTo({
+        top: section.offsetTop - navbarHeight - 10,
+        behavior: "smooth",
+      });
+    }
+    setIsOpen(false);
+  };
 
   return (
     <nav
@@ -51,6 +61,12 @@ export default function Navbar() {
           : "bg-black bg-opacity-90 py-4"
       }`}
     >
+      {/* Progress bar */}
+      <motion.div
+        className="h-[3px] bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 fixed top-0 left-0 z-[60]"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
         {/* Logo */}
         <motion.h1
@@ -60,7 +76,7 @@ export default function Navbar() {
           className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide cursor-pointer bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-105 transition-transform"
           onClick={() => handleScrollTo("home")}
         >
-          G1Shetty
+          Jeevan Shetty
         </motion.h1>
 
         {/* Desktop Menu */}
@@ -83,10 +99,8 @@ export default function Navbar() {
                 {/* Animated underline */}
                 <motion.span
                   layoutId="underline"
-                  className={`absolute left-0 -bottom-1 h-[2px] bg-blue-400`}
-                  animate={{
-                    width: active === link ? "100%" : "0%",
-                  }}
+                  className="absolute left-0 -bottom-1 h-[2px] bg-blue-400"
+                  animate={{ width: active === link ? "100%" : "0%" }}
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
               </button>

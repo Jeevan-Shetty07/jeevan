@@ -32,7 +32,7 @@ export default function Contact() {
   return (
  <section
   id="contact"
-  className="relative md:pt-40 min-h-screen flex flex-col justify-center items-center px-6 py-16 bg-black overflow-hidden "
+  className="relative md:pt-40   min-h-screen flex flex-col justify-center items-center px-6 py-16 bg-black overflow-hidden "
 >
 
       {/* Background Bubbles */}
@@ -41,7 +41,7 @@ export default function Contact() {
 
       {/* Heading */}
       <h2
-        className="text-5xl md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 z-10 relative"
+        className="text-5xl pt-14 md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 z-10 relative"
         data-aos="fade-up"
       >
         Let’s Connect 🚀
@@ -59,7 +59,7 @@ export default function Contact() {
 
       {/* Cards */}
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 z-10 relative"
+        className="grid pb-14 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 z-10 relative"
         data-aos="zoom-in"
       >
         {socials.map((social, i) => (

@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from "react";
 import myphoto from "../assets/myphoto.jpg";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import  resume from "../assets/resume.pdf"
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaInstagram,
+  FaWhatsapp,
+  FaReact,
+  FaPhp,
+  FaJava,
+  FaDatabase,
+  FaHtml5
+} from "react-icons/fa";
+import resume from "../assets/resume.pdf";
+
 
 /* Typewriter effect */
 function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
@@ -29,7 +41,7 @@ function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
   return (
     <span className="relative text-blue-400">
       {display}
-      <span className="ml-1 inline-block w-[2px] h-6 bg-blue-400 animate-pulse" />
+      <span className="ml-1 inline-block w-[2px] h-5 sm:h-6 bg-blue-400 animate-pulse" />
     </span>
   );
 }
@@ -41,7 +53,7 @@ export default function Hero() {
     "🔢 DSA in C",
     "⚛ React Developer",
     "🐘 PHP",
-    "🗄 Database Handling (SQL)",
+    "🗄 SQL Database Handling",
     "🎨 Bootstrap",
     "🌊 Tailwind CSS",
     "📝 HTML & CSS",
@@ -67,38 +79,61 @@ export default function Hero() {
       color: "hover:text-pink-500 hover:shadow-pink-500/50",
     },
     {
-  name: "WhatsApp",
-  icon: <FaWhatsapp />,
-  link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB",
-  color: "hover:text-green-500 hover:shadow-green-500/50",
-}
-,
+      name: "WhatsApp",
+      icon: <FaWhatsapp />,
+      link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB",
+      color: "hover:text-green-500 hover:shadow-green-500/50",
+    },
     {
       name: "Gmail",
       icon: <FaEnvelope />,
-      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
+      link: "mailto:jeevanshetty9481@gmail.com",
       color: "hover:text-red-500 hover:shadow-red-500/50",
     },
+  ];
+
+  // Orbiting Tech Icons
+  const orbitingIcons = [
+    { icon: <FaReact className="text-cyan-400" />, delay: 0 },
+    { icon: <FaPhp className="text-indigo-500" />, delay: 1 },
+    { icon: <FaJava className="text-orange-500" />, delay: 2 },
+    { icon: <FaDatabase className="text-yellow-400" />, delay: 3 },
+    { icon: <FaGithub className="text-gray-300" />, delay: 4},
+    
+    { icon: <FaHtml5 className="text-orange-600" />, delay: 5},
   ];
 
   return (
     <section
       id="home"
-      className="relative m-0 w-full h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 bg-black text-white overflow-hidden"
+      className="relative pb-30 m-0 w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-black text-white overflow-hidden"
     >
       {/* Background Bubbles */}
-      <div className="absolute -top-20 -left-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-20 -right-20 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none"></div>
+      <motion.div
+        className="absolute -top-20 -left-20 w-40 sm:w-56 pt-5 md:w-72 h-40 sm:h-56 md:h-72 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"
+        animate={{ y: [0, 40, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      ></motion.div>
+      <motion.div
+        className="absolute -bottom-20 -right-20 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none"
+        animate={{ y: [0, -40, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      ></motion.div>
 
       {/* Content */}
-      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-8 lg:gap-x-16">
+      <div className="flex pb-10 flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-10 lg:gap-x-16">
         {/* Left Text */}
-        <div className="z-10 flex-1 text-center lg:text-left px-2 sm:px-0">
+        <motion.div
+          className="z-10 flex-1 text-center lg:text-left px-2 sm:px-0"
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
           <motion.h1
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug"
           >
             Hi, I'm <span className="text-blue-400">Jeevan Shetty</span> 👋
           </motion.h1>
@@ -107,7 +142,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.9 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl mt-4 text-gray-300"
+            className="text-sm sm:text-base md:text-lg lg:text-xl mt-3 text-gray-300"
           >
             A passionate <span className="font-semibold">developer</span> who
             builds modern, responsive apps with{" "}
@@ -118,62 +153,127 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.9 }}
-            className="mt-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-blue-400"
+            className="mt-3 text-base sm:text-xl md:text-2xl lg:text-3xl font-semibold text-blue-400"
           >
             <Typewriter items={roles} />
           </motion.p>
 
+          {/* Buttons */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.9 }}
-            className="mt-6 flex flex-wrap gap-4 justify-center lg:justify-start"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 },
+              },
+            }}
+            className="mt-5 flex flex-wrap gap-3 justify-center lg:justify-start"
           >
-            <a
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
               href={resume}
               download="Jeevan_Shetty_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 hover:scale-105 transition text-sm sm:text-base"
+              className="px-4 py-2 sm:px-5 sm:py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition text-xs sm:text-sm md:text-base"
             >
               📄 Download Resume
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
               href="#projects"
-              className="px-5 py-3 bg-gray-800 text-white rounded-xl shadow-lg hover:bg-gray-900 hover:scale-105 transition text-sm sm:text-base"
+              className="px-4 py-2 sm:px-5 sm:py-3 bg-gray-800 text-white rounded-xl shadow-lg hover:bg-gray-900 transition text-xs sm:text-sm md:text-base"
             >
               🔗 View Projects
-            </a>
+            </motion.a>
           </motion.div>
 
-          <motion.div className="flex gap-5 sm:gap-6 mt-8 justify-center lg:justify-start text-2xl sm:text-3xl flex-wrap">
+          {/* Socials */}
+          <motion.div
+            className="flex gap-4 sm:gap-6 mt-6 justify-center lg:justify-start text-xl sm:text-2xl md:text-3xl flex-wrap"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15 },
+              },
+            }}
+          >
             {socialLinks.map((social) => (
-              <a
+              <motion.a
                 key={social.name}
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${social.color} transition`}
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
               >
                 {social.icon}
-              </a>
+              </motion.a>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* Right Photo */}
+        {/* Right Photo with Creativity */}
+        {/* Right Photo with Creativity */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.9 }}
-          className="z-10 flex-1 flex justify-center items-center mt-6 lg:mt-0"
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="relative z-10 flex-1 flex justify-center items-center mt-6 lg:mt-0"
         >
+          {/* Gradient Ring */}
+          <motion.div
+            className="absolute w-50 h-50 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 
+               rounded-full bg-gradient-to-tr from-blue-500 via-purple-600 to-pink-500"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+          ></motion.div>
+
+          {/* Pulsing Glow */}
+          <motion.div
+            className="absolute w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 
+               rounded-full bg-blue-500/20 blur-2xl"
+            animate={{ scale: [1, 1.15, 1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          ></motion.div>
+
+          {/* Orbiting Tech Icons */}
+          {orbitingIcons.map((item, idx) => (
+            <motion.div
+              key={idx}
+              className="absolute text-xl sm:text-2xl md:text-3xl"
+              animate={{ rotate: 360 }}
+              transition={{
+                repeat: Infinity,
+                duration: 12,
+                ease: "linear",
+                delay: item.delay,
+              }}
+              style={{
+                transformOrigin: "110px", // orbit closer to image
+              }}
+            >
+              {item.icon}
+            </motion.div>
+          ))}
+
+          {/* Profile Image */}
           <motion.img
             src={myphoto}
             alt="Jeevan Shetty"
-            className="w-32 sm:w-44 md:w-56 lg:w-72 xl:w-80 h-32 sm:h-44 md:h-56 lg:h-72 xl:h-80 rounded-full border-4 border-gray-800 shadow-xl object-cover"
-            animate={{ y: [0, -12, 0] }}
+            className="relative w-49 h-49 sm:w-49 sm:h-49 md:w-48 md:h-48 lg:w-56 lg:h-56 
+               rounded-full border-4 border-gray-800 shadow-xl object-cover"
+            animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.05, rotate: 2 }}
           />
         </motion.div>
       </div>

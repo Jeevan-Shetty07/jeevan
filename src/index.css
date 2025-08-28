@@ -37,4 +37,7 @@ html, body {
 section{
   padding-top: 0 !important;
 }
+html {
+  scroll-behavior: smooth;
+}
 

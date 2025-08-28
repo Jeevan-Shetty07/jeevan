@@ -70,7 +70,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="text-5xl md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x relative z-10"
+        className="text-5xl pt-10 md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x relative z-10"
       >
         Let’s Connect 🚀
       </motion.h2>
@@ -89,7 +89,7 @@ export default function Contact() {
 
       {/* Contact Cards */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 z-10"
+        className="grid pb-15 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

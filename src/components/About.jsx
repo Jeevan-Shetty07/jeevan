@@ -22,7 +22,7 @@ export default function About() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.7),_black_100%)]"></div>
       <div className="absolute inset-0 opacity-30 bg-[linear-gradient(120deg,rgba(0,255,255,0.1)_25%,transparent_25%,transparent_50%,rgba(0,255,255,0.1)_50%,rgba(0,255,255,0.1)_75%,transparent_75%,transparent)] [background-size:60px_60px] animate-pulse"></div>
 
-      <div className="grid grid-cols-1 pt-20 md:grid-cols-2 gap-12 items-center max-w-6xl w-full relative z-10">
+      <div className="grid grid-cols-1 pt-20 pb-20 md:grid-cols-2 gap-12 items-center max-w-6xl w-full relative z-10">
         {/* Left: Text content */}
         <div className="text-center md:text-left">
           <motion.h2

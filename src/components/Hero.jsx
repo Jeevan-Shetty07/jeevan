@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import myphoto from "../assets/myphoto.jpg";
 import { motion } from "framer-motion";
 import {
-  FaGithub,
+   FaGithub,
   FaLinkedin,
   FaEnvelope,
   FaInstagram,
@@ -11,7 +11,9 @@ import {
   FaPhp,
   FaJava,
   FaDatabase,
-  FaHtml5
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
 } from "react-icons/fa";
 import resume from "../assets/resume.pdf";
 
@@ -92,16 +94,17 @@ export default function Hero() {
     },
   ];
 
-  // Orbiting Tech Icons
-  const orbitingIcons = [
-    { icon: <FaReact className="text-cyan-400" />, delay: 0 },
-    { icon: <FaPhp className="text-indigo-500" />, delay: 1 },
-    { icon: <FaJava className="text-orange-500" />, delay: 2 },
-    { icon: <FaDatabase className="text-yellow-400" />, delay: 3 },
-    { icon: <FaGithub className="text-gray-300" />, delay: 4},
-    
-    { icon: <FaHtml5 className="text-orange-600" />, delay: 5},
-  ];
+// Orbiting Tech Icons
+const orbitingIcons = [
+  { icon: <FaReact className="text-cyan-400" />, delay: 0 },
+  { icon: <FaPhp className="text-indigo-500" />, delay: 1 },
+  { icon: <FaJava className="text-orange-500" />, delay: 2 },
+  { icon: <FaDatabase className="text-yellow-400" />, delay: 3 },
+  { icon: <FaGithub className="text-gray-300" />, delay: 4 },
+  { icon: <FaHtml5 className="text-orange-600" />, delay: 5 },
+  { icon: <FaCss3Alt className="text-blue-500" />, delay: 6 },
+  { icon: <FaGitAlt className="text-red-500" />, delay: 7 },
+];
 
   return (
     <section
@@ -269,7 +272,7 @@ export default function Hero() {
           <motion.img
             src={myphoto}
             alt="Jeevan Shetty"
-            className="relative w-49 h-49 sm:w-49 sm:h-49 md:w-48 md:h-48 lg:w-56 lg:h-56 
+            className="relative w-49 h-49 sm:w-49 sm:h-49 md:w-52 md:h-52 lg:w-60 lg:h-60 
                rounded-full border-4 border-gray-800 shadow-xl object-cover"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

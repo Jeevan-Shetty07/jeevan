@@ -55,10 +55,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-black bg-opacity-95 backdrop-blur-md shadow-2xl py-2"
-          : "bg-black bg-opacity-90 py-4"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 
+      ${scrolled
+        ? "bg-black/80 backdrop-blur-md shadow-xl py-2 sm:py-4"
+        : "bg-black py-4 sm:py-6"
       }`}
     >
       {/* Progress bar */}
@@ -125,7 +125,10 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed top-0 right-0 h-screen w-2/3 sm:w-1/2 bg-black bg-opacity-95 backdrop-blur-md shadow-2xl flex flex-col justify-center items-center space-y-8 text-gray-300 text-lg sm:text-xl"
+            className="md:hidden fixed top-0 right-0 h-screen w-2/3 sm:w-1/2 
+            bg-gradient-to-br from-black via-gray-900 to-black 
+            backdrop-blur-lg shadow-2xl flex flex-col justify-center 
+            items-center space-y-10 py-16 sm:py-20 text-gray-300 text-lg sm:text-xl"
           >
             {links.map((link, idx) => (
               <motion.button

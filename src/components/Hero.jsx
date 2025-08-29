@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import myphoto from "../assets/myphoto.jpg";
 import { motion } from "framer-motion";
 import {
-   FaGithub,
+  FaGithub,
   FaLinkedin,
   FaEnvelope,
   FaInstagram,
@@ -15,8 +15,15 @@ import {
   FaCss3Alt,
   FaGitAlt,
 } from "react-icons/fa";
-import resume from "../assets/resume.pdf";
+import {
+  SiJavascript,
+  SiC,
+  SiMysql,
+  SiBootstrap,
+  SiTailwindcss,
+} from "react-icons/si";
 
+import resume from "../assets/resume.pdf";
 
 /* Typewriter effect */
 function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
@@ -89,43 +96,64 @@ export default function Hero() {
     {
       name: "Gmail",
       icon: <FaEnvelope />,
-      link: "mailto:jeevanshetty9481@gmail.com",
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
       color: "hover:text-red-500 hover:shadow-red-500/50",
     },
   ];
 
-// Orbiting Tech Icons
-const orbitingIcons = [
-  { icon: <FaReact className="text-cyan-400" />, delay: 0 },
-  { icon: <FaPhp className="text-indigo-500" />, delay: 1 },
-  { icon: <FaJava className="text-orange-500" />, delay: 2 },
-  { icon: <FaDatabase className="text-yellow-400" />, delay: 3 },
-  { icon: <FaGithub className="text-gray-300" />, delay: 4 },
-  { icon: <FaHtml5 className="text-orange-600" />, delay: 5 },
-  { icon: <FaCss3Alt className="text-blue-500" />, delay: 6 },
-  { icon: <FaGitAlt className="text-red-500" />, delay: 7 },
-];
+  // Floating Tech Icons
+  const orbitingIcons = [
+    { icon: <FaReact className="text-cyan-400" /> },
+    { icon: <FaPhp className="text-indigo-500" /> },
+    { icon: <FaJava className="text-orange-500" /> },
+    { icon: <FaDatabase className="text-yellow-400" /> },
+    { icon: <FaGithub className="text-gray-300" /> },
+    { icon: <FaHtml5 className="text-orange-600" /> },
+    { icon: <FaCss3Alt className="text-blue-500" /> },
+    { icon: <FaGitAlt className="text-red-500" /> },
+    { icon: <SiJavascript className="text-yellow-500" /> },
+    { icon: <SiC className="text-blue-400" /> },
+    { icon: <SiMysql className="text-blue-600" /> },
+    { icon: <SiBootstrap className="text-purple-600" /> },
+    { icon: <SiTailwindcss className="text-sky-400" /> },
+  ];
+
+  const containerRef = useRef(null);
+
+  // 🌌 Mouse parallax effect
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (containerRef.current) {
+        const { innerWidth, innerHeight } = window;
+        const moveX = (e.clientX - innerWidth / 2) / 50;
+        const moveY = (e.clientY - innerHeight / 2) / 50;
+        containerRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <section
       id="home"
-      className="relative pb-30 m-0 w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-black text-white overflow-hidden"
+      className="relative pb-30 m-0 w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden"
     >
-      {/* Background Bubbles */}
+      {/* Background gradient blur orbs */}
       <motion.div
-        className="absolute -top-20 -left-20 w-40 sm:w-56 pt-5 md:w-72 h-40 sm:h-56 md:h-72 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none"
-        animate={{ y: [0, 40, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      ></motion.div>
-      <motion.div
-        className="absolute -bottom-20 -right-20 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none"
-        animate={{ y: [0, -40, 0] }}
+        className="absolute -top-20 -left-20 w-64 h-64 bg-purple-600 opacity-30 rounded-full blur-3xl pointer-events-none"
+        animate={{ y: [0, 40, 0], x: [0, 20, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      ></motion.div>
+      />
+      <motion.div
+        className="absolute bottom-0 right-0 w-72 h-72 bg-blue-600 opacity-30 rounded-full blur-3xl pointer-events-none"
+        animate={{ y: [0, -40, 0], x: [0, -20, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      {/* Content */}
+      {/* Main content */}
       <div className="flex pb-10 flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-10 lg:gap-x-16">
-        {/* Left Text */}
+        {/* LEFT */}
         <motion.div
           className="z-10 flex-1 text-center lg:text-left px-2 sm:px-0"
           initial={{ opacity: 0, x: -60 }}
@@ -136,7 +164,7 @@ const orbitingIcons = [
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug"
+            className="text-3xl  pt-10 sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-snug"
           >
             Hi, I'm <span className="text-blue-400">Jeevan Shetty</span> 👋
           </motion.h1>
@@ -145,7 +173,7 @@ const orbitingIcons = [
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.9 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl mt-3 text-gray-300"
+            className="text-sm sm:text-lg md:text-xl lg:text-2xl mt-3 text-gray-300"
           >
             A passionate <span className="font-semibold">developer</span> who
             builds modern, responsive apps with{" "}
@@ -162,52 +190,26 @@ const orbitingIcons = [
           </motion.p>
 
           {/* Buttons */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.2 },
-              },
-            }}
-            className="mt-5 flex flex-wrap gap-3 justify-center lg:justify-start"
-          >
+          <div className="mt-6 flex flex-wrap gap-4 justify-center lg:justify-start">
             <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px #3b82f6" }}
               href={resume}
               download="Jeevan_Shetty_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 sm:px-5 sm:py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition text-xs sm:text-sm md:text-base"
+              className="px-5 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition text-sm sm:text-base"
             >
               📄 Download Resume
             </motion.a>
             <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px #22d3ee" }}
               href="#projects"
-              className="px-4 py-2 sm:px-5 sm:py-3 bg-gray-800 text-white rounded-xl shadow-lg hover:bg-gray-900 transition text-xs sm:text-sm md:text-base"
+              className="px-5 py-3 bg-gray-800 text-white rounded-xl shadow-lg hover:bg-gray-900 transition text-sm sm:text-base"
             >
               🔗 View Projects
             </motion.a>
-          </motion.div>
+          </div>
 
           {/* Socials */}
-          <motion.div
-            className="flex gap-4 sm:gap-6 mt-6 justify-center lg:justify-start text-xl sm:text-2xl md:text-3xl flex-wrap"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.15 },
-              },
-            }}
-          >
+          <div className="flex gap-6 mt-6 justify-center lg:justify-start text-2xl flex-wrap">
             {socialLinks.map((social) => (
               <motion.a
                 key={social.name}
@@ -215,53 +217,51 @@ const orbitingIcons = [
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${social.color} transition`}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.3, rotate: 8, textShadow: "0px 0px 12px" }}
               >
                 {social.icon}
               </motion.a>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* Right Photo with Creativity */}
-        {/* Right Photo with Creativity */}
+        {/* RIGHT with floating aura */}
         <motion.div
+          ref={containerRef}
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
           className="relative z-10 flex-1 flex justify-center items-center mt-6 lg:mt-0"
         >
-          {/* Gradient Ring */}
+          {/* Pulsing glow behind profile */}
           <motion.div
-            className="absolute w-50 h-50 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 
-               rounded-full bg-gradient-to-tr from-blue-500 via-purple-600 to-pink-500"
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-          ></motion.div>
+            className="absolute w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full bg-blue-500/20 blur-3xl"
+            animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.9, 0.6] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
 
-          {/* Pulsing Glow */}
-          <motion.div
-            className="absolute w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 
-               rounded-full bg-blue-500/20 blur-2xl"
-            animate={{ scale: [1, 1.15, 1] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          ></motion.div>
-
-          {/* Orbiting Tech Icons */}
+          {/* Floating Tech Icons */}
           {orbitingIcons.map((item, idx) => (
             <motion.div
               key={idx}
-              className="absolute text-xl sm:text-2xl md:text-3xl"
-              animate={{ rotate: 360 }}
+              className="absolute text-2xl sm:text-3xl md:text-4xl"
+              animate={{
+                y: [0, -20, 0],
+                x: [0, idx % 2 === 0 ? 15 : -15, 0],
+                rotate: [0, 10, -10, 0],
+              }}
               transition={{
                 repeat: Infinity,
-                duration: 12,
-                ease: "linear",
-                delay: item.delay,
+                duration: 6 + idx * 0.3,
+                ease: "easeInOut",
               }}
               style={{
-                transformOrigin: "110px", // orbit closer to image
+                transform: `rotate(${idx * (360 / orbitingIcons.length)}deg) translate(130px)`,
+                transformOrigin: "center",
+              }}
+              whileHover={{
+                scale: 1.6,
+                textShadow: "0px 0px 20px rgba(59,130,246,0.9)",
               }}
             >
               {item.icon}
@@ -272,11 +272,11 @@ const orbitingIcons = [
           <motion.img
             src={myphoto}
             alt="Jeevan Shetty"
-            className="relative w-49 h-49 sm:w-49 sm:h-49 md:w-52 md:h-52 lg:w-60 lg:h-60 
-               rounded-full border-4 border-gray-800 shadow-xl object-cover"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.05, rotate: 2 }}
+            className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 
+              rounded-full border-4 border-gray-700 shadow-[0_0_25px_rgba(59,130,246,0.6)] object-cover"
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.07, rotate: 2 }}
           />
         </motion.div>
       </div>

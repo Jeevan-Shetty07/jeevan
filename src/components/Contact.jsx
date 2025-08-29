@@ -25,7 +25,7 @@ export default function Contact() {
       icon: (
         <FaEnvelope className="text-red-500 sm:text-gray-300 sm:group-hover:text-red-500" />
       ),
-      link: "mailto:jeevanshetty9481@gmail.com",
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
       color: "sm:group-hover:shadow-red-500/70",
     },
     {

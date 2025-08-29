@@ -8,7 +8,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  const links = ["home", "about", "projects", "contact"];
+  // ✅ Added "skills" to nav links
+  const links = ["home", "about", "skills", "projects", "contact"];
 
   // Track scroll + active section
   useEffect(() => {
@@ -55,51 +56,60 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 
-      ${scrolled
-        ? "bg-black/80 backdrop-blur-md shadow-xl py-2 sm:py-4"
-        : "bg-black py-4 sm:py-6"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-black/30 backdrop-blur-2xl shadow-[0_0_25px_rgba(0,200,255,0.3)] py-2"
+          : "bg-black/90 py-4"
       }`}
     >
-      {/* Progress bar */}
+      {/* Scroll Progress Bar */}
       <motion.div
-        className="h-[3px] bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 fixed top-0 left-0 z-[60]"
+        className="h-[4px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
+        fixed top-0 left-0 z-[60]"
         style={{ width: `${scrollProgress}%` }}
       />
 
+      {/* Aurora background glow */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-        {/* Logo */}
+        {/* ✅ Clean Logo (no glow, no shadow) */}
         <motion.h1
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide cursor-pointer bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-105 transition-transform"
+          className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wide cursor-pointer 
+          bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
           onClick={() => handleScrollTo("home")}
         >
           Jeevan Shetty
         </motion.h1>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6 lg:space-x-10 text-gray-300 font-medium text-base lg:text-lg relative">
+        <ul className="hidden md:flex space-x-8 text-gray-300 font-medium text-lg relative">
           {links.map((link, idx) => (
             <motion.li
               key={link}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="relative"
+              className="relative group"
             >
               <button
                 onClick={() => handleScrollTo(link)}
-                className={`relative group transition-all px-1 py-1 ${
-                  active === link ? "text-blue-400" : ""
-                }`}
+                className={`relative px-2 py-1 tracking-wide transition-all duration-300 
+                  ${
+                    active === link
+                      ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400"
+                      : "hover:text-white"
+                  }`}
               >
                 {link.charAt(0).toUpperCase() + link.slice(1)}
-                {/* Animated underline */}
+
+                {/* Underline Glow */}
                 <motion.span
                   layoutId="underline"
-                  className="absolute left-0 -bottom-1 h-[2px] bg-blue-400"
+                  className="absolute left-0 -bottom-1 h-[2px] bg-gradient-to-r from-blue-400 to-pink-400 rounded-full"
                   animate={{ width: active === link ? "100%" : "0%" }}
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
@@ -109,42 +119,56 @@ export default function Navbar() {
         </ul>
 
         {/* Mobile Toggle */}
-        <div
+        <motion.div
+          whileTap={{ scale: 0.8 }}
           className="md:hidden text-2xl text-gray-300 cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
-        </div>
+        </motion.div>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden fixed top-0 right-0 h-screen w-2/3 sm:w-1/2 
-            bg-gradient-to-br from-black via-gray-900 to-black 
-            backdrop-blur-lg shadow-2xl flex flex-col justify-center 
-            items-center space-y-10 py-16 sm:py-20 text-gray-300 text-lg sm:text-xl"
-          >
-            {links.map((link, idx) => (
-              <motion.button
-                key={link}
-                onClick={() => handleScrollTo(link)}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                className={`hover:text-blue-400 transition ${
-                  active === link ? "text-blue-400" : ""
-                }`}
-              >
-                {link.charAt(0).toUpperCase() + link.slice(1)}
-              </motion.button>
-            ))}
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/70 backdrop-blur-md z-40"
+              onClick={() => setIsOpen(false)}
+            />
+
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="md:hidden fixed top-0 right-0 h-screen w-2/3 sm:w-1/2 
+              bg-gradient-to-br from-black via-gray-900 to-black/90 
+              z-50 flex flex-col justify-center 
+              items-center space-y-12 py-16 sm:py-20 text-gray-200 text-xl"
+            >
+              {links.map((link, idx) => (
+                <motion.button
+                  key={link}
+                  onClick={() => handleScrollTo(link)}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.15 }}
+                  className={`relative group hover:scale-110 hover:text-blue-400 transition-all duration-300 ${
+                    active === link
+                      ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400"
+                      : ""
+                  }`}
+                >
+                  {link.charAt(0).toUpperCase() + link.slice(1)}
+                </motion.button>
+              ))}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

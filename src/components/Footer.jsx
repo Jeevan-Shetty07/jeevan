@@ -9,69 +9,87 @@ import {
 
 export default function Footer() {
   return (
-    <footer
-      className="relative py-10 text-center bg-black text-gray-400 overflow-hidden"
-      data-aos="fade-up"
-    >
-      {/* Background Bubbles */}
-      <div className="absolute -top-28 -left-28 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-purple-700 opacity-20 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-28 -right-28 w-56 sm:w-72 md:w-80 lg:w-96 h-56 sm:h-72 md:h-80 lg:h-96 bg-blue-700 opacity-20 rounded-full blur-3xl pointer-events-none"></div>
+    <footer className="relative py-12 text-center bg-black text-gray-400 overflow-hidden">
+      {/* Aurora Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
 
-      {/* Glow Line */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+      {/* Background Glow Orbs */}
+      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
+      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
 
-      {/* Name / Branding */}
-      <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 z-10 relative">
+      {/* Particle Dots */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${3 + Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated Divider */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
+
+      {/* Branding */}
+      <h2 className="text-3xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 animate-gradient-x">
         Jeevan Shetty
       </h2>
 
       {/* Social Icons */}
-      <div className="flex justify-center gap-6 text-2xl mb-6 z-10 relative">
-        <a
-          href="https://github.com/Jeevan-Shetty07"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition transform hover:scale-125"
-        >
-          <FaGithub />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/jeevan-shetty-241613229/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-500 transition transform hover:scale-125"
-        >
-          <FaLinkedin />
-        </a>
-        <a
-          href="https://instagram.com/g1shetty07"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-pink-500 transition transform hover:scale-125"
-        >
-          <FaInstagram />
-        </a>
-        <a
-        target="_blank"
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan"
-          className="hover:text-red-500 transition transform hover:scale-125"
-        >
-          <FaEnvelope />
-        </a>
-        <a
-          href="https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB       "
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-green-500 transition transform hover:scale-125"
-        >
-          <FaWhatsapp />
-        </a>
+      <div className="flex justify-center gap-8 text-3xl mb-6 relative z-10">
+        {[
+          {
+            icon: <FaGithub />,
+            link: "https://github.com/Jeevan-Shetty07",
+            color: "hover:text-white",
+          },
+          {
+            icon: <FaLinkedin />,
+            link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
+            color: "hover:text-blue-500",
+          },
+          {
+            icon: <FaInstagram />,
+            link: "https://instagram.com/g1shetty07",
+            color: "hover:text-pink-500",
+          },
+          {
+            icon: <FaEnvelope />,
+            link: "mailto:jeevanshetty9481@gmail.com",
+            color: "hover:text-red-500",
+          },
+          {
+            icon: <FaWhatsapp />,
+            link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB",
+            color: "hover:text-green-500",
+          },
+        ].map((item, idx) => (
+          <a
+            key={idx}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`relative group transition transform hover:scale-125 ${item.color}`}
+          >
+            <span className="absolute inset-0 rounded-full scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-20 bg-gradient-to-r from-blue-400 to-purple-600 blur-xl transition-all"></span>
+            {item.icon}
+          </a>
+        ))}
       </div>
 
-      {/* Copyright */}
-      <p className="text-sm text-gray-500 z-10 relative">
+      {/* Copyright with shimmer */}
+      <p className="text-sm text-gray-500 relative z-10 bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 bg-clip-text text-transparent animate-gradient-x">
         © {new Date().getFullYear()} Jeevan Shetty. All rights reserved.
       </p>
     </footer>
   );
 }
+
+/* Tailwind Extra Animations (add in globals.css) */

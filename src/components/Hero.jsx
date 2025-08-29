@@ -101,22 +101,7 @@ export default function Hero() {
     },
   ];
 
-  // Floating Tech Icons
-  const orbitingIcons = [
-    { icon: <FaReact className="text-cyan-400" /> },
-    { icon: <FaPhp className="text-indigo-500" /> },
-    { icon: <FaJava className="text-orange-500" /> },
-    { icon: <FaDatabase className="text-yellow-400" /> },
-    { icon: <FaGithub className="text-gray-300" /> },
-    { icon: <FaHtml5 className="text-orange-600" /> },
-    { icon: <FaCss3Alt className="text-blue-500" /> },
-    { icon: <FaGitAlt className="text-red-500" /> },
-    { icon: <SiJavascript className="text-yellow-500" /> },
-    { icon: <SiC className="text-blue-400" /> },
-    { icon: <SiMysql className="text-blue-600" /> },
-    { icon: <SiBootstrap className="text-purple-600" /> },
-    { icon: <SiTailwindcss className="text-sky-400" /> },
-  ];
+
 
   const containerRef = useRef(null);
 
@@ -240,33 +225,7 @@ export default function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Floating Tech Icons */}
-          {orbitingIcons.map((item, idx) => (
-            <motion.div
-              key={idx}
-              className="absolute text-2xl sm:text-3xl md:text-4xl"
-              animate={{
-                y: [0, -20, 0],
-                x: [0, idx % 2 === 0 ? 15 : -15, 0],
-                rotate: [0, 10, -10, 0],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 6 + idx * 0.3,
-                ease: "easeInOut",
-              }}
-              style={{
-                transform: `rotate(${idx * (360 / orbitingIcons.length)}deg) translate(130px)`,
-                transformOrigin: "center",
-              }}
-              whileHover={{
-                scale: 1.6,
-                textShadow: "0px 0px 20px rgba(59,130,246,0.9)",
-              }}
-            >
-              {item.icon}
-            </motion.div>
-          ))}
+         
 
           {/* Profile Image */}
           <motion.img

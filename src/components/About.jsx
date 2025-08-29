@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const education = [
-    { year: "2020", place: "St. Theresa High School, Belthangady", detail: "Completed SSLC (79%)" },
-    { year: "2022", place: "SDM College, Ujire", detail: "Completed PUC (83%)" },
-    { year: "2025", place: "St. Philomena College, Puttur", detail: "Pursuing BCA (CGPA 7.67)" },
-    { year: "present", place: "NMAMIT, Nitte", detail: "Plan to pursue MCA" },
+    { year: "2020", place: "St. Theresa High School, Belthangady", detail: "Completed SSLC in 2020 " },
+    { year: "2022", place: "SDM College, Ujire", detail: "Completed PUC in 2022" },
+    { year: "2025", place: "St. Philomena College, Puttur", detail: "Completed BCA in 2025 " },
+    { year: "present", place: "NMAMIT, Nitte", detail: "Pursuing MCA" },
   ];
 
   const coding = [

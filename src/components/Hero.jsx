@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import myphoto from "../assets/myphoto.jpg";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -7,13 +6,6 @@ import {
   FaEnvelope,
   FaInstagram,
   FaWhatsapp,
-  FaReact,
-  FaPhp,
-  FaJava,
-  FaDatabase,
-  FaHtml5,
-  FaCss3Alt,
-  FaGitAlt,
 } from "react-icons/fa";
 import {
   SiJavascript,
@@ -101,8 +93,6 @@ export default function Hero() {
     },
   ];
 
-
-
   const containerRef = useRef(null);
 
   // 🌌 Mouse parallax effect
@@ -122,7 +112,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pb-30 m-0 w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden"
+      className="relative m-0 w-full h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden"
     >
       {/* Background gradient blur orbs */}
       <motion.div
@@ -137,7 +127,7 @@ export default function Hero() {
       />
 
       {/* Main content */}
-      <div className="flex pb-10 flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-10 lg:gap-x-16">
+      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-10 lg:gap-x-16">
         {/* LEFT */}
         <motion.div
           className="z-10 flex-1 text-center lg:text-left px-2 sm:px-0"
@@ -149,7 +139,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
-            className="text-3xl  pt-10 sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-snug"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-snug"
           >
             Hi, I'm <span className="text-blue-400">Jeevan Shetty</span> 👋
           </motion.h1>
@@ -202,7 +192,11 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${social.color} transition`}
-                whileHover={{ scale: 1.3, rotate: 8, textShadow: "0px 0px 12px" }}
+                whileHover={{
+                  scale: 1.3,
+                  rotate: 8,
+                  textShadow: "0px 0px 12px",
+                }}
               >
                 {social.icon}
               </motion.a>
@@ -224,8 +218,6 @@ export default function Hero() {
             animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.9, 0.6] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
-
-         
 
           {/* Profile Image */}
           <motion.img

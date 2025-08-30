@@ -2,73 +2,78 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function About() {
-  const education = [
-    { year: "2020", place: "St. Theresa High School, Belthangady", detail: "Completed SSLC in 2020 " },
-    { year: "2022", place: "SDM College, Ujire", detail: "Completed PUC in 2022" },
-    { year: "2025", place: "St. Philomena College, Puttur", detail: "Completed BCA in 2025 " },
-    { year: "present", place: "NMAMIT, Nitte", detail: "Pursuing MCA" },
-  ];
-
-  const coding = [
-    { year: "2022", place: "BCA 1st Year", detail: "Started with HTML, CSS, JavaScript" },
-    { year: "2023", place: "2nd Year Projects", detail: "Learned PHP, SQL, and built mini projects" },
-    { year: "2024", place: "Final Year", detail: "Worked on Carpooling & Event Management System" },
-    { year: "Future", place: "MCA Journey", detail: "Started DSA & advanced development" },
-  ];
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section className="min-h-screen bg-black text-white flex items-center justify-center px-8">
-      <div className="grid grid-cols-1 md:grid-cols-3  gap-8 w-full max-w-6xl">
-        
-        {/* Education */}
-        <div className="space-y-6 ">
-          <h2 className="text-3xl pt-10 font-bold text-cyan-400">🎓 Education</h2>
-          {education.map((item, i) => (
-            <motion.div
-              key={i}
-              className="p-4 border border-cyan-500/40 rounded-xl hover:shadow-cyan-500/50 hover:shadow-lg transition"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-            >
-              <h3 className="text-xl font-semibold">{item.place}</h3>
-              <p className="text-gray-400">{item.detail}</p>
-              <span className="text-sm text-cyan-300">{item.year}</span>
-            </motion.div>
-          ))}
-        </div>
+    <section className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white flex items-center justify-center px-8">
+      <div className="max-w-5xl space-y-10 text-center">
 
-        {/* Divider */}
-        <div className="relative  hidden md:flex items-center justify-center">
-          <div className="w-1 h-full bg-gradient-to-b from-cyan-400 to-purple-500 rounded-full blur-sm animate-pulse"></div>
-        </div>
+        {/* Title */}
+        <motion.h2
+          className="text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          🚀 My Journey
+        </motion.h2>
 
-        {/* Coding Journey */}
-        <div className="space-y-6 pb-10">
-          <h2 className="text-3xl font-bold text-purple-400">💻 Coding Journey</h2>
-          {coding.map((item, i) => (
-            <motion.div
-              key={i}
-              className="p-4 border border-purple-500/40 rounded-xl hover:shadow-purple-500/50 hover:shadow-lg transition"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-            >
-              <h3 className="text-xl font-semibold">{item.place}</h3>
-              <p className="text-gray-400">{item.detail}</p>
-              <span className="text-sm text-purple-300">{item.year}</span>
-            </motion.div>
-          ))}
-        </div>
+        {/* Paragraph */}
+        <motion.p
+          className="text-lg md:text-xl leading-relaxed text-gray-300"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          My academic path in technology took shape during my{" "}
+          <span className="text-cyan-400 font-semibold">Bachelor of Computer Applications (BCA)</span> 
+          at <span className="text-purple-400">St. Philomena College, Puttur</span>, which I 
+          successfully completed in 2025. During these three years, I explored the fundamentals 
+          of software development, worked on projects like a{" "}
+          <span className="text-cyan-400 font-semibold">Carpooling System</span> and an{" "}
+          <span className="text-purple-400 font-semibold">Event Management System</span>, and built 
+          a strong foundation in programming, databases, and web technologies. These experiences 
+          not only sharpened my technical skills but also taught me the value of teamwork, 
+          problem-solving, and creativity in coding.
+        </motion.p>
+
+        <motion.p
+          className="text-lg md:text-xl leading-relaxed text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          Currently, I am pursuing my{" "}
+          <span className="text-cyan-400 font-semibold">Master of Computer Applications (MCA)</span> 
+          at <span className="text-purple-400">NMAM Institute of Technology, Nitte</span>. 
+          This phase of my journey is focused on diving deeper into{" "}
+          <span className="text-cyan-400">Data Structures & Algorithms</span>, exploring{" "}
+          <span className="text-purple-400">modern frameworks and full-stack development</span>, 
+          and refining my problem-solving mindset to prepare for real-world challenges. I aim to 
+          specialize in <span className="text-cyan-400">software development</span> and{" "}
+          <span className="text-purple-400">system design</span>, with a vision to contribute to 
+          impactful and scalable solutions in the tech industry.
+        </motion.p>
+
+        <motion.p
+          className="text-lg md:text-xl leading-relaxed text-gray-300 italic"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
+          Beyond academics, I enjoy experimenting with new tools, improving my problem-solving 
+          speed, and staying curious about how technology can make life smarter and easier. 
+          To me, coding isn’t just a career path — it’s a way to transform ideas into 
+          meaningful experiences.
+        </motion.p>
+
+        {/* Creative Tagline */}
+        <motion.div
+          className="mt-8 text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          💡 Code. Create. Innovate.
+        </motion.div>
 
       </div>
     </section>

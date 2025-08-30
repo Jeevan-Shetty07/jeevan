@@ -13,24 +13,30 @@ import {
   FaGithub,
   FaDatabase,
 } from "react-icons/fa";
-import { SiVercel, SiTailwindcss } from "react-icons/si";
+
+import {
+  SiTailwindcss,
+  SiVercel,
+  SiBootstrap,
+} from "react-icons/si";
 
 export default function Skills() {
-  const skills = [
-    { name: "HTML5", icon: <FaHtml5 />, color: "text-orange-500" },
-    { name: "CSS3", icon: <FaCss3Alt />, color: "text-blue-500" },
-    { name: "JavaScript", icon: <FaJs />, color: "text-yellow-400" },
-    { name: "React", icon: <FaReact />, color: "text-cyan-400" },
-    { name: "PHP", icon: <FaPhp />, color: "text-indigo-500" },
-    { name: "Java", icon: <FaJava />, color: "text-red-600" },
-    { name: "Python", icon: <FaPython />, color: "text-green-400" },
-    { name: "Database", icon: <FaDatabase />, color: "text-pink-400" },
-    { name: "Git", icon: <FaGitAlt />, color: "text-red-500" },
-    { name: "GitHub", icon: <FaGithub />, color: "text-gray-300" },
-    // { name: "VS Code", icon: <SiVisualstudiocode />, color: "text-blue-400" },
-    { name: "Tailwind", icon: <SiTailwindcss />, color: "text-teal-400" },
-    { name: "Vercel", icon: <SiVercel />, color: "text-white" },
-  ];
+
+const skills = [
+  { name: "HTML5", icon: <FaHtml5 />, color: "text-orange-500" },
+  { name: "CSS3", icon: <FaCss3Alt />, color: "text-blue-500" },
+  { name: "JavaScript", icon: <FaJs />, color: "text-yellow-400" },
+  { name: "React", icon: <FaReact />, color: "text-cyan-400" },
+  { name: "PHP", icon: <FaPhp />, color: "text-indigo-500" },
+  { name: "Java", icon: <FaJava />, color: "text-red-600" },
+  { name: "Python", icon: <FaPython />, color: "text-green-400" },
+  { name: "Database", icon: <FaDatabase />, color: "text-pink-400" },
+  { name: "Git", icon: <FaGitAlt />, color: "text-red-500" },
+  { name: "GitHub", icon: <FaGithub />, color: "text-gray-300" },
+  { name: "Bootstrap", icon: <SiBootstrap />, color: "text-purple-600" }, // ✅ Added Bootstrap
+  { name: "Tailwind", icon: <SiTailwindcss />, color: "text-teal-400" },
+  // { name: "Vercel", icon: <SiVercel />, color: "text-white" },
+];
 
   return (
     <section

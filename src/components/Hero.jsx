@@ -48,17 +48,18 @@ function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
 }
 
 export default function Hero() {
-  const roles = [
-    "💻 Web Developer",
-    "☕ DSA in Java",
-    "🔢 DSA in C",
-    "⚛ React Developer",
-    "🐘 PHP",
-    "🗄 SQL Database Handling",
-    "🎨 Bootstrap",
-    "🌊 Tailwind CSS",
-    "📝 HTML & CSS",
-  ];
+const roles = [
+  "💻 Full-Stack Web Developer",
+  "☕ Data Structures & Algorithms (Java)",
+  "🔢 Data Structures & Algorithms (C)",
+  "⚛ React.js Developer",
+  "🐘 PHP Developer",
+  "🗄 SQL Database Management",
+  "🎨 UI Design with Bootstrap",
+  "🌊 Tailwind CSS Styling",
+  "📝 HTML5 & CSS3",
+];
+
 
   const socialLinks = [
     {

@@ -15,7 +15,8 @@ import event3 from "../assets/event3.png";
 import port1 from "../assets/port1.png";
 import port2 from "../assets/port2.png";
 import port3 from "../assets/port3.png";
-import "./project.css"
+import "./project.css";
+
 export default function Projects() {
   const projects = [
     {
@@ -28,31 +29,54 @@ export default function Projects() {
       title: "Event Management System",
       desc: "Full booking system for catering, decoration & venues.",
       github: "https://github.com/Jeevan-Shetty07/EventManagemnet",
-      images: [port1, port2, port3],
+      images: [event1, event2, event3],
     },
     {
       title: "Portfolio Website",
       desc: "Responsive portfolio built with React, Tailwind & AOS.",
       github: "https://github.com/Jeevan-Shetty07/portfolio",
-      images: [event1, event2, event3],
+      images: [port1, port2, port3],
     },
   ];
 
   return (
     <section
       id="projects"
-      className="relative  min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 bg-black text-white overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 bg-black text-white overflow-hidden"
     >
-      {/* Background bubbles */}
-      <div className="absolute -top-12 -left-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-purple-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
-      <div className="absolute -bottom-12 -right-12 w-48 sm:w-64 md:w-72 lg:w-80 h-48 sm:h-64 md:h-72 lg:h-80 bg-blue-700 opacity-30 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+      {/* Aurora Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
+
+      {/* Background Glow Orbs */}
+      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
+      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+
+      {/* Particle Dots */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${3 + Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated Divider */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
 
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-3xl pt-10  sm:text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
+        className="text-3xl pt-10 sm:text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
       >
         🚀 Projects
       </motion.h2>
@@ -65,7 +89,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="relative p-5  sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 transition-transform duration-300 group"
+            className="relative p-5 sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 transition-transform duration-300 group"
           >
             {/* Image Slider */}
             <Swiper
@@ -90,8 +114,12 @@ export default function Projects() {
             </Swiper>
 
             {/* Project Info */}
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-blue-400">{proj.title}</h3>
-            <p className="text-sm sm:text-base text-gray-300 mb-4">{proj.desc}</p>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-blue-400">
+              {proj.title}
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300 mb-4">
+              {proj.desc}
+            </p>
             <a
               href={proj.github}
               target="_blank"

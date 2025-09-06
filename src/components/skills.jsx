@@ -14,44 +14,63 @@ import {
   FaDatabase,
 } from "react-icons/fa";
 
-import {
-  SiTailwindcss,
-  SiVercel,
-  SiBootstrap,
-} from "react-icons/si";
+import { SiTailwindcss, SiVercel, SiBootstrap } from "react-icons/si";
 
 export default function Skills() {
-
-const skills = [
-  { name: "HTML5", icon: <FaHtml5 />, color: "text-orange-500" },
-  { name: "CSS3", icon: <FaCss3Alt />, color: "text-blue-500" },
-  { name: "JavaScript", icon: <FaJs />, color: "text-yellow-400" },
-  { name: "React", icon: <FaReact />, color: "text-cyan-400" },
-  { name: "PHP", icon: <FaPhp />, color: "text-indigo-500" },
-  { name: "Java", icon: <FaJava />, color: "text-red-600" },
-  { name: "Python", icon: <FaPython />, color: "text-green-400" },
-  { name: "Database", icon: <FaDatabase />, color: "text-pink-400" },
-  { name: "Git", icon: <FaGitAlt />, color: "text-red-500" },
-  { name: "GitHub", icon: <FaGithub />, color: "text-gray-300" },
-  { name: "Bootstrap", icon: <SiBootstrap />, color: "text-purple-600" }, // ✅ Added Bootstrap
-  { name: "Tailwind", icon: <SiTailwindcss />, color: "text-teal-400" },
-  // { name: "Vercel", icon: <SiVercel />, color: "text-white" },
-];
+  const skills = [
+    { name: "HTML5", icon: <FaHtml5 />, color: "text-orange-500" },
+    { name: "CSS3", icon: <FaCss3Alt />, color: "text-blue-500" },
+    { name: "JavaScript", icon: <FaJs />, color: "text-yellow-400" },
+    { name: "React", icon: <FaReact />, color: "text-cyan-400" },
+    { name: "PHP", icon: <FaPhp />, color: "text-indigo-500" },
+    { name: "Java", icon: <FaJava />, color: "text-red-600" },
+    { name: "Python", icon: <FaPython />, color: "text-green-400" },
+    { name: "Database", icon: <FaDatabase />, color: "text-pink-400" },
+    { name: "Git", icon: <FaGitAlt />, color: "text-red-500" },
+    { name: "GitHub", icon: <FaGithub />, color: "text-gray-300" },
+    { name: "Bootstrap", icon: <SiBootstrap />, color: "text-purple-600" },
+    { name: "Tailwind", icon: <SiTailwindcss />, color: "text-teal-400" },
+    // { name: "Vercel", icon: <SiVercel />, color: "text-white" },
+  ];
 
   return (
     <section
       id="skills"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white overflow-hidden"
     >
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.15),transparent)] pointer-events-none" />
+      {/* Aurora Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
+
+      {/* Background Glow Orbs */}
+      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
+      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+
+      {/* Particle Dots */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${3 + Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated Divider */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
 
       {/* Title */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-5xl pt-5 font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500"
+        className="text-5xl pt-5 font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 relative z-10"
       >
         My Skills
       </motion.h2>
@@ -61,7 +80,7 @@ const skills = [
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
-        className="grid pb-14 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl"
+        className="grid pb-14 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl relative z-10"
       >
         {skills.map((skill, index) => (
           <motion.div

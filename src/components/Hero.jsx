@@ -50,49 +50,48 @@ function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
 }
 
 export default function Hero() {
-const roles = [
-  "💻 Full-Stack Web Developer",
-  "☕ Data Structures & Algorithms (Java)",
-  "🔢 Data Structures & Algorithms (C)",
-  "⚛ React.js Developer",
-  "🐘 PHP Developer",
-  "🗄 SQL Database Management",
-  "🎨 UI Design with Bootstrap",
-  "🌊 Tailwind CSS Styling",
-  "📝 HTML5 & CSS3",
-];
-
+  const roles = [
+    "💻 Full-Stack Web Developer",
+    "☕ Data Structures & Algorithms (Java)",
+    "🔢 Data Structures & Algorithms (C)",
+    "⚛ React.js Developer",
+    "🐘 PHP Developer",
+    "🗄 SQL Database Management",
+    "🎨 UI Design with Bootstrap",
+    "🌊 Tailwind CSS Styling",
+    "📝 HTML5 & CSS3",
+  ];
 
   const socialLinks = [
     {
       name: "GitHub",
       icon: <FaGithub />,
       link: "https://github.com/Jeevan-Shetty07",
-      color: "hover:text-gray-400 hover:shadow-gray-400/50",
+      color: "hover:text-gray-400",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
       link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
-      color: "hover:text-blue-500 hover:shadow-blue-500/50",
+      color: "hover:text-blue-500",
     },
     {
       name: "Instagram",
       icon: <FaInstagram />,
       link: "https://instagram.com/g1shetty07",
-      color: "hover:text-pink-500 hover:shadow-pink-500/50",
+      color: "hover:text-pink-500",
     },
     {
       name: "WhatsApp",
       icon: <FaWhatsapp />,
       link: "https://wa.me/9353819063?text=Hello%20Jeevan%20%F0%9F%91%8B%F0%9F%8F%BB",
-      color: "hover:text-green-500 hover:shadow-green-500/50",
+      color: "hover:text-green-500",
     },
     {
       name: "Gmail",
       icon: <FaEnvelope />,
-      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
-      color: "hover:text-red-500 hover:shadow-red-500/50",
+      link: "mailto:jeevanshetty9481@gmail.com",
+      color: "hover:text-red-500",
     },
   ];
 
@@ -115,25 +114,37 @@ const roles = [
   return (
     <section
       id="home"
-      className="relative m-0 w-full h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden"
+      className="relative m-0 w-full h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-black text-white overflow-hidden"
     >
-      {/* Background gradient blur orbs */}
-      <motion.div
-        className="absolute -top-20 -left-20 w-64 h-64 bg-purple-600 opacity-30 rounded-full blur-3xl pointer-events-none"
-        animate={{ y: [0, 40, 0], x: [0, 20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-0 w-72 h-72 bg-blue-600 opacity-30 rounded-full blur-3xl pointer-events-none"
-        animate={{ y: [0, -40, 0], x: [0, -20, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* 🌌 Aurora Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
+
+      {/* 🌐 Background Glow Orbs */}
+      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
+      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+
+      {/* ✨ Floating Particle Dots */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(25)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${3 + Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Main content */}
-      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-10 lg:gap-x-16">
+      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-10 lg:gap-x-16 relative z-10">
         {/* LEFT */}
         <motion.div
-          className="z-10 flex-1 text-center lg:text-left px-2 sm:px-0"
+          className="flex-1 text-center lg:text-left px-2 sm:px-0"
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
@@ -144,7 +155,7 @@ const roles = [
             transition={{ duration: 0.9 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-snug"
           >
-            Hi, I'm <span className="text-blue-400">Jeevan Shetty</span> 👋
+            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 animate-gradient-x">Jeevan Shetty</span> 👋
           </motion.h1>
 
           <motion.p
@@ -207,13 +218,13 @@ const roles = [
           </div>
         </motion.div>
 
-        {/* RIGHT with floating aura */}
+        {/* RIGHT */}
         <motion.div
           ref={containerRef}
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="relative z-10 flex-1 flex justify-center items-center mt-6 lg:mt-0"
+          className="relative flex-1 flex justify-center items-center mt-6 lg:mt-0"
         >
           {/* Pulsing glow behind profile */}
           <motion.div

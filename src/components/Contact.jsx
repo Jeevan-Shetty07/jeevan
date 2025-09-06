@@ -43,16 +43,34 @@ export default function Contact() {
       id="contact"
       className="relative min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-black overflow-hidden"
     >
-      {/* Floating particles / orbs */}
-      <motion.div
-        className="absolute pt-100 inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 20% 30%, rgba(56,189,248,0.15) 0%, transparent 60%), radial-gradient(circle at 80% 70%, rgba(168,85,247,0.15) 0%, transparent 60%)",
-        }}
-      />
+      {/* Aurora Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
 
-      {/* Animated orbiting rings */}
+      {/* Glow Orbs */}
+      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
+      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${3 + Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated Divider */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
+
+      {/* Orbiting Rings (your original design) */}
       <motion.div
         className="absolute border border-purple-600/40 rounded-full w-[500px] h-[500px]"
         animate={{ rotate: 360 }}
@@ -83,8 +101,8 @@ export default function Contact() {
         viewport={{ once: true }}
         className="text-lg text-gray-300 mb-12 text-center max-w-2xl relative z-10"
       >
-        Whether it’s a collab, a project, or just a friendly hello —  
-        I’d love to hear from you!
+        Whether it’s a collab, a project, or just a friendly hello — I’d love to
+        hear from you!
       </motion.p>
 
       {/* Contact Cards */}
@@ -119,9 +137,9 @@ export default function Contact() {
             }}
             whileTap={{ scale: 0.96 }}
           >
-            {/* Neon glow behind icon */}
+            {/* Neon Glow Behind Icon */}
             <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"></span>
-            
+
             <div className="text-5xl mb-4 transition group-hover:scale-125">
               {social.icon}
             </div>

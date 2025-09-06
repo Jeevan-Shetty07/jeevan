@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <section className="relative min-h-screen galaxy-bg text-white flex items-center justify-center px-8 overflow-hidden">
-      {/* Aurora Gradient Overlay */}
+   
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
 
       {/* Glow Orbs */}

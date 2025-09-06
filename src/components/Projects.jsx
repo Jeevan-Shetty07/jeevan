@@ -29,13 +29,13 @@ export default function Projects() {
       title: "Event Management System",
       desc: "Full booking system for catering, decoration & venues.",
       github: "https://github.com/Jeevan-Shetty07/EventManagemnet",
-      images: [event1, event2, event3],
+      images: [port1, port2, port3],
     },
     {
       title: "Portfolio Website",
       desc: "Responsive portfolio built with React, Tailwind & AOS.",
       github: "https://github.com/Jeevan-Shetty07/portfolio",
-      images: [port1, port2, port3],
+      images: [event1, event2, event3],
     },
   ];
 
@@ -119,7 +119,7 @@ export default function Projects() {
             </h3>
             <p className="text-sm sm:text-base text-gray-300 mb-4">{proj.desc}</p>
 
-            {/* 🔗 GitHub Link */}
+            
             <a
               href={proj.github}
               target="_blank"

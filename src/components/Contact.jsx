@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp } from "react-icons/fa";
+import "./contact.css"; 
 
 export default function Contact() {
   const socials = [
@@ -70,7 +71,7 @@ export default function Contact() {
       {/* Animated Divider */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
 
-      {/* Orbiting Rings (your original design) */}
+      {/* Orbiting Rings */}
       <motion.div
         className="absolute border border-purple-600/40 rounded-full w-[500px] h-[500px]"
         animate={{ rotate: 360 }}

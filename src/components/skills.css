@@ -1,3 +1,86 @@
 section{
     padding-bottom: 0 !important;
 }
+
+.starry-bg {
+  background: radial-gradient(ellipse at bottom, #0d0d1a 0%, #000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.starry-bg::before,
+.starry-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  animation: stars 200s linear infinite;
+  opacity: 0.6;
+}
+
+.starry-bg::after {
+  animation-duration: 400s;
+  opacity: 0.3;
+}
+
+@keyframes stars {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-100px, -100px);
+  }
+}
+
+/* Floating Particles */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Blobs animation */
+@keyframes blob {
+  0%,
+  100% {
+    transform: scale(1) translate(0px, 0px);
+  }
+  33% {
+    transform: scale(1.1) translate(30px, -20px);
+  }
+  66% {
+    transform: scale(0.9) translate(-20px, 20px);
+  }
+}
+.animate-blob {
+  animation: blob 8s infinite ease-in-out;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Gradient divider animation */
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 5s linear infinite;
+}

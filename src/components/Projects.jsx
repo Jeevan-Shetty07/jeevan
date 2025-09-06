@@ -44,20 +44,20 @@ export default function Projects() {
       id="projects"
       className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 bg-black text-white overflow-hidden"
     >
-      {/* Aurora Gradient Background */}
+      {/* 🌌 Galaxy Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
 
-      {/* Background Glow Orbs */}
+      {/* 🌌 Glow Orbs */}
       <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
       <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
       <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
 
-      {/* Particle Dots */}
+      {/* 🌠 Stars / Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <span
             key={i}
-            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            className="absolute w-[2px] h-[2px] bg-white/50 rounded-full animate-float"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
@@ -68,20 +68,20 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Animated Divider */}
+      {/* 🌈 Top Divider Line */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
 
-      {/* Heading */}
+      {/* 🚀 Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-3xl pt-10 sm:text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-center z-10 relative"
+        className="text-4xl pt-10 sm:text-5xl md:text-6xl font-extrabold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 text-center z-10 relative"
       >
-        🚀 Projects
+        🚀 My Projects
       </motion.h2>
 
-      {/* Project Cards */}
+      {/* 📦 Project Cards */}
       <div className="grid pb-14 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl w-full z-10 relative">
         {projects.map((proj, index) => (
           <motion.div
@@ -89,9 +89,9 @@ export default function Projects() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="relative p-5 sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 transition-transform duration-300 group"
+            className="relative p-5 sm:p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-gray-700 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/40 transition-transform duration-300 group"
           >
-            {/* Image Slider */}
+            {/* 🔄 Image Slider */}
             <Swiper
               modules={[Autoplay, Pagination]}
               autoplay={{ delay: 2500, disableOnInteraction: false }}
@@ -113,13 +113,15 @@ export default function Projects() {
               ))}
             </Swiper>
 
-            {/* Project Info */}
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-blue-400">
+            {/* 📖 Info */}
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-purple-400">
               {proj.title}
             </h3>
             <p className="text-sm sm:text-base text-gray-300 mb-4">
               {proj.desc}
             </p>
+
+            {/* 🔗 GitHub Link */}
             <a
               href={proj.github}
               target="_blank"

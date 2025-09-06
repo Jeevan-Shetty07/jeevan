@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import myPhoto from "../assets/myphoto.jpg";
+import "./hero.css"; // 🌌 Galaxy background styles
 
 import {
   FaGithub,
@@ -9,13 +10,6 @@ import {
   FaInstagram,
   FaWhatsapp,
 } from "react-icons/fa";
-import {
-  SiJavascript,
-  SiC,
-  SiMysql,
-  SiBootstrap,
-  SiTailwindcss,
-} from "react-icons/si";
 
 import resume from "../assets/resume.pdf";
 
@@ -42,9 +36,9 @@ function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
 
   const display = items[i].slice(0, sub);
   return (
-    <span className="relative text-blue-400">
+    <span className="relative text-purple-300">
       {display}
-      <span className="ml-1 inline-block w-[2px] h-5 sm:h-6 bg-blue-400 animate-pulse" />
+      <span className="ml-1 inline-block w-[2px] h-5 sm:h-6 bg-purple-400 animate-pulse" />
     </span>
   );
 }
@@ -52,13 +46,13 @@ function Typewriter({ items, typingSpeed = 70, pause = 1200 }) {
 export default function Hero() {
   const roles = [
     "💻 Full-Stack Web Developer",
-    "☕ Data Structures & Algorithms (Java)",
-    "🔢 Data Structures & Algorithms (C)",
+    "☕ DSA in Java",
+    "🔢 DSA in C",
     "⚛ React.js Developer",
     "🐘 PHP Developer",
     "🗄 SQL Database Management",
-    "🎨 UI Design with Bootstrap",
-    "🌊 Tailwind CSS Styling",
+    "🎨 UI with Bootstrap",
+    "🌊 Tailwind CSS",
     "📝 HTML5 & CSS3",
   ];
 
@@ -97,13 +91,13 @@ export default function Hero() {
 
   const containerRef = useRef(null);
 
-  // 🌌 Mouse parallax effect
+  // 🌌 Parallax stars effect
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (containerRef.current) {
         const { innerWidth, innerHeight } = window;
-        const moveX = (e.clientX - innerWidth / 2) / 50;
-        const moveY = (e.clientY - innerHeight / 2) / 50;
+        const moveX = (e.clientX - innerWidth / 2) / 40;
+        const moveY = (e.clientY - innerHeight / 2) / 40;
         containerRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
       }
     };
@@ -114,33 +108,29 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative m-0 w-full h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 bg-black text-white overflow-hidden"
+      className="relative m-0 w-full h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 galaxy-bg text-white overflow-hidden"
     >
-      {/* 🌌 Aurora Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
-
-      {/* 🌐 Background Glow Orbs */}
-      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
-      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
-
-      {/* ✨ Floating Particle Dots */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(25)].map((_, i) => (
+      {/* ✨ Stars in background */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        {[...Array(50)].map((_, i) => (
           <span
             key={i}
-            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            className="absolute w-[2px] h-[2px] bg-white/70 rounded-full animate-float"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              animationDuration: `${3 + Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 6}s`,
               animationDelay: `${Math.random() * 5}s`,
             }}
           />
         ))}
       </div>
 
-      {/* Main content */}
+      {/* 🌌 Glow Nebula Effect */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-purple-700/30 blur-3xl rounded-full animate-pulse-slow"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-700/30 blur-3xl rounded-full animate-pulse-slow"></div>
+
+      {/* Content */}
       <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-6xl gap-y-10 lg:gap-x-16 relative z-10">
         {/* LEFT */}
         <motion.div
@@ -155,7 +145,11 @@ export default function Hero() {
             transition={{ duration: 0.9 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-snug"
           >
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 animate-gradient-x">Jeevan Shetty</span> 👋
+            Hi, I'm{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 animate-gradient-x">
+              Jeevan Shetty
+            </span>{" "}
+            👋
           </motion.h1>
 
           <motion.p
@@ -166,14 +160,14 @@ export default function Hero() {
           >
             A passionate <span className="font-semibold">developer</span> who
             builds modern, responsive apps with{" "}
-            <span className="text-blue-400">Javascript, React, PHP & SQL</span>.
+            <span className="text-purple-300">JavaScript, React, PHP & SQL</span>.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.9 }}
-            className="mt-3 text-base sm:text-xl md:text-2xl lg:text-3xl font-semibold text-blue-400"
+            className="mt-3 text-base sm:text-xl md:text-2xl lg:text-3xl font-semibold text-purple-300"
           >
             <Typewriter items={roles} />
           </motion.p>
@@ -181,10 +175,10 @@ export default function Hero() {
           {/* Buttons */}
           <div className="mt-6 flex flex-wrap gap-4 justify-center lg:justify-start">
             <motion.a
-              whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px #3b82f6" }}
+              whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px #a855f7" }}
               href={resume}
               download="Jeevan_Shetty_Resume.pdf"
-              className="px-5 py-3 bg-blue-600 text-white rounded-xl shadow-lg hover:bg-blue-700 transition text-sm sm:text-base"
+              className="px-5 py-3 bg-purple-600 text-white rounded-xl shadow-lg hover:bg-purple-700 transition text-sm sm:text-base"
             >
               📄 Download Resume
             </motion.a>
@@ -228,7 +222,7 @@ export default function Hero() {
         >
           {/* Pulsing glow behind profile */}
           <motion.div
-            className="absolute w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full bg-blue-500/20 blur-3xl"
+            className="absolute w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full bg-purple-500/20 blur-3xl"
             animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.9, 0.6] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -238,7 +232,7 @@ export default function Hero() {
             src={myPhoto}
             alt="Jeevan Shetty"
             className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 
-              rounded-full border-4 border-gray-700 shadow-[0_0_25px_rgba(59,130,246,0.6)] object-cover"
+              rounded-full border-4 border-purple-500 shadow-[0_0_25px_rgba(168,85,247,0.6)] object-cover"
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ scale: 1.07, rotate: 2 }}

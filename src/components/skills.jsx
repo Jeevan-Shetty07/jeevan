@@ -14,7 +14,7 @@ import {
   FaDatabase,
 } from "react-icons/fa";
 
-import { SiTailwindcss, SiVercel, SiBootstrap } from "react-icons/si";
+import { SiTailwindcss, SiBootstrap } from "react-icons/si";
 
 export default function Skills() {
   const skills = [
@@ -30,28 +30,27 @@ export default function Skills() {
     { name: "GitHub", icon: <FaGithub />, color: "text-gray-300" },
     { name: "Bootstrap", icon: <SiBootstrap />, color: "text-purple-600" },
     { name: "Tailwind", icon: <SiTailwindcss />, color: "text-teal-400" },
-    // { name: "Vercel", icon: <SiVercel />, color: "text-white" },
   ];
 
   return (
     <section
       id="skills"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center text-white overflow-hidden starry-bg"
     >
-      {/* Aurora Gradient Background */}
+      {/* Aurora Gradient Glow */}
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
 
-      {/* Background Glow Orbs */}
+      {/* Nebula Glow Orbs */}
       <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
       <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
       <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
 
-      {/* Particle Dots */}
+      {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(25)].map((_, i) => (
           <span
             key={i}
-            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
+            className="absolute w-[2px] h-[2px] bg-white/60 rounded-full animate-float"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
@@ -86,7 +85,7 @@ export default function Skills() {
           <motion.div
             key={index}
             whileHover={{ scale: 1.15, rotate: 6 }}
-            className="flex flex-col items-center justify-center p-6 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300"
+            className="flex flex-col items-center justify-center p-6 rounded-2xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300"
           >
             <div className={`text-5xl mb-3 ${skill.color}`}>{skill.icon}</div>
             <p className="text-lg font-medium">{skill.name}</p>

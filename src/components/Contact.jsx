@@ -1,9 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp } from "react-icons/fa";
-import "./contact.css"; 
+import "./contact.css";
 
 export default function Contact() {
+  // Function to handle Gmail clicks
+  const openEmail = () => {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      // Opens default mail app on mobile
+      window.location.href =
+        "mailto:jeevanshetty9481@gmail.com?subject=Hello Jeevan&body=Hello Jeevan";
+    } else {
+      // Opens Gmail web on desktop
+      window.open(
+        "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
+        "_blank"
+      );
+    }
+  };
+
   const socials = [
     {
       name: "Instagram",
@@ -20,7 +35,7 @@ export default function Contact() {
     {
       name: "Gmail",
       icon: <FaEnvelope className="text-red-500 sm:text-gray-300 sm:group-hover:text-red-500" />,
-      link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
+      onClick: openEmail,
       color: "sm:group-hover:shadow-red-500/70",
     },
     {
@@ -109,12 +124,10 @@ export default function Contact() {
         }}
       >
         {socials.map((social, i) => (
-          <motion.a
+          <motion.div
             key={i}
-            href={social.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 text-gray-200 text-center transition transform ${social.color}`}
+            onClick={social.onClick ? social.onClick : undefined}
+            className={`group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 text-gray-200 text-center transition transform cursor-pointer ${social.color}`}
             variants={{
               hidden: { opacity: 0, y: 40 },
               visible: { opacity: 1, y: 0 },
@@ -132,10 +145,8 @@ export default function Contact() {
             <div className="text-5xl mb-4 transition group-hover:scale-125">
               {social.icon}
             </div>
-            <h3 className="text-xl font-bold group-hover:text-white">
-              {social.name}
-            </h3>
-          </motion.a>
+            <h3 className="text-xl font-bold group-hover:text-white">{social.name}</h3>
+          </motion.div>
         ))}
       </motion.div>
     </section>

@@ -5,11 +5,11 @@
   overflow: hidden;
 }
 
-/* Floating stars */
+/* Floating stars animation */
 @keyframes float {
-  0% { transform: translateY(0px) scale(1); opacity: 1; }
-  50% { transform: translateY(-20px) scale(1.2); opacity: 0.7; }
-  100% { transform: translateY(0px) scale(1); opacity: 1; }
+  0% { transform: translateY(0px) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-15px) scale(1.1); opacity: 0.6; }
+  100% { transform: translateY(0px) scale(1); opacity: 0.8; }
 }
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -18,8 +18,38 @@
 /* Slow glowing nebula */
 @keyframes pulse-slow {
   0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.2); }
+  50% { opacity: 0.85; transform: scale(1.15); }
 }
 .animate-pulse-slow {
   animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 6s ease infinite;
+}
+
+/* Optional animation delays */
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* Make sure overflowing content doesn't cause lag */
+.galaxy-bg *, .galaxy-bg img {
+  backface-visibility: hidden; /* helps with smoother animations */
+  will-change: transform, opacity; /* hints browser for optimization */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animate-float {
+    animation-duration: 8s; /* slower on mobile */
+  }
+  .animate-pulse-slow {
+    animation-duration: 10s;
+  }
 }

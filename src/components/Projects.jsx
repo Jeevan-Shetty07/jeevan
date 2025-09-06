@@ -117,9 +117,7 @@ export default function Projects() {
             <h3 className="text-xl sm:text-2xl font-bold mb-2 text-purple-400">
               {proj.title}
             </h3>
-            <p className="text-sm sm:text-base text-gray-300 mb-4">
-              {proj.desc}
-            </p>
+            <p className="text-sm sm:text-base text-gray-300 mb-4">{proj.desc}</p>
 
             {/* 🔗 GitHub Link */}
             <a

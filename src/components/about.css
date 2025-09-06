@@ -1,31 +1,33 @@
-section{
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+section {
+  padding: 0 !important;
 }
-/* Galaxy Background */
+
+/* Galaxy background */
 .galaxy-bg {
   background: radial-gradient(ellipse at bottom, #0a0c1a 0%, #000 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 /* Floating stars */
 @keyframes float {
-  0% { transform: translateY(0px) scale(1); opacity: 1; }
-  50% { transform: translateY(-15px) scale(1.2); opacity: 0.7; }
-  100% { transform: translateY(0px) scale(1); opacity: 1; }
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-10px) scale(1.1); opacity: 0.6; }
 }
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
-/* Glowing blobs */
+/* Glow blobs */
 @keyframes blob {
-  0% { transform: scale(1) translate(0px, 0px); }
-  33% { transform: scale(1.1) translate(30px, -20px); }
-  66% { transform: scale(0.9) translate(-20px, 30px); }
-  100% { transform: scale(1) translate(0px, 0px); }
+  0%, 100% { transform: scale(1) translate(0,0); }
+  33% { transform: scale(1.05) translate(20px, -15px); }
+  66% { transform: scale(0.95) translate(-15px, 20px); }
 }
 .animate-blob {
-  animation: blob 12s infinite;
+  animation: blob 10s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 .animation-delay-2000 { animation-delay: 2s; }
 .animation-delay-4000 { animation-delay: 4s; }
@@ -33,14 +35,32 @@ section{
 /* Shooting stars */
 .shooting-star {
   position: absolute;
-  width: 100px;
+  width: 80px;
   height: 2px;
   background: linear-gradient(90deg, white, transparent);
   transform: rotate(45deg);
-  opacity: 0.8;
-  animation: shooting 5s linear infinite;
+  opacity: 0.7;
+  animation: shooting 4s linear infinite;
+  will-change: transform, opacity;
 }
 @keyframes shooting {
   0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; }
-  100% { transform: translateX(-500px) translateY(500px) rotate(45deg); opacity: 0; }
+  100% { transform: translateX(-400px) translateY(400px) rotate(45deg); opacity: 0; }
+}
+
+/* Gradient animation for top line */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 6s ease infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .animate-float { animation-duration: 12s; }
+  .animate-blob { animation-duration: 15s; }
+  .shooting-star { display: none; }
 }

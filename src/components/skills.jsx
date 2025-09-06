@@ -13,7 +13,6 @@ import {
   FaGithub,
   FaDatabase,
 } from "react-icons/fa";
-
 import { SiTailwindcss, SiBootstrap } from "react-icons/si";
 
 export default function Skills() {

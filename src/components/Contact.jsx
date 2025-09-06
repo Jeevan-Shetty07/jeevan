@@ -7,33 +7,25 @@ export default function Contact() {
   const socials = [
     {
       name: "Instagram",
-      icon: (
-        <FaInstagram className="text-pink-500 sm:text-gray-300 sm:group-hover:text-pink-500" />
-      ),
+      icon: <FaInstagram className="text-pink-500 sm:text-gray-300 sm:group-hover:text-pink-500" />,
       link: "https://www.instagram.com/g1shetty07/",
       color: "sm:group-hover:shadow-pink-500/70",
     },
     {
       name: "LinkedIn",
-      icon: (
-        <FaLinkedin className="text-blue-500 sm:text-gray-300 sm:group-hover:text-blue-500" />
-      ),
+      icon: <FaLinkedin className="text-blue-500 sm:text-gray-300 sm:group-hover:text-blue-500" />,
       link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
       color: "sm:group-hover:shadow-blue-500/70",
     },
     {
       name: "Gmail",
-      icon: (
-        <FaEnvelope className="text-red-500 sm:text-gray-300 sm:group-hover:text-red-500" />
-      ),
+      icon: <FaEnvelope className="text-red-500 sm:text-gray-300 sm:group-hover:text-red-500" />,
       link: "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
       color: "sm:group-hover:shadow-red-500/70",
     },
     {
       name: "WhatsApp",
-      icon: (
-        <FaWhatsapp className="text-green-500 sm:text-gray-300 sm:group-hover:text-green-500" />
-      ),
+      icon: <FaWhatsapp className="text-green-500 sm:text-gray-300 sm:group-hover:text-green-500" />,
       link: "https://wa.me/9353819063?text=Hello%20Jeevan%20👋🏻",
       color: "sm:group-hover:shadow-green-500/70",
     },
@@ -102,8 +94,7 @@ export default function Contact() {
         viewport={{ once: true }}
         className="text-lg text-gray-300 mb-12 text-center max-w-2xl relative z-10"
       >
-        Whether it’s a collab, a project, or just a friendly hello — I’d love to
-        hear from you!
+        Whether it’s a collab, a project, or just a friendly hello — I’d love to hear from you!
       </motion.p>
 
       {/* Contact Cards */}
@@ -114,10 +105,7 @@ export default function Contact() {
         viewport={{ once: true }}
         variants={{
           hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.3 },
-          },
+          visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
         }}
       >
         {socials.map((social, i) => (

@@ -137,33 +137,63 @@ export default function Contact() {
           visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
         }}
       >
-        {socials.map((social, i) => (
-          <motion.div
-            key={i}
-            onClick={social.onClick ? social.onClick : undefined}
-            className={`group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 text-gray-200 text-center transition transform cursor-pointer ${social.color}`}
-            variants={{
-              hidden: { opacity: 0, y: 40 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            whileHover={{
-              scale: 1.12,
-              rotate: 2,
-              boxShadow: "0px 0px 25px rgba(255,255,255,0.3)",
-            }}
-            whileTap={{ scale: 0.96 }}
-          >
-            {/* Neon Glow Behind Icon */}
-            <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"></span>
+        {socials.map((social, i) =>
+          social.link ? (
+            <motion.a
+              key={i}
+              href={social.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 text-gray-200 text-center transition transform cursor-pointer ${social.color}`}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              whileHover={{
+                scale: 1.12,
+                rotate: 2,
+                boxShadow: "0px 0px 25px rgba(255,255,255,0.3)",
+              }}
+              whileTap={{ scale: 0.96 }}
+            >
+              {/* Neon Glow Behind Icon */}
+              <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"></span>
 
-            <div className="text-5xl mb-4 transition group-hover:scale-125">
-              {social.icon}
-            </div>
-            <h3 className="text-xl font-bold group-hover:text-white">
-              {social.name}
-            </h3>
-          </motion.div>
-        ))}
+              <div className="text-5xl mb-4 transition group-hover:scale-125">
+                {social.icon}
+              </div>
+              <h3 className="text-xl font-bold group-hover:text-white">
+                {social.name}
+              </h3>
+            </motion.a>
+          ) : (
+            <motion.button
+              key={i}
+              onClick={social.onClick}
+              className={`group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 text-gray-200 text-center transition transform cursor-pointer ${social.color}`}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              whileHover={{
+                scale: 1.12,
+                rotate: 2,
+                boxShadow: "0px 0px 25px rgba(255,255,255,0.3)",
+              }}
+              whileTap={{ scale: 0.96 }}
+            >
+              {/* Neon Glow Behind Icon */}
+              <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"></span>
+
+              <div className="text-5xl mb-4 transition group-hover:scale-125">
+                {social.icon}
+              </div>
+              <h3 className="text-xl font-bold group-hover:text-white">
+                {social.name}
+              </h3>
+            </motion.button>
+          )
+        )}
       </motion.div>
     </section>
   );

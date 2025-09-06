@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import myPhoto from "../assets/myphoto.jpg";
+
 import {
   FaGithub,
   FaLinkedin,
@@ -222,7 +224,7 @@ const roles = [
 
           {/* Profile Image */}
           <motion.img
-            src="https://res.cloudinary.com/dhlxwqmxt/image/upload/v1756484353/Untitled_design_wum5kd.jpg"
+            src={myPhoto}
             alt="Jeevan Shetty"
             className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 
               rounded-full border-4 border-gray-700 shadow-[0_0_25px_rgba(59,130,246,0.6)] object-cover"

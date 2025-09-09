@@ -83,7 +83,7 @@ export default function Footer() {
 
       {/* Copyright with shimmer */}
       <p className="text-sm text-gray-500 relative z-10 bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 bg-clip-text text-transparent animate-gradient-x">
-        © {new Date().getFullYear()} Jeevan Shetty.. All rights reserved.
+        © {new Date().getFullYear()} Jeevan Shetty.All rights reserved.
       </p>
     </footer>
   );

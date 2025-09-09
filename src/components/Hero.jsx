@@ -41,8 +41,7 @@ const Typewriter = ({ items, typingSpeed = 70, pause = 1200 }) => {
 export default function Hero() {
   const roles = [
     "💻 Full-Stack Web Developer",
-    "☕ DSA in Java",
-    "🔢 DSA in C",
+    "☕ DSA ",
     "⚛ React.js Developer",
     "🐘 PHP Developer",
     "🗄 SQL Database Management",

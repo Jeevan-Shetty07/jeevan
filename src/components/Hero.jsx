@@ -236,7 +236,7 @@ export default function Hero() {
           />
           <motion.img
             src={myPhoto}
-            alt="Jeevan Shetty"
+            alt="Jeevan Shetty."
             className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-full border-4 border-purple-500 shadow-[0_0_25px_rgba(168,85,247,0.6)] object-cover"
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}

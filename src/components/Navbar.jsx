@@ -70,6 +70,7 @@ export default function Navbar() {
             : "bg-black/90 py-4"
         }`}
       >
+        {/* Scroll progress bar */}
         <motion.div
           className="h-[4px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
           fixed top-0 left-0 z-[60]"
@@ -113,23 +114,41 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ✅ Mobile Bottom Nav (Icons + Labels, No Background) */}
-      <div className="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 
-      flex justify-around items-center w-full max-w-md px-4 z-50">
+      {/* ✅ Mobile Bottom Nav (Rounded Icons + Labels, No Background Bar) */}
+      <div
+        className="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 
+        flex justify-around items-center w-full max-w-md px-4 z-50"
+      >
         {links.map(({ id, icon, label }) => (
           <motion.button
             key={id}
             onClick={() => handleScrollTo(id)}
             whileTap={{ scale: 0.9 }}
-            className={`flex flex-col text-black items-center justify-center space-y-1 transition-all duration-300 
-            ${
-              active === id
-                ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400"
-                : "text-gray-400 hover:text-white"
-            }`}
+            className="flex flex-col items-center space-y-1"
           >
-            <div className="text-2xl">{icon}</div>
-            <span className="text-xs">{label}</span>
+            {/* Rounded colorful icon */}
+            <div
+              className={`w-12 h-12 flex items-center justify-center rounded-full shadow-lg
+              transition-transform duration-300
+              ${
+                active === id
+                  ? "bg-gradient-to-r from-blue-400 to-pink-500 text-white scale-110 shadow-xl"
+                  : "bg-gray-200 text-gray-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-pink-500 hover:text-white"
+              }`}
+            >
+              <span className="text-xl">{icon}</span>
+            </div>
+
+            {/* Label */}
+            <span
+              className={`text-xs font-medium ${
+                active === id
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-500"
+                  : "text-gray-500"
+              }`}
+            >
+              {label}
+            </span>
           </motion.button>
         ))}
       </div>

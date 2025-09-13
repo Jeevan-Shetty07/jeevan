@@ -9,12 +9,12 @@ import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black  text-white">
       {/* Navbar fixed at top */}
       <Navbar />
 
       {/* Sections */}
-      <main className="pt-20"> {/* padding so navbar doesn't overlap */}
+      <main className="pt-0"> {/* padding so navbar doesn't overlap */}
         {/* Hero Section */}
         <section
           id="home"

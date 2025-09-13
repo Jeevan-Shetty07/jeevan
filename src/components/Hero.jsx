@@ -121,7 +121,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 galaxy-bg text-white overflow-hidden">
+    <section className="relative m w-full h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 galaxy-bg text-white overflow-hidden">
       {/* Stars */}
       <div className="absolute inset-0 overflow-hidden z-0">
         {stars.map((star, i) => (

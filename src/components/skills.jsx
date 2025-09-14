@@ -37,14 +37,14 @@ export default function Skills() {
       className="relative min-h-screen flex flex-col items-center justify-center text-white overflow-hidden starry-bg"
     >
       {/* Aurora Gradient Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
+      {/* <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div> */}
 
       {/* Nebula Glow Orbs */}
       <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
       <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
       <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
 
-      {/* Floating Particles */}
+    
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(25)].map((_, i) => (
           <span

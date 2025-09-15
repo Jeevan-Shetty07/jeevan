@@ -50,7 +50,7 @@ export default function Contact() {
       color: "sm:group-hover:shadow-red-500/70",
     },
     {
-      name: "WhatsApp",
+      name: "WhaatsApp",
       icon: (
         <FaWhatsapp className="text-green-500 sm:text-gray-300 sm:group-hover:text-green-500" />
       ),

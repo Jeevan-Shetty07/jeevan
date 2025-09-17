@@ -6,15 +6,15 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import BrowserWarning from "../components/BrowserWarning"; // 👈 import here
 
 export default function Home() {
   return (
-    <div className="bg-black  text-white">
-      {/* Navbar fixed at top */}
+    <div className="bg-black text-white">
+      <BrowserWarning /> {/* 👈 Shows warning only if opened inside Instagram */}
       <Navbar />
 
-      {/* Sections */}
-      <main className="pt-0"> {/* padding so navbar doesn't overlap */}
+      <main className="pt-0">
         {/* Hero Section */}
         <section
           id="home"
@@ -44,7 +44,6 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

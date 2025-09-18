@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <section className="relative min-h-screen galaxy-bg text-white flex items-center justify-center px-8 overflow-hidden">
-
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
 
       {/* Glow Orbs */}
@@ -48,9 +47,14 @@ export default function About() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl space-y-10 text-center">
-
         <motion.h2
-          className="text-5xl pt-10 font-extrabold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
+          className="
+    text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+    pt-8 sm:pt-10 
+    font-extrabold 
+    bg-gradient-to-r from-cyan-400 to-purple-500 
+    bg-clip-text text-transparent drop-shadow-lg
+  "
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -65,11 +69,21 @@ export default function About() {
           transition={{ duration: 1 }}
         >
           My academic path in technology took shape during my{" "}
-          <span className="text-cyan-400 font-semibold">Bachelor of Computer Applications (BCA)</span>{" "}
-          at <span className="text-purple-400">St. Philomena College, Puttur</span>,
-          which I successfully completed in 2025. During these three years, I explored the fundamentals of software development, worked on projects like{" "}
+          <span className="text-cyan-400 font-semibold">
+            Bachelor of Computer Applications (BCA)
+          </span>{" "}
+          at{" "}
+          <span className="text-purple-400">St. Philomena College, Puttur</span>
+          , which I successfully completed in 2025. During these three years, I
+          explored the fundamentals of software development, worked on projects
+          like{" "}
           <span className="text-cyan-400 font-semibold">Carpooling System</span>{" "}
-          and an <span className="text-purple-400 font-semibold">Event Management System</span>, and built a strong foundation in programming, databases, and web technologies.
+          and an{" "}
+          <span className="text-purple-400 font-semibold">
+            Event Management System
+          </span>
+          , and built a strong foundation in programming, databases, and web
+          technologies.
         </motion.p>
 
         <motion.p
@@ -79,10 +93,21 @@ export default function About() {
           transition={{ duration: 1, delay: 0.3 }}
         >
           Currently, I am pursuing my{" "}
-          <span className="text-cyan-400 font-semibold">Master of Computer Applications (MCA)</span>{" "}
-          at <span className="text-purple-400">NMAM Institute of Technology, Nitte</span>. This phase of my journey is focused on diving deeper into{" "}
-          <span className="text-cyan-400">Data Structures & Algorithms</span>, exploring{" "}
-          <span className="text-purple-400">modern frameworks and full-stack development</span>, and refining my problem-solving mindset to prepare for real-world challenges. I aim to specialize in{" "}
+          <span className="text-cyan-400 font-semibold">
+            Master of Computer Applications (MCA)
+          </span>{" "}
+          at{" "}
+          <span className="text-purple-400">
+            NMAM Institute of Technology, Nitte
+          </span>
+          . This phase of my journey is focused on diving deeper into{" "}
+          <span className="text-cyan-400">Data Structures & Algorithms</span>,
+          exploring{" "}
+          <span className="text-purple-400">
+            modern frameworks and full-stack development
+          </span>
+          , and refining my problem-solving mindset to prepare for real-world
+          challenges. I aim to specialize in{" "}
           <span className="text-cyan-400">software development</span> and{" "}
           <span className="text-purple-400">system design</span>.
         </motion.p>
@@ -93,7 +118,10 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          Beyond academics, I enjoy experimenting with new tools, improving my problem-solving speed, and staying curious about how technology can make life smarter and easier. To me, coding isn’t just a career path — it’s a way to transform ideas into meaningful experiences.
+          Beyond academics, I enjoy experimenting with new tools, improving my
+          problem-solving speed, and staying curious about how technology can
+          make life smarter and easier. To me, coding isn’t just a career path —
+          it’s a way to transform ideas into meaningful experiences.
         </motion.p>
 
         <motion.div
@@ -104,7 +132,6 @@ export default function About() {
         >
           💡 Code. Create. Innovate.
         </motion.div>
-
       </div>
     </section>
   );

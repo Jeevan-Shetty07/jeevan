@@ -71,14 +71,17 @@ export default function Projects() {
       {/* 🌈 Top Divider Line */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
 
-      {/* 🚀 Heading */}
+     
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl pt-10 sm:text-5xl md:text-6xl font-extrabold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 text-center z-10 relative"
+        className="text-4xl pt-10 sm:text-5xl md:text-6xl font-extrabold mb-12 text-center z-10 relative"
       >
-        🚀 My Projects
+        <span className="mr-2">🚀</span>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">
+          My Projects
+        </span>
       </motion.h2>
 
       {/* 📦 Project Cards */}
@@ -117,9 +120,10 @@ export default function Projects() {
             <h3 className="text-xl sm:text-2xl font-bold mb-2 text-purple-400">
               {proj.title}
             </h3>
-            <p className="text-sm sm:text-base text-gray-300 mb-4">{proj.desc}</p>
+            <p className="text-sm sm:text-base text-gray-300 mb-4">
+              {proj.desc}
+            </p>
 
-            
             <a
               href={proj.github}
               target="_blank"

@@ -52,14 +52,16 @@ export default function About() {
     text-3xl sm:text-4xl md:text-5xl lg:text-6xl
     pt-8 sm:pt-10 
     font-extrabold 
-    bg-gradient-to-r from-cyan-400 to-purple-500 
-    bg-clip-text text-transparent drop-shadow-lg
+    drop-shadow-lg
   "
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          🚀 My Journey
+          <span>🚀</span>{" "}
+          <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+            My Journey
+          </span>
         </motion.h2>
 
         <motion.p

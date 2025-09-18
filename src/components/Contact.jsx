@@ -109,9 +109,12 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl md:text-6xl pt-10 font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x relative z-10"
+        className="text-4xl sm:text-5xl md:text-6xl pt-10 font-extrabold mb-6 text-center relative z-10"
       >
-        Let’s Connect 🚀
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x">
+          Let’s Connect
+        </span>{" "}
+        <span>🚀</span>
       </motion.h2>
 
       {/* Subtext */}

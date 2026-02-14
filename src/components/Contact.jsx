@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   FaInstagram,
@@ -59,6 +59,17 @@ export default function Contact() {
     },
   ];
 
+  const stars = useMemo(
+    () =>
+      [...Array(20)].map(() => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        duration: 3 + Math.random() * 5,
+        delay: Math.random() * 5,
+      })),
+    []
+  );
+
   return (
     <section
       id="contact"
@@ -74,15 +85,15 @@ export default function Contact() {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {stars.map((star, i) => (
           <span
             key={i}
             className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${3 + Math.random() * 5}s`,
-              animationDelay: `${Math.random() * 5}s`,
+              top: star.top,
+              left: star.left,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
             }}
           />
         ))}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import "./skills.css";
 import {
@@ -31,6 +31,17 @@ export default function Skills() {
     { name: "Tailwind", icon: <SiTailwindcss />, color: "text-teal-400" },
   ];
 
+  const stars = useMemo(
+    () =>
+      [...Array(25)].map(() => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        duration: 3 + Math.random() * 5,
+        delay: Math.random() * 5,
+      })),
+    []
+  );
+
   return (
     <section
       id="skills"
@@ -46,15 +57,15 @@ export default function Skills() {
 
     
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(25)].map((_, i) => (
+        {stars.map((star, i) => (
           <span
             key={i}
             className="absolute w-[2px] h-[2px] bg-white/60 rounded-full animate-float"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${3 + Math.random() * 5}s`,
-              animationDelay: `${Math.random() * 5}s`,
+              top: star.top,
+              left: star.left,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
             }}
           />
         ))}

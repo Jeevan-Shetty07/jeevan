@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 
 export default function About() {
+  const stars = useMemo(
+    () =>
+      [...Array(40)].map(() => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        duration: 3 + Math.random() * 6,
+        delay: Math.random() * 6,
+      })),
+    []
+  );
+
+  const shootingStars = useMemo(
+    () =>
+      [...Array(3)].map((_, i) => ({
+        top: `${Math.random() * 80}%`,
+        left: `${Math.random() * 100}%`,
+        delay: i * 4,
+      })),
+    []
+  );
+
   return (
     <section className="relative min-h-screen galaxy-bg text-white flex items-center justify-center px-8 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
@@ -13,15 +34,15 @@ export default function About() {
 
       {/* Floating Stars */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(40)].map((_, i) => (
+        {stars.map((star, i) => (
           <span
             key={i}
             className="absolute w-[2px] h-[2px] bg-white/50 rounded-full animate-float"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${3 + Math.random() * 6}s`,
-              animationDelay: `${Math.random() * 6}s`,
+              top: star.top,
+              left: star.left,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
             }}
           />
         ))}
@@ -29,14 +50,14 @@ export default function About() {
 
       {/* Shooting Stars */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(3)].map((_, i) => (
+        {shootingStars.map((star, i) => (
           <span
             key={i}
             className="shooting-star"
             style={{
-              top: `${Math.random() * 80}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${i * 4}s`,
+              top: star.top,
+              left: star.left,
+              animationDelay: `${star.delay}s`,
             }}
           />
         ))}

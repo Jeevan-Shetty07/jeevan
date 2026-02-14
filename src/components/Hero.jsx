@@ -97,12 +97,19 @@ export default function Hero() {
 
   // Parallax effect for profile image
   useEffect(() => {
+    let ticking = false;
     const handleMouseMove = (e) => {
-      if (containerRef.current) {
-        const { innerWidth, innerHeight } = window;
-        const moveX = (e.clientX - innerWidth / 2) / 40;
-        const moveY = (e.clientY - innerHeight / 2) / 40;
-        containerRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const { innerWidth, innerHeight } = window;
+            const moveX = (e.clientX - innerWidth / 2) / 40;
+            const moveY = (e.clientY - innerHeight / 2) / 40;
+            containerRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     window.addEventListener("mousemove", handleMouseMove);

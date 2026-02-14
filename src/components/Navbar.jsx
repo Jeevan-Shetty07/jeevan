@@ -22,26 +22,34 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 200;
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPos = window.scrollY + 200;
+          setScrolled(window.scrollY > 50);
 
-      const totalHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
+          const totalHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const progress = (window.scrollY / totalHeight) * 100;
+          setScrollProgress(progress);
 
-      links.forEach(({ id }) => {
-        const section = document.getElementById(id);
-        if (section) {
-          const top = section.offsetTop;
-          const bottom = top + section.offsetHeight;
-          if (scrollPos >= top && scrollPos < bottom) {
-            setActive(id);
-          }
-        }
-      });
+          links.forEach(({ id }) => {
+            const section = document.getElementById(id);
+            if (section) {
+              const top = section.offsetTop;
+              const bottom = top + section.offsetHeight;
+              if (scrollPos >= top && scrollPos < bottom) {
+                setActive(id);
+              }
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);

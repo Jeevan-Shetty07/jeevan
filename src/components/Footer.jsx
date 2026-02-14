@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   FaGithub,
   FaLinkedin,
@@ -30,6 +30,17 @@ export default function Footer() {
     { icon: <FaWhatsapp />, link: "https://wa.me/9353819063?text=Hello%20Jeevan%20👋", color: "hover:text-green-500" },
   ];
 
+  const particles = useMemo(
+    () =>
+      [...Array(20)].map(() => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        duration: 3 + Math.random() * 5,
+        delay: Math.random() * 5,
+      })),
+    []
+  );
+
   return (
     <footer className="relative py-12 text-center bg-black text-gray-400 overflow-hidden">
 
@@ -42,15 +53,15 @@ export default function Footer() {
 
       {/* Particle Dots */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle, i) => (
           <span
             key={i}
             className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${3 + Math.random() * 5}s`,
-              animationDelay: `${Math.random() * 5}s`,
+              top: particle.top,
+              left: particle.left,
+              animationDuration: `${particle.duration}s`,
+              animationDelay: `${particle.delay}s`,
             }}
           />
         ))}

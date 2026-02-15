@@ -16,7 +16,7 @@ import port2 from "../assets/port2.png";
 import port3 from "../assets/port3.png";
 import qr from "../assets/qr.png";
 import "./project.css";
-// import qr2 from "../assets/qr2.png";
+import qr1 from "../assets/qr1.png";
 import chat  from "../assets/chat.png";
 import image1 from "../assets/image1.png";
 // import image2 from "../assets/image2.png";
@@ -57,7 +57,7 @@ export default function Projects() {
       desc: "Generate and share inspiring quotes.",
       github: "https://github.com/Jeevan-Shetty07",
       demo: "https://quote-generator-g1.vercel.app/",
-      images: [dummyImage],
+      images: [qr1],
     },
     {
       title: "Image Search Engine",

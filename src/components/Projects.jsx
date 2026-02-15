@@ -18,6 +18,9 @@ import qr from "../assets/qr.png";
 import "./project.css";
 // import qr2 from "../assets/qr2.png";
 import chat  from "../assets/chat.png";
+import image1 from "../assets/image1.png";
+// import image2 from "../assets/image2.png";
+// import image3 from "../assets/image3.png";
 
 export default function Projects() {
   const dummyImage = "https://placehold.co/600x400/png";
@@ -61,7 +64,7 @@ export default function Projects() {
       desc: "Search for high-quality images instantly.",
       github: "https://github.com/Jeevan-Shetty07",
       demo: "https://jeevan-image-search.vercel.app/",
-      images: [dummyImage],
+      images: [image1],
     },
     {
       title: "QR Code Generator",

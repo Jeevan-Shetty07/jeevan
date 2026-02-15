@@ -19,6 +19,7 @@ import "./project.css";
 import qr1 from "../assets/qr1.png";
 import chat  from "../assets/chat.png";
 import image1 from "../assets/image1.png";
+import  bingo1 from "../assets/bingo1.png";
 // import image2 from "../assets/image2.png";
 // import image3 from "../assets/image3.png";
 
@@ -38,7 +39,7 @@ export default function Projects() {
       desc: "Interactive multiplayer Bingo game.",
       github: "https://github.com/Jeevan-Shetty07",
       demo: "https://bingo.jeevanshetty.me/",
-      images: [dummyImage],
+      images: [bingo1],
     },
     {
       title: "Carpooling System",

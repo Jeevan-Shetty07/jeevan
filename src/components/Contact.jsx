@@ -136,7 +136,7 @@ export default function Contact() {
         viewport={{ once: true }}
         className="text-lg text-gray-300 mb-12 text-center max-w-2xl relative z-10"
       >
-        Whether it’s a collab, a project, or just a friendly hello — I’d love to
+        Whether it’s a collaboration, a project, or just a friendly hello to <strong>Jeevan Shetty</strong> — I’d love to
         hear from you!
       </motion.p>
 

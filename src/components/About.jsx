@@ -91,7 +91,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          My academic path in technology took shape during my{" "}
+          My academic path as <span className="text-cyan-400 font-semibold">Jeevan Shetty</span> took shape during my{" "}
           <span className="text-cyan-400 font-semibold">
             Bachelor of Computer Applications (BCA)
           </span>{" "}

@@ -155,7 +155,7 @@ export default function Footer() {
         <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-white/40">
           <p>© {new Date().getFullYear()} Jeevan Shetty. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            Designed with <span className="text-[#FF7448]">Nomu</span> aesthetics
+            Designed & Engineered by <span className="text-[#FF7448] font-semibold">Jeevan Shetty</span>
           </p>
         </div>
       </div>

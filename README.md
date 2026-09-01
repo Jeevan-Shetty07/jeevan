@@ -10,7 +10,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![License](https://img.shields.io/badge/License-MIT-FF7448?style=for-the-badge)](LICENSE)
 
-**A high-performance, fully responsive modern developer portfolio engineered with the editorial [Nomu Store](https://nomu.store/) aesthetic, featuring a real-time synchronized Admin Dashboard, interactive project grid, and dynamic contact inquiry management.**
+**A high-performance, fully responsive modern developer portfolio engineered with a warm paper editorial aesthetic, featuring a real-time synchronized Admin Dashboard, interactive project grid, and dynamic contact inquiry management.**
 
 [🌐 Live Demo](https://realtime-chat-app-six-tawny.vercel.app/) • [📬 Get in Touch](mailto:jeevanshetty9481@gmail.com) • [📄 Resume PDF](src/assets/resume.pdf)
 
@@ -18,7 +18,7 @@
 
 ---
 
-## ✨ Design System & Aesthetic (Inspired by Nomu Store)
+## ✨ Design System & Editorial Aesthetic
 
 - 🎨 **Warm Paper Canvas (`#FFF9F6`)**: Natural paper background with subtle ambient light gradients and 28px/40px grid watermarks.
 - 🖋️ **Deep Ink Typography (`#0F151D`)**: High-contrast typography with tiered opacity scales (`/80`, `/65`, `/40`) using Google Fonts (*Plus Jakarta Sans* & *JetBrains Mono*).
@@ -80,9 +80,9 @@ jeevan/
 │   │   └── PortfolioContext.jsx # Centralized state & localStorage CRUD store
 │   ├── pages/
 │   │   ├── Home.jsx            # Main portfolio layout
-│   │   └── Admin.jsx           # Secured Nomu Admin Dashboard
+│   │   └── Admin.jsx           # Secured Admin Dashboard
 │   ├── App.jsx                 # Routing (#admin / #home) & ambient intro loader
-│   ├── index.css               # Nomu design tokens, grid textures & keyframes
+│   ├── index.css               # Design tokens, grid textures & keyframes
 │   └── main.jsx                # Application bootstrap
 ├── index.html                  # SEO metadata, Open Graph & Google Fonts
 ├── package.json                # Dependencies & scripts
@@ -144,5 +144,5 @@ npm run preview
 ---
 
 <div align="center">
-  <sub>Designed & Crafted with ❤️ by Jeevan Shetty • Inspired by Nomu Store</sub>
+  <sub>Designed & Engineered by Jeevan Shetty</sub>
 </div>

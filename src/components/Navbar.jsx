@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from "react";
-import {
-  FaHome,
-  FaUser,
-  FaCode,
-  FaProjectDiagram,
-  FaEnvelope,
-} from "react-icons/fa";
-import { motion } from "framer-motion";
+import { ArrowUpRight, Menu, X, FileText, Send } from "lucide-react";
+import resume from "../assets/resume.pdf";
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const links = [
-    { id: "home", label: "Home", icon: <FaHome /> },
-    { id: "about", label: "About", icon: <FaUser /> },
-    { id: "skills", label: "Skills", icon: <FaCode /> },
-    { id: "projects", label: "Projects", icon: <FaProjectDiagram /> },
-    { id: "contact", label: "Contact", icon: <FaEnvelope /> },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills & Tech" },
+    { id: "about", label: "Journey" },
+    { id: "contact", label: "Contact" },
   ];
 
   useEffect(() => {
@@ -27,15 +20,9 @@ export default function Navbar() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrollPos = window.scrollY + 200;
-          setScrolled(window.scrollY > 50);
+          setScrolled(window.scrollY > 30);
 
-          const totalHeight =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
-          const progress = (window.scrollY / totalHeight) * 100;
-          setScrollProgress(progress);
-
+          const scrollPos = window.scrollY + 250;
           links.forEach(({ id }) => {
             const section = document.getElementById(id);
             if (section) {
@@ -46,6 +33,10 @@ export default function Navbar() {
               }
             }
           });
+
+          if (window.scrollY < 200) {
+            setActive("home");
+          }
           ticking = false;
         });
         ticking = true;
@@ -57,109 +48,137 @@ export default function Navbar() {
   }, []);
 
   const handleScrollTo = (id) => {
+    setMobileMenuOpen(false);
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const section = document.getElementById(id);
     if (section) {
-      const navbar = document.querySelector("nav");
-      const navbarHeight = navbar ? navbar.offsetHeight : 0;
-      window.scrollTo({
-        top: section.offsetTop - navbarHeight - 10,
-        behavior: "smooth",
-      });
+      const offset = 80;
+      const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: "smooth" });
     }
   };
 
   return (
     <>
-      {/* ✅ Desktop Navbar */}
-      <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 hidden md:block ${
-          scrolled
-            ? "bg-black/30 backdrop-blur-2xl shadow-[0_0_25px_rgba(0,200,255,0.3)] py-2"
-            : "bg-black/90 py-4"
-        }`}
-      >
-        {/* Scroll progress bar */}
-        <motion.div
-          className="h-[4px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
-          fixed top-0 left-0 z-[60]"
-          style={{ width: `${scrollProgress}%` }}
-        />
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-extrabold cursor-pointer 
-            bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-            onClick={() => handleScrollTo("home")}
-          >
-            Jeevan Shetty
-          </motion.h1>
+      {/* 🚀 Desktop Floating Capsule Navbar */}
+      <header className="sticky top-4 z-50 w-full px-4 sm:px-8 max-w-6xl mx-auto transition-all duration-300">
+        <nav
+          className={`flex items-center justify-between gap-4 rounded-full bg-[#FFF9F6]/90 backdrop-blur-xl border border-black/5 px-6 py-3 transition-all duration-300 ${
+            scrolled
+              ? "shadow-[0_12px_32px_-10px_rgba(15,21,29,0.15)] bg-white/95"
+              : "shadow-[0_6px_20px_-6px_rgba(15,21,29,0.07)]"
+          }`}
+        >
+          {/* Logo */}
+          <div className="flex items-center">
+            <button
+              onClick={() => handleScrollTo("home")}
+              className="group flex items-center gap-1.5 text-xl font-extrabold tracking-tight text-[#0F151D] hover:opacity-85 transition-opacity"
+            >
+              <span>Jeevan</span>
+              <span className="h-2 w-2 rounded-full bg-[#FF7448] inline-block group-hover:scale-125 transition-transform" />
+            </button>
+          </div>
 
-          <ul className="flex space-x-8 text-gray-300 font-medium text-lg relative">
-            {links.map(({ id, label }) => (
-              <li key={id} className="relative group">
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center gap-1.5">
+            {links.map(({ id, label }) => {
+              const isActive = active === id;
+              return (
                 <button
+                  key={id}
                   onClick={() => handleScrollTo(id)}
-                  className={`relative px-2 py-1 tracking-wide transition-all duration-300 
-                    ${
-                      active === id
-                        ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400"
-                        : "hover:text-white"
-                    }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-[#0F151D] text-white shadow-sm"
+                      : "text-[#0F151D]/70 hover:text-[#0F151D] hover:bg-black/[0.04]"
+                  }`}
                 >
                   {label}
-                  <motion.span
-                    layoutId="underline"
-                    className="absolute left-0 -bottom-1 h-[2px] bg-gradient-to-r from-blue-400 to-pink-400 rounded-full"
-                    animate={{ width: active === id ? "100%" : "0%" }}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
                 </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
+              );
+            })}
+          </div>
 
-      {/* ✅ Mobile Bottom Nav (Rounded Icons + Labels, No Background Bar) */}
-      <div
-        className="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 
-        flex justify-around items-center w-full max-w-md px-4 z-50"
-      >
-        {links.map(({ id, icon, label }) => (
-          <motion.button
-            key={id}
-            onClick={() => handleScrollTo(id)}
-            whileTap={{ scale: 0.9 }}
-            className="flex flex-col items-center space-y-1"
-          >
-            {/* Rounded colorful icon */}
-            <div
-              className={`w-12 h-12 flex items-center justify-center rounded-full shadow-lg
-              transition-transform duration-300
-              ${
-                active === id
-                  ? "bg-gradient-to-r from-blue-400 to-pink-500 text-white scale-110 shadow-xl"
-                  : "bg-gray-200 text-gray-600 hover:bg-gradient-to-r hover:from-blue-400 hover:to-pink-500 hover:text-white"
-              }`}
+          {/* Right Action Buttons */}
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href={resume}
+              download
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white border border-black/10 text-[#0F151D] hover:bg-[#F8F5F2] hover:border-black/20 transition-all shadow-sm"
             >
-              <span className="text-xl">{icon}</span>
+              <FileText className="w-3.5 h-3.5 text-[#0F151D]/70" />
+              <span>Resume</span>
+            </a>
+
+            <button
+              onClick={() => handleScrollTo("contact")}
+              className="group inline-flex items-center gap-1 px-4 py-2 rounded-full text-xs font-semibold bg-[#FF7448] text-white hover:bg-[#E85E32] transition-all shadow-[0_4px_12px_rgba(255,116,72,0.3)] hover:shadow-[0_6px_16px_rgba(255,116,72,0.4)]"
+            >
+              <span>Get in touch</span>
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              type="button"
+              aria-label="Toggle Navigation Menu"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-full text-[#0F151D] hover:bg-black/5 transition-colors"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile Dropdown Menu Sheet */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-2 p-4 rounded-3xl bg-[#FFF9F6]/98 backdrop-blur-2xl border border-black/10 shadow-2xl animate-in fade-in slide-in-from-top-3 duration-200">
+            <div className="flex flex-col gap-2">
+              {links.map(({ id, label }) => (
+                <button
+                  key={id}
+                  onClick={() => handleScrollTo(id)}
+                  className={`text-left px-4 py-3 rounded-2xl text-base font-medium transition-colors ${
+                    active === id
+                      ? "bg-[#0F151D] text-white"
+                      : "text-[#0F151D]/80 hover:bg-black/5"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+
+              <div className="pt-2 mt-2 border-t border-black/5 flex flex-col gap-2">
+                <a
+                  href={resume}
+                  download
+                  className="flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-sm font-semibold bg-white border border-black/10 text-[#0F151D]"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Download Resume</span>
+                </a>
+                <button
+                  onClick={() => handleScrollTo("contact")}
+                  className="flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-sm font-semibold bg-[#FF7448] text-white shadow-md"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Get in Touch</span>
+                </button>
+              </div>
             </div>
-
-            {/* Label */}
-            <span
-              className={`text-xs font-medium ${
-                active === id
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-500"
-                  : "text-gray-500"
-              }`}
-            >
-              {label}
-            </span>
-          </motion.button>
-        ))}
-      </div>
+          </div>
+        )}
+      </header>
     </>
   );
 }

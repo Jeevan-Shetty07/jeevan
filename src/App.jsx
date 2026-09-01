@@ -1,93 +1,148 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import Home from "./pages/Home";
+import Admin from "./pages/Admin";
+import { PortfolioProvider } from "./context/PortfolioContext";
+import { Shield, Sparkles } from "lucide-react";
 
-export default function App() {
+const LOADING_PHRASES = [
+  "Compiling modern architectures...",
+  "Optimizing React component tree...",
+  "Benchmarking DSA solutions...",
+  "Indexing database schemas...",
+  "Polishing pixel-perfect UI...",
+  "Fine-tuning animations...",
+  "Brewing coffee & code...",
+  "Ready to ship!"
+];
+
+const ICONS = ["✢", "✳", "✶", "✻", "✽", "✺", "✷", "✣"];
+
+function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [iconIndex, setIconIndex] = useState(0);
+  const [route, setRoute] = useState(() => window.location.hash || "#home");
 
   useEffect(() => {
+    // Listen to hash change
+    const handleHashChange = () => {
+      setRoute(window.location.hash || "#home");
+    };
+    window.addEventListener("hashchange", handleHashChange);
+
+    // Keyboard shortcut Ctrl+Shift+A for Admin
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a") {
+        e.preventDefault();
+        window.location.hash = window.location.hash === "#admin" ? "#home" : "#admin";
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cycle phrases
+    const phraseInterval = setInterval(() => {
+      setPhraseIndex((prev) => (prev + 1) % LOADING_PHRASES.length);
+    }, 280);
+
+    // Cycle rotating glyphs
+    const iconInterval = setInterval(() => {
+      setIconIndex((prev) => (prev + 1) % ICONS.length);
+    }, 120);
+
+    // End loader
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 3000); // Loader duration
-    return () => clearTimeout(timer);
+    }, 1800);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("keydown", handleKeyDown);
+      clearInterval(phraseInterval);
+      clearInterval(iconInterval);
+      clearTimeout(timer);
+    };
   }, []);
 
+  const isAdminRoute = route.startsWith("#admin");
+
   return (
-    <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden">
-      {/* Home content */}
+    <div className="bg-[#FFF9F6] text-[#0F151D] min-h-screen font-sans selection:bg-[#FF7448] selection:text-white">
+      {/* Route Content */}
       <div
         className={`${
           showLoader ? "opacity-0" : "opacity-100"
         } transition-opacity duration-700`}
       >
-        <Home />
+        {isAdminRoute ? <Admin /> : <Home />}
       </div>
 
+      {/* Discreet Floating Admin Switcher Button */}
+      {!showLoader && !isAdminRoute && (
+        <div className="fixed bottom-4 left-4 z-40">
+          <a
+            href="#admin"
+            className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-[#0F151D] text-[#0F151D] hover:text-white border border-black/10 shadow-md backdrop-blur-md text-[11px] font-semibold transition-all duration-300"
+            title="Open Admin Dashboard (or press Ctrl+Shift+A)"
+          >
+            <Shield className="w-3 h-3 text-[#FF7448]" />
+            <span className="hidden sm:inline">Admin Portal</span>
+          </a>
+        </div>
+      )}
+
+      {/* Nomu Minimalist Ambient Intro Loader */}
       {showLoader && (
-  <div className="fixed inset-0 flex items-center justify-center z-50 overflow-hidden galaxy-bg">
-    <span className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-slide-left">
-      Jeevan
-    </span>
-    <span className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-blue-400 animate-slide-right">
-      Shetty
-    </span>
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#FFF9F6] overflow-hidden">
+          {/* Ambient Warm & Cool Blobs */}
+          <div
+            aria-hidden="true"
+            className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-[#FF7448]/15 blur-3xl animate-float-slow pointer-events-none"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-[#1450C6]/15 blur-3xl animate-float-slow pointer-events-none"
+            style={{ animationDelay: "2s" }}
+          />
 
-    <style>
-      {`
-        @keyframes slideLeft {
-          0% { transform: translateX(0); opacity: 1; }
-          100% { transform: translateX(-120%); opacity: 0; }
-        }
-        @keyframes slideRight {
-          0% { transform: translateX(0); opacity: 1; }
-          100% { transform: translateX(120%); opacity: 0; }
-        }
+          {/* Grid lines */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 nomu-grid-bg opacity-40 pointer-events-none"
+          />
 
-        .animate-slide-left {
-          animation: slideLeft 1.5s ease-in-out forwards;
-          animation-delay: 1s;
-          margin-right: 10px;
-        }
-        .animate-slide-right {
-          animation: slideRight 1.5s ease-in-out forwards;
-          animation-delay: 1s;
-          margin-left: 10px;
-        }
+          {/* Center Stage */}
+          <div className="relative z-10 flex flex-col items-center text-center px-6">
+            {/* Logo */}
+            <div className="flex items-center gap-1 mb-8">
+              <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0F151D]">
+                Jeevan<span className="text-[#FF7448]">.</span>
+              </span>
+            </div>
 
-        /* 🌌 Galaxy Background */
-        .galaxy-bg {
-          background: radial-gradient(ellipse at center, #0d0d2b 0%, #000000 100%);
-          background-size: cover;
-          overflow: hidden;
-        }
+            {/* Reel Status Box */}
+            <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/80 border border-black/5 shadow-[0_8px_20px_-6px_rgba(0,0,0,0.08)] backdrop-blur-md">
+              {/* Spinner Symbol */}
+              <span className="text-base font-mono text-[#FF7448] w-4 text-center font-bold">
+                {ICONS[iconIndex]}
+              </span>
 
-        /* ✨ Moving Stars */
-        .galaxy-bg::before {
-          content: '';
-          position: absolute;
-          top: -200%;
-          left: -200%;
-          width: 400%;
-          height: 400%;
-          background: transparent;
-          background-image: radial-gradient(2px 2px at 20px 30px, white, transparent),
-                            radial-gradient(1.5px 1.5px at 100px 150px, white, transparent),
-                            radial-gradient(1.8px 1.8px at 200px 80px, white, transparent),
-                            radial-gradient(2px 2px at 300px 200px, white, transparent),
-                            radial-gradient(1.2px 1.2px at 400px 120px, white, transparent),
-                            radial-gradient(1.5px 1.5px at 500px 250px, white, transparent);
-          animation: moveStars 40s linear infinite;
-        }
-
-        @keyframes moveStars {
-          from { transform: translateY(0); }
-          to { transform: translateY(1000px); }
-        }
-      `}
-    </style>
-  </div>
-)}
-
+              {/* Status phrase */}
+              <span className="text-xs sm:text-sm font-medium text-[#0F151D]/75 font-mono min-w-[210px] text-left">
+                {LOADING_PHRASES[phraseIndex]}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <PortfolioProvider>
+      <AppContent />
+    </PortfolioProvider>
   );
 }

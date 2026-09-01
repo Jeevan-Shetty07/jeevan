@@ -1,161 +1,187 @@
-import React, { useMemo } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { GraduationCap, BookOpen, Compass, Award, Lightbulb, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function About() {
-  const stars = useMemo(
-    () =>
-      [...Array(40)].map(() => ({
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        duration: 3 + Math.random() * 6,
-        delay: Math.random() * 6,
-      })),
-    []
-  );
-
-  const shootingStars = useMemo(
-    () =>
-      [...Array(3)].map((_, i) => ({
-        top: `${Math.random() * 80}%`,
-        left: `${Math.random() * 100}%`,
-        delay: i * 4,
-      })),
-    []
-  );
+  const milestones = [
+    {
+      period: "2025 – Present",
+      role: "Master of Computer Applications (MCA)",
+      institution: "NMAM Institute of Technology, Nitte",
+      badge: "Current Degree",
+      badgeColor: "#22C55E",
+      desc: "Deepening specialization in Data Structures & Algorithms, modern JavaScript/React frameworks, full-stack architectures, and high-concurrency software design.",
+      highlights: [
+        "Advanced Data Structures & Algorithms",
+        "Modern Component-Driven Full-Stack Systems",
+        "Relational & Distributed Database Design",
+        "System Scalability & Performance Tuning"
+      ]
+    },
+    {
+      period: "2022 – 2025",
+      role: "Bachelor of Computer Applications (BCA)",
+      institution: "St. Philomena College, Puttur",
+      badge: "Graduated with Honors",
+      badgeColor: "#1450C6",
+      desc: "Built a solid academic foundation in core computer science, software engineering principles, database administration, and developed real-world capstone projects.",
+      highlights: [
+        "Architected full-featured Carpooling System",
+        "Engineered comprehensive Event Management Platform",
+        "Proficiency in Java, PHP, C, and Web Technologies",
+        "Elected Student Tech Event Coordinator"
+      ]
+    }
+  ];
 
   return (
-    <section className="relative min-h-screen galaxy-bg text-white flex items-center justify-center px-8 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
+    <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      {/* 🏷️ Section Header with Nomu Hand-Drawn Vector Loop Accent */}
+      <div className="flex flex-col items-center text-center mb-16 md:mb-20">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-black/5 text-xs font-semibold text-[#0F151D]/70 shadow-sm mb-4">
+          <Compass className="w-3.5 h-3.5 text-[#FF7448]" />
+          <span>Academic & Personal Journey</span>
+        </div>
 
-      {/* Glow Orbs */}
-      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
-      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#0F151D] tracking-tight max-w-3xl leading-[1.2]">
+          <div className="relative inline-block align-baseline">
+            {/* Playful Orange SVG Vector Lasso Oval */}
+            <div
+              className="absolute pointer-events-none -left-6 -right-6 md:-left-8 md:-right-8 -inset-y-2 md:-inset-y-4"
+              aria-hidden="true"
+            >
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 400 150"
+                preserveAspectRatio="none"
+                className="w-full h-full overflow-visible"
+              >
+                <path
+                  d="M 320 25
+                     C 420 70, 350 125, 200 135
+                     C 80 135, 40 125, 40 75
+                     C 40 30, 110 20, 200 20
+                     C 280 20, 310 45, 310 45"
+                  fill="none"
+                  strokeWidth="6"
+                  stroke="#FF7448"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="opacity-90"
+                />
+              </svg>
+            </div>
+            <span className="relative z-10 text-[#0F151D]">Grow your vision</span>
+          </div>
+          ,<br className="hidden sm:inline" /> not your complexity.
+        </h2>
 
-      {/* Floating Stars */}
-      <div className="absolute inset-0 overflow-hidden">
-        {stars.map((star, i) => (
-          <span
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-white/50 rounded-full animate-float"
-            style={{
-              top: star.top,
-              left: star.left,
-              animationDuration: `${star.duration}s`,
-              animationDelay: `${star.delay}s`,
-            }}
-          />
+        <p className="mt-6 text-sm sm:text-base md:text-lg text-[#0F151D]/70 max-w-2xl leading-relaxed">
+          I believe clean engineering and disciplined problem-solving turn complex ideas into seamless user experiences.
+        </p>
+      </div>
+
+      {/* 🏛️ Timeline / Milestone Double Inset Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        {milestones.map((m, idx) => (
+          <div
+            key={idx}
+            className="group relative rounded-3xl md:rounded-[36px] bg-white border border-black/5 shadow-[0_10px_30px_-10px_rgba(15,21,29,0.08)] hover:shadow-[0_20px_45px_-12px_rgba(15,21,29,0.14)] transition-all duration-300 p-3 sm:p-4 flex flex-col"
+          >
+            {/* Inset Area */}
+            <div className="relative rounded-2xl md:rounded-[28px] bg-[#FAF6F2] border border-black/[0.06] p-6 sm:p-8 flex-1 flex flex-col justify-between overflow-hidden">
+              {/* Grid Background */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 nomu-grid-card pointer-events-none"
+              />
+
+              <div className="relative z-10">
+                {/* Header Period + Badge */}
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="text-xs font-mono font-bold text-[#0F151D]/60 uppercase tracking-wider">
+                    {m.period}
+                  </span>
+
+                  <span
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-black/5 text-xs font-semibold text-[#0F151D] shadow-sm"
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: m.badgeColor }}
+                    />
+                    <span>{m.badge}</span>
+                  </span>
+                </div>
+
+                {/* Role & Institution */}
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#0F151D] tracking-tight">
+                  {m.role}
+                </h3>
+                <p className="text-sm font-semibold text-[#FF7448] mt-1">
+                  {m.institution}
+                </p>
+
+                <p className="mt-3 text-xs sm:text-sm text-[#0F151D]/75 leading-relaxed">
+                  {m.desc}
+                </p>
+
+                {/* Bullet Highlights */}
+                <div className="mt-6 pt-4 border-t border-black/[0.06] space-y-2">
+                  {m.highlights.map((h, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs sm:text-sm text-[#0F151D]/80">
+                      <CheckCircle2 className="w-4 h-4 text-[#22C55E] shrink-0 mt-0.5" />
+                      <span>{h}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
 
-      {/* Shooting Stars */}
-      <div className="absolute inset-0 overflow-hidden">
-        {shootingStars.map((star, i) => (
-          <span
-            key={i}
-            className="shooting-star"
-            style={{
-              top: star.top,
-              left: star.left,
-              animationDelay: `${star.delay}s`,
-            }}
-          />
-        ))}
+      {/* 💡 Guiding Philosophy Banner Card */}
+      <div className="rounded-3xl md:rounded-[36px] bg-[#0F151D] text-white p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        {/* Ambient Dark Grid */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 nomu-grid-dark pointer-events-none opacity-40"
+        />
+
+        {/* Ambient Glow */}
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-[#FF7448]/20 blur-3xl pointer-events-none"
+        />
+
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-semibold text-[#FFBFA6] mb-3">
+              <Lightbulb className="w-3.5 h-3.5 text-[#FF7448]" />
+              <span>Philosophy</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Code. Create. Innovate.
+            </h3>
+
+            <p className="mt-2 text-sm sm:text-base text-white/70 max-w-xl leading-relaxed">
+              "To me, coding isn't just a career path — it’s a craft to transform complex human workflows into fast, reliable, intuitive digital experiences."
+            </p>
+          </div>
+
+          <div className="shrink-0">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#FF7448] text-white font-semibold text-sm hover:bg-[#E85E32] transition-all shadow-[0_4px_20px_rgba(255,116,72,0.4)]"
+            >
+              <span>Let's collaborate</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
       </div>
-
-      {/* Top Divider */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl space-y-10 text-center">
-        <motion.h2
-          className="
-    text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-    pt-8 sm:pt-10 
-    font-extrabold 
-    drop-shadow-lg
-  "
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span>🚀</span>{" "}
-          <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-            My Journey
-          </span>
-        </motion.h2>
-
-        <motion.p
-          className="text-lg md:text-xl leading-relaxed text-gray-300"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          My academic path as <span className="text-cyan-400 font-semibold">Jeevan Shetty</span> took shape during my{" "}
-          <span className="text-cyan-400 font-semibold">
-            Bachelor of Computer Applications (BCA)
-          </span>{" "}
-          at{" "}
-          <span className="text-purple-400">St. Philomena College, Puttur</span>
-          , which I successfully completed in 2025. During these three years, I
-          explored the fundamentals of software development, worked on projects
-          like{" "}
-          <span className="text-cyan-400 font-semibold">Carpooling System</span>{" "}
-          and an{" "}
-          <span className="text-purple-400 font-semibold">
-            Event Management System
-          </span>
-          , and built a strong foundation in programming, databases, and web
-          technologies.
-        </motion.p>
-
-        <motion.p
-          className="text-lg md:text-xl leading-relaxed text-gray-400"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          Currently, I am pursuing my{" "}
-          <span className="text-cyan-400 font-semibold">
-            Master of Computer Applications (MCA)
-          </span>{" "}
-          at{" "}
-          <span className="text-purple-400">
-            NMAM Institute of Technology, Nitte
-          </span>
-          . This phase of my journey is focused on diving deeper into{" "}
-          <span className="text-cyan-400">Data Structures & Algorithms</span>,
-          exploring{" "}
-          <span className="text-purple-400">
-            modern frameworks and full-stack development
-          </span>
-          , and refining my problem-solving mindset to prepare for real-world
-          challenges. I aim to specialize in{" "}
-          <span className="text-cyan-400">software development</span> and{" "}
-          <span className="text-purple-400">system design</span>.
-        </motion.p>
-
-        <motion.p
-          className="text-lg md:text-xl leading-relaxed text-gray-300 italic"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
-          Beyond academics, I enjoy experimenting with new tools, improving my
-          problem-solving speed, and staying curious about how technology can
-          make life smarter and easier. To me, coding isn’t just a career path —
-          it’s a way to transform ideas into meaningful experiences.
-        </motion.p>
-
-        <motion.div
-          className="mt-8 pb-10 text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          💡 Code. Create. Innovate.
-        </motion.div>
-      </div>
-    </section>
+    </div>
   );
 }

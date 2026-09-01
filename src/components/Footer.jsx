@@ -1,102 +1,176 @@
-import React, { useMemo } from "react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaEnvelope,
-  FaWhatsapp,
-} from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { ArrowUp, Heart, Sparkles } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import resume from "../assets/resume.pdf";
 
 export default function Footer() {
-  // Gmail handler
-  const openGmail = (e) => {
-    e.preventDefault(); // Prevent default anchor
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      window.location.href =
-        "mailto:jeevanshetty9481@gmail.com?subject=Hello%20Jeevan&body=Hello%20Jeevan";
-    } else {
-      window.open(
-        "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
-        "_blank"
-      );
-    }
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const options = {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      };
+      setTime(now.toLocaleTimeString("en-US", options));
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const socials = [
-    { icon: <FaGithub />, link: "https://github.com/Jeevan-Shetty07", color: "hover:text-white" },
-    { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/jeevan-shetty-241613229/", color: "hover:text-blue-500" },
-    { icon: <FaInstagram />, link: "https://instagram.com/g1shetty07", color: "hover:text-pink-500" },
-    { icon: <FaEnvelope />, onClick: openGmail, color: "hover:text-red-500" },
-    { icon: <FaWhatsapp />, link: "https://wa.me/9353819063?text=Hello%20Jeevan%20👋", color: "hover:text-green-500" },
+    {
+      name: "GitHub",
+      icon: <FaGithub />,
+      link: "https://github.com/Jeevan-Shetty07",
+    },
+    {
+      name: "LinkedIn",
+      icon: <FaLinkedin />,
+      link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
+    },
+    {
+      name: "WhatsApp",
+      icon: <FaWhatsapp />,
+      link: "https://wa.me/9353819063?text=Hello%20Jeevan%20👋",
+    },
+    {
+      name: "Gmail",
+      icon: <FaEnvelope />,
+      onClick: () => {
+        window.open(
+          "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
+          "_blank"
+        );
+      },
+    },
+    {
+      name: "Instagram",
+      icon: <FaInstagram />,
+      link: "https://instagram.com/g1shetty07",
+    },
   ];
 
-  const particles = useMemo(
-    () =>
-      [...Array(20)].map(() => ({
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        duration: 3 + Math.random() * 5,
-        delay: Math.random() * 5,
-      })),
-    []
-  );
-
   return (
-    <footer className="relative py-12 text-center bg-black text-gray-400 overflow-hidden">
+    <footer className="relative bg-[#0F151D] text-white pt-16 pb-12 overflow-hidden border-t border-black/10">
+      {/* Background Grid */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 nomu-grid-dark opacity-20 pointer-events-none"
+      />
 
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+        {/* Top Tier: Brand, Nav & Back to Top */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-white/10">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-3xl font-extrabold tracking-tight text-white">
+                Jeevan<span className="text-[#FF7448]">.</span>
+              </span>
+            </div>
+            <p className="mt-2 text-xs sm:text-sm text-white/60 max-w-sm">
+              Full-Stack Developer crafting fast, human-centric software experiences.
+            </p>
+          </div>
 
-      {/* Background Glow Orbs */}
-      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
-      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+          {/* Quick Nav Links */}
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-white/75 font-medium">
+            <a href="#projects" className="hover:text-[#FF7448] transition-colors">
+              Projects
+            </a>
+            <a href="#skills" className="hover:text-[#FF7448] transition-colors">
+              Skills & Tech
+            </a>
+            <a href="#about" className="hover:text-[#FF7448] transition-colors">
+              Journey
+            </a>
+            <a href="#contact" className="hover:text-[#FF7448] transition-colors">
+              Contact
+            </a>
+            <a
+              href={resume}
+              download
+              className="text-[#FF7448] hover:underline"
+            >
+              Resume PDF ↗
+            </a>
+            <a
+              href="#admin"
+              className="inline-flex items-center gap-1 text-white/50 hover:text-white transition-colors"
+            >
+              <span>Admin Portal ⚙️</span>
+            </a>
+          </div>
 
-      {/* Particle Dots */}
-      <div className="absolute inset-0 overflow-hidden">
-        {particles.map((particle, i) => (
-          <span
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
-            style={{
-              top: particle.top,
-              left: particle.left,
-              animationDuration: `${particle.duration}s`,
-              animationDelay: `${particle.delay}s`,
-            }}
-          />
-        ))}
-      </div>
-
-  
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
-
-      {/* Branding */}
-      <h2 className="text-3xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 animate-gradient-x">
-        Jeevan Shetty
-      </h2>
-
-      {/* Social Icons */}
-      <div className="flex justify-center gap-8 text-3xl mb-6 relative z-10">
-        {socials.map((item, idx) => (
-          <a
-            key={idx}
-            href={item.link || "#"}
-            onClick={item.onClick || undefined}
-            target={item.link ? "_blank" : undefined}
-            rel={item.link ? "noopener noreferrer" : undefined}
-            className={`relative group transition transform hover:scale-125 ${item.color}`}
+          {/* Back to Top Pill Button */}
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-xs font-semibold hover:bg-white hover:text-[#0F151D] transition-all shadow-sm"
           >
-            <span className="absolute inset-0 rounded-full scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-20 bg-gradient-to-r from-blue-400 to-purple-600 blur-xl transition-all"></span>
-            {item.icon}
-          </a>
-        ))}
-      </div>
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
+        </div>
 
-      {/* Copyright with shimmer */}
-      <p className="text-sm text-gray-500 relative z-10 bg-gradient-to-r from-gray-400 via-gray-200 to-gray-400 bg-clip-text text-transparent animate-gradient-x">
-        © {new Date().getFullYear()} Jeevan Shetty.All rights reserved.
-      </p>
+        {/* Middle Tier: Live Time & Socials */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
+          {/* Live India Clock Indicator */}
+          <div className="flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+            <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-ping" />
+            <span className="text-white/80">Bengaluru, IN</span>
+            <span className="text-white/30">|</span>
+            <span className="text-[#FFBFA6] font-bold">{time || "IST"}</span>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-3 text-lg">
+            {socials.map((s, idx) => (
+              <a
+                key={idx}
+                href={s.link || "#"}
+                onClick={s.onClick || undefined}
+                target={s.link ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                aria-label={s.name}
+                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#FF7448] hover:border-[#FF7448] transition-all shadow-sm hover:scale-110"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Big Stylized Signature Logo */}
+        <div className="text-center py-6 select-none opacity-25">
+          <span className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-transparent">
+            JEEVAN SHETTY
+          </span>
+        </div>
+
+        {/* Bottom Tier: Copyright */}
+        <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-white/40">
+          <p>© {new Date().getFullYear()} Jeevan Shetty. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+            <p className="flex items-center gap-1">
+              Designed with <span className="text-[#FF7448]">Nomu</span> aesthetics
+            </p>
+            <span>·</span>
+            <a href="#admin" className="hover:text-white transition-colors">
+              Admin Gateway
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
-//nothing

@@ -1,84 +1,183 @@
-
 @import "tailwindcss";
-html {
-  scroll-behavior: smooth;
-  background-color: #000; /* black theme */
-  color: #fff; /* default text color white */
+
+@layer base {
+  :root {
+    --bg-canvas: #FFF9F6;
+    --bg-card: #FFFFFF;
+    --bg-card-dark: #0F151D;
+    --bg-card-inset: rgba(15, 21, 29, 0.03);
+    --foreground: #0F151D;
+    --foreground-muted: rgba(15, 21, 29, 0.65);
+    --foreground-faint: rgba(15, 21, 29, 0.40);
+    --primary: #FF7448;
+    --primary-hover: #E85E32;
+    --primary-soft: #FFF0EB;
+    --accent-blue: #1450C6;
+    --accent-emerald: #22C55E;
+    --border-subtle: rgba(15, 21, 29, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-canvas);
+    color: var(--foreground);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-canvas);
+    color: var(--foreground);
+    min-height: 100vh;
+    overflow-x: hidden;
+    selection-background-color: #FF7448;
+    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background: #FF7448;
+    color: #ffffff;
+  }
 }
 
-/* Customize scrollbar (for aesthetic) */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #3b82f6; /* blue accent */
-  border-radius: 4px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #111;
+  background: #FFF9F6;
 }
-@keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+::-webkit-scrollbar-thumb {
+  background: #E4D9D2;
+  border-radius: 9999px;
 }
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 4s ease infinite;
-}
-/* Reset default heading & body spacing */
-
-/* Reset browser defaults */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-section{
-  padding-top: 0 !important;
-}
-html {
-  scroll-behavior: smooth;
+::-webkit-scrollbar-thumb:hover {
+  background: #FF7448;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(-15px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.6; }
-}
-.animate-float {
-  animation: float linear infinite;
+/* Nomu Grid Backgrounds */
+.nomu-grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 21, 29, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 21, 29, 0.04) 1px, transparent 1px);
 }
 
-@keyframes blob {
-  0%, 100% { transform: scale(1) translate(0px, 0px); }
-  33% { transform: scale(1.1) translate(30px, -20px); }
-  66% { transform: scale(0.9) translate(-20px, 30px); }
+.nomu-grid-card {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 21, 29, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 21, 29, 0.05) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, #000 60%, transparent 100%);
 }
-.animate-blob {
-  animation: blob 10s infinite;
-}
-.animation-delay-2000 { animation-delay: 2s; }
-.animation-delay-4000 { animation-delay: 4s; }
 
-@keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.nomu-grid-dark {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, #000 60%, transparent 100%);
 }
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 6s ease infinite;
+
+/* Nomu Sparkle & Beam Animations */
+@keyframes nomu-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+@keyframes nomu-beam {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
 }
-.animate-bounce {
-  animation: bounce 0.6s infinite;
+
+.animate-nomu-twinkle {
+  animation: nomu-twinkle 3s ease-in-out infinite;
 }
-.animation-delay-200 {
-  animation-delay: 0.2s;
+
+.animate-nomu-beam {
+  animation: nomu-beam 3.5s ease-in-out infinite;
 }
-.animation-delay-400 {
-  animation-delay: 0.4s;
+
+/* Marquee / Infinite Ticker */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Ambient Glow Blobs */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.08); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.animate-float-slow {
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+/* Nomu Pill Button Styling */
+.nomu-btn-primary {
+  background-color: #FF7448;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(255, 116, 72, 0.28);
+}
+.nomu-btn-primary:hover {
+  background-color: #E85E32;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 116, 72, 0.38);
+}
+
+.nomu-btn-secondary {
+  background-color: #FFFFFF;
+  color: #0F151D;
+  border: 1px solid rgba(15, 21, 29, 0.12);
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.nomu-btn-secondary:hover {
+  background-color: #F8F5F2;
+  border-color: rgba(15, 21, 29, 0.25);
+  transform: translateY(-1px);
+}
+
+.nomu-btn-dark {
+  background-color: #0F151D;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(15, 21, 29, 0.2);
+}
+.nomu-btn-dark:hover {
+  background-color: #212C3A;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(15, 21, 29, 0.3);
+}
+
+/* Card Hover Lift */
+.nomu-card-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nomu-card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -12px rgba(15, 21, 29, 0.12);
 }

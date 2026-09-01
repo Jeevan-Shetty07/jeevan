@@ -1,214 +1,276 @@
-import React, { useMemo } from "react";
-import { motion } from "framer-motion";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaEnvelope,
-  FaWhatsapp,
-} from "react-icons/fa";
-import "./contact.css";
+import React, { useState } from "react";
+import { Mail, MessageSquare, Send, Check, Copy, ArrowUpRight, Sparkles, MapPin, Phone } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Contact() {
-  // Function to handle Gmail clicks
-  const openEmail = () => {
+  const { addMessage } = usePortfolio();
+  const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [formSent, setFormSent] = useState(false);
+
+  const emailAddress = "jeevanshetty9481@gmail.com";
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch (e) {
+      // fallback
+      window.open(`mailto:${emailAddress}`);
+    }
+  };
+
+  const handleOpenEmail = () => {
     if (/Mobi|Android/i.test(navigator.userAgent)) {
-      // Opens default mail app on mobile
-      window.location.href =
-        "mailto:jeevanshetty9481@gmail.com?subject=Hello Jeevan&body=Hello Jeevan";
+      window.location.href = `mailto:${emailAddress}?subject=Hello Jeevan&body=Hello Jeevan`;
     } else {
-      // Opens Gmail web on desktop
       window.open(
-        "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Hello%20Jeevan&body=Hello%20Jeevan`,
         "_blank"
       );
     }
   };
 
-  const socials = [
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Save into Admin Inquiries
+    addMessage({
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject || "Portfolio Contact Inquiry",
+      message: formData.message
+    });
+
+    const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
+      formData.subject || "Project Inquiry / Hello from " + formData.name
+    )}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+    window.open(mailtoUrl, "_blank");
+    setFormSent(true);
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setTimeout(() => setFormSent(false), 4000);
+  };
+
+  const contactChannels = [
     {
-      name: "Instagram",
-      icon: (
-        <FaInstagram className="text-pink-500 sm:text-gray-300 sm:group-hover:text-pink-500" />
-      ),
-      link: "https://www.instagram.com/g1shetty07/",
-      color: "sm:group-hover:shadow-pink-500/70",
+      title: "Email Me",
+      value: emailAddress,
+      actionLabel: copied ? "Copied to Clipboard!" : "Copy Email",
+      icon: <FaEnvelope className="text-xl text-[#FF7448]" />,
+      action: handleCopyEmail,
+      isPrimary: true
     },
     {
-      name: "LinkedIn",
-      icon: (
-        <FaLinkedin className="text-blue-500 sm:text-gray-300 sm:group-hover:text-blue-500" />
-      ),
-      link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
-      color: "sm:group-hover:shadow-blue-500/70",
+      title: "WhatsApp Chat",
+      value: "+91 93538 19063",
+      actionLabel: "Direct Message",
+      icon: <FaWhatsapp className="text-xl text-[#22C55E]" />,
+      link: "https://wa.me/9353819063?text=Hello%20Jeevan%20👋"
     },
     {
-      name: "Gmail",
-      icon: (
-        <FaEnvelope className="text-red-500 sm:text-gray-300 sm:group-hover:text-red-500" />
-      ),
-      onClick: openEmail,
-      color: "sm:group-hover:shadow-red-500/70",
+      title: "LinkedIn",
+      value: "jeevan-shetty-241613229",
+      actionLabel: "Connect on LinkedIn",
+      icon: <FaLinkedin className="text-xl text-[#1450C6]" />,
+      link: "https://www.linkedin.com/in/jeevan-shetty-241613229/"
     },
     {
-      name: "WhatsApp",
-      icon: (
-        <FaWhatsapp className="text-green-500 sm:text-gray-300 sm:group-hover:text-green-500" />
-      ),
-      link: "https://wa.me/9353819063?text=Hello%20Jeevan%20👋🏻",
-      color: "sm:group-hover:shadow-green-500/70",
-    },
+      title: "GitHub",
+      value: "Jeevan-Shetty07",
+      actionLabel: "View Repositories",
+      icon: <FaGithub className="text-xl text-[#0F151D]" />,
+      link: "https://github.com/Jeevan-Shetty07"
+    }
   ];
 
-  const stars = useMemo(
-    () =>
-      [...Array(20)].map(() => ({
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        duration: 3 + Math.random() * 5,
-        delay: Math.random() * 5,
-      })),
-    []
-  );
-
   return (
-    <section
-      id="contact"
-      className="relative min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-black overflow-hidden"
-    >
-      {/* Aurora Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl animate-pulse"></div>
+    <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      {/* Section Header */}
+      <div className="flex flex-col items-center text-center mb-14">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-black/5 text-xs font-semibold text-[#0F151D]/70 shadow-sm mb-4">
+          <MessageSquare className="w-3.5 h-3.5 text-[#FF7448]" />
+          <span>Get in Touch</span>
+        </div>
 
-      {/* Glow Orbs */}
-      <div className="absolute -top-28 -left-28 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-blob"></div>
-      <div className="absolute -bottom-28 -right-28 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+        <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F151D] tracking-tight">
+          Let’s build something <br className="hidden sm:inline" />
+          <span className="text-[#FF7448]">extraordinary together.</span>
+        </h2>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {stars.map((star, i) => (
-          <span
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-white/40 rounded-full animate-float"
-            style={{
-              top: star.top,
-              left: star.left,
-              animationDuration: `${star.duration}s`,
-              animationDelay: `${star.delay}s`,
-            }}
-          />
-        ))}
+        <p className="mt-3 text-sm sm:text-base text-[#0F151D]/70 max-w-xl">
+          Have an opportunity, a project brief, or simply want to talk tech? My inbox is always open.
+        </p>
       </div>
 
-      {/* Animated Divider */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x"></div>
-
-      {/* Orbiting Rings */}
-      <motion.div
-        className="absolute border border-purple-600/40 rounded-full w-[500px] h-[500px]"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div
-        className="absolute border border-blue-500/30 rounded-full w-[700px] h-[700px]"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      />
-
-      {/* Heading */}
-      <motion.h2
-        initial={{ opacity: 0, y: -40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="text-4xl sm:text-5xl md:text-6xl pt-10 font-extrabold mb-6 text-center relative z-10"
-      >
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x">
-          Let’s Connect
-        </span>{" "}
-        <span>🚀</span>
-      </motion.h2>
-
-      {/* Subtext */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.9 }}
-        viewport={{ once: true }}
-        className="text-lg text-gray-300 mb-12 text-center max-w-2xl relative z-10"
-      >
-        Whether it’s a collaboration, a project, or just a friendly hello to <strong>Jeevan Shetty</strong> — I’d love to
-        hear from you!
-      </motion.p>
-
-      {/* Contact Cards */}
-      <motion.div
-        className="grid pb-15 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 z-10"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
-        }}
-      >
-        {socials.map((social, i) =>
-          social.link ? (
-            <motion.a
-              key={i}
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 text-gray-200 text-center transition transform cursor-pointer ${social.color}`}
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              whileHover={{
-                scale: 1.12,
-                rotate: 2,
-                boxShadow: "0px 0px 25px rgba(255,255,255,0.3)",
-              }}
-              whileTap={{ scale: 0.96 }}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Left Column: Direct Contact Channel Cards */}
+        <div className="lg:col-span-5 flex flex-col gap-4">
+          {contactChannels.map((c, idx) => (
+            <div
+              key={idx}
+              className="rounded-3xl bg-white border border-black/5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] p-2 transition-all hover:shadow-[0_12px_28px_-6px_rgba(15,21,29,0.1)]"
             >
-              {/* Neon Glow Behind Icon */}
-              <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"></span>
+              <div className="rounded-2xl bg-[#FAF6F2] border border-black/[0.04] p-5 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3.5">
+                  <div className="p-3 rounded-2xl bg-white border border-black/5 shadow-sm">
+                    {c.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0F151D]/50">
+                      {c.title}
+                    </h4>
+                    <p className="text-sm font-bold text-[#0F151D] truncate max-w-[180px] sm:max-w-none">
+                      {c.value}
+                    </p>
+                  </div>
+                </div>
 
-              <div className="text-5xl mb-4 transition group-hover:scale-125">
-                {social.icon}
+                {c.link ? (
+                  <a
+                    href={c.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 p-2.5 rounded-full bg-white border border-black/10 text-[#0F151D] hover:bg-[#FF7448] hover:text-white hover:border-[#FF7448] transition-all shadow-sm group"
+                    aria-label={c.title}
+                  >
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                ) : (
+                  <button
+                    onClick={c.action}
+                    className="shrink-0 p-2.5 rounded-full bg-white border border-black/10 text-[#0F151D] hover:bg-[#FF7448] hover:text-white hover:border-[#FF7448] transition-all shadow-sm"
+                    aria-label={c.title}
+                  >
+                    {copied ? (
+                      <Check className="w-4 h-4 text-[#22C55E]" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                )}
               </div>
-              <h3 className="text-xl font-bold group-hover:text-white">
-                {social.name}
-              </h3>
-            </motion.a>
-          ) : (
-            <motion.button
-              key={i}
-              onClick={social.onClick}
-              className={`group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 text-gray-200 text-center transition transform cursor-pointer ${social.color}`}
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              whileHover={{
-                scale: 1.12,
-                rotate: 2,
-                boxShadow: "0px 0px 25px rgba(255,255,255,0.3)",
-              }}
-              whileTap={{ scale: 0.96 }}
-            >
-              {/* Neon Glow Behind Icon */}
-              <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"></span>
+            </div>
+          ))}
 
-              <div className="text-5xl mb-4 transition group-hover:scale-125">
-                {social.icon}
+          {/* Quick Location & Availability Card */}
+          <div className="rounded-3xl bg-[#0F151D] text-white p-6 shadow-xl relative overflow-hidden">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 nomu-grid-dark opacity-30 pointer-events-none"
+            />
+            <div className="relative z-10 flex items-center justify-between">
+              <div>
+                <span className="text-xs font-mono text-[#FFBFA6] font-semibold">Location</span>
+                <p className="text-base font-bold flex items-center gap-1.5 mt-0.5">
+                  <MapPin className="w-4 h-4 text-[#FF7448]" />
+                  <span>Bengaluru, Karnataka, India</span>
+                </p>
               </div>
-              <h3 className="text-xl font-bold group-hover:text-white">
-                {social.name}
-              </h3>
-            </motion.button>
-          )
-        )}
-      </motion.div>
-    </section>
+
+              <div className="text-right">
+                <span className="text-xs font-mono text-[#FFBFA6] font-semibold">Timezone</span>
+                <p className="text-sm font-bold mt-0.5">IST (UTC+5:30)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Sleek Inquiry Form */}
+        <div className="lg:col-span-7">
+          <div className="rounded-3xl md:rounded-[36px] bg-white border border-black/5 shadow-[0_10px_30px_-10px_rgba(15,21,29,0.08)] p-3 sm:p-4">
+            <div className="rounded-2xl md:rounded-[28px] bg-[#FAF6F2] border border-black/[0.06] p-6 sm:p-8 relative overflow-hidden">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 nomu-grid-card pointer-events-none"
+              />
+
+              <div className="relative z-10">
+                <h3 className="text-2xl font-extrabold text-[#0F151D] tracking-tight mb-1">
+                  Send a Direct Message
+                </h3>
+                <p className="text-xs sm:text-sm text-[#0F151D]/65 mb-6">
+                  Fill out the details below to launch a pre-composed email directly.
+                </p>
+
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono font-semibold text-[#0F151D]/70 mb-1.5">
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Ada Lovelace"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-4 py-3 rounded-2xl bg-white border border-black/10 text-sm text-[#0F151D] placeholder:text-[#0F151D]/30 focus:outline-none focus:ring-2 focus:ring-[#FF7448] focus:border-transparent transition-all shadow-sm"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono font-semibold text-[#0F151D]/70 mb-1.5">
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="ada@domain.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-4 py-3 rounded-2xl bg-white border border-black/10 text-sm text-[#0F151D] placeholder:text-[#0F151D]/30 focus:outline-none focus:ring-2 focus:ring-[#FF7448] focus:border-transparent transition-all shadow-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono font-semibold text-[#0F151D]/70 mb-1.5">
+                      Subject / Topic
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Project Inquiry / Job Opportunity"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      className="w-full px-4 py-3 rounded-2xl bg-white border border-black/10 text-sm text-[#0F151D] placeholder:text-[#0F151D]/30 focus:outline-none focus:ring-2 focus:ring-[#FF7448] focus:border-transparent transition-all shadow-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono font-semibold text-[#0F151D]/70 mb-1.5">
+                      Message
+                    </label>
+                    <textarea
+                      rows={4}
+                      required
+                      placeholder="Tell me about your project, timeline, or idea..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-2xl bg-white border border-black/10 text-sm text-[#0F151D] placeholder:text-[#0F151D]/30 focus:outline-none focus:ring-2 focus:ring-[#FF7448] focus:border-transparent transition-all shadow-sm resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full nomu-btn-primary py-3.5 px-6 flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Send Message ↗</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -9,7 +9,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.12-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![LeetCode](https://img.shields.io/badge/LeetCode-DSA_Practice-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)](https://leetcode.com/)
+[![LeetCode](https://img.shields.io/badge/LeetCode-JeevanShetty7-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)](https://leetcode.com/u/JeevanShetty7/)
 
 **Aspiring Software Developer with a strong foundation in Java, JavaScript, and full-stack engineering. Skilled in building scalable, high-performance web applications using React 19, Node.js, Spring Boot, and Cloud Architectures.**
 
@@ -116,7 +116,7 @@ npm run build
 - **Phone / WhatsApp**: [+91 93538 19063](https://wa.me/9353819063)
 - **LinkedIn**: [linkedin.com/in/jeevan-shetty-241613229](https://www.linkedin.com/in/jeevan-shetty-241613229/)
 - **GitHub**: [github.com/Jeevan-Shetty07](https://github.com/Jeevan-Shetty07)
-- **LeetCode**: [leetcode.com](https://leetcode.com/)
+- **LeetCode**: [leetcode.com/u/JeevanShetty7](https://leetcode.com/u/JeevanShetty7/)
 
 ---
 

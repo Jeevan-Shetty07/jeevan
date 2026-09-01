@@ -89,7 +89,7 @@ export default function Hero() {
     {
       name: "LeetCode",
       icon: <SiLeetcode className="w-5 h-5 text-[#FFA116]" />,
-      link: "https://leetcode.com/",
+      link: profile?.leetcode || "https://leetcode.com/u/JeevanShetty7/",
     },
     {
       name: "WhatsApp",

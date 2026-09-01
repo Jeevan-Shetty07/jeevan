@@ -85,10 +85,10 @@ export default function Contact() {
     },
     {
       title: "LeetCode",
-      value: "LeetCode Profile",
+      value: "JeevanShetty7",
       actionLabel: "View Problem Solving",
       icon: <SiLeetcode className="text-xl text-[#FFA116]" />,
-      link: "https://leetcode.com/"
+      link: "https://leetcode.com/u/JeevanShetty7/"
     },
     {
       title: "GitHub",

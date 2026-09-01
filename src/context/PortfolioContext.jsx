@@ -366,7 +366,7 @@ const DEFAULT_PROFILE = {
   location: "Bengaluru, Karnataka, India",
   email: "Jeevanshetty9481@gmail.com",
   phone: "+91 93538 19063",
-  leetcode: "https://leetcode.com/",
+  leetcode: "https://leetcode.com/u/JeevanShetty7/",
   github: "https://github.com/Jeevan-Shetty07",
   linkedin: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
   statusBadge: "Open for opportunities",

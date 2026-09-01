@@ -11,13 +11,13 @@ const PortfolioContext = createContext(null);
 
 const DEFAULT_PROJECTS = [
   {
-    id: "chat-app",
-    title: "Realtime Chat Application",
+    id: "blinkchat",
+    title: "BlinkChat — Real-Time Chat Application",
     badge: "Featured Full-Stack",
-    tag: "React · WebSockets · Node",
+    tag: "React 19 · Node.js · Express · MongoDB · Socket.IO · Clerk",
     status: "Live Production",
     statusType: "live",
-    desc: "Instant real-time messaging application with live typing indicators, room management, and responsive socket connection.",
+    desc: "Architected a full-stack real-time messaging platform supporting instantaneous message delivery and group chat using Socket.IO. Implemented secure user authentication and hierarchical admin roles with Clerk, dynamic Glassmorphism light/dark UI, and multimedia sharing with Multer.",
     github: "https://github.com/Jeevan-Shetty07",
     demo: "https://realtime-chat-app-six-tawny.vercel.app/",
     image: chat,
@@ -27,48 +27,32 @@ const DEFAULT_PROJECTS = [
     featured: true
   },
   {
-    id: "bingo-game",
-    title: "Interactive Bingo Game",
-    badge: "Multiplayer Web App",
-    tag: "React · Interactive UI · Game Logic",
-    status: "Live Game",
-    statusType: "live",
-    desc: "Engaging multiplayer Bingo game with instant synchronization, sound effects, and automated victory verification.",
+    id: "blood-donor",
+    title: "Blood Donor Management System",
+    badge: "Enterprise Backend",
+    tag: "Spring Boot · React · MySQL · JPA · REST APIs",
+    status: "Production Ready",
+    statusType: "system",
+    desc: "Developed a scalable full-stack system to manage donor records and hospital requests. Built RESTful APIs using Spring Boot and integrated MySQL with JPA for efficient data persistence and high-performance querying.",
     github: "https://github.com/Jeevan-Shetty07",
-    demo: "https://bingo.jeevanshetty.me/",
-    image: bingo1,
+    demo: "",
+    image: port1,
     colSpan: "col-span-12 lg:col-span-4",
-    accentBg: "bg-gradient-to-br from-[#FF7448]/10 to-[#FF7448]/5",
-    type: "frontend",
+    accentBg: "bg-gradient-to-br from-[#EA2D2E]/10 to-[#EA2D2E]/5",
+    type: "fullstack",
     featured: true
   },
   {
-    id: "carpooling",
-    title: "Carpooling & Ride Sharing",
-    badge: "System Architecture",
-    tag: "PHP · MySQL · Bootstrap · Maps",
-    status: "Architecture",
-    statusType: "system",
-    desc: "Comprehensive ride-sharing portal featuring route matching, seat reservation, fare estimation, and driver verification.",
-    github: "https://github.com/Jeevan-Shetty07/carpoooling",
-    demo: "",
-    image: carpool1,
-    colSpan: "col-span-12 lg:col-span-4",
-    accentBg: "bg-gradient-to-br from-[#0F151D]/5 to-[#0F151D]/10",
-    type: "fullstack",
-    featured: false
-  },
-  {
-    id: "event-management",
-    title: "Event Management Platform",
-    badge: "Full Booking Engine",
-    tag: "PHP · Relational SQL · UI/UX",
+    id: "placement-pro",
+    title: "Placement Pro — Recruitment Portal",
+    badge: "Workflow & AI Integration",
+    tag: "React · Node.js · Express · MongoDB · n8n AI Chatbot",
     status: "Full Solution",
     statusType: "system",
-    desc: "End-to-end event planning ecosystem managing vendor contracts, venue schedules, catering packages, and customer invoicing.",
-    github: "https://github.com/Jeevan-Shetty07/EventManagemnet",
+    desc: "Developed a full-stack placement management system to streamline student recruitment. Enabled application tracking, real-time status updates, admin job posting tools, and integrated an AI chatbot via n8n to automate candidate workflows.",
+    github: "https://github.com/Jeevan-Shetty07",
     demo: "",
-    image: port1,
+    image: carpool1,
     colSpan: "col-span-12 lg:col-span-8",
     accentBg: "bg-gradient-to-br from-[#22C55E]/10 to-[#22C55E]/5",
     type: "fullstack",
@@ -76,34 +60,50 @@ const DEFAULT_PROJECTS = [
   },
   {
     id: "image-search",
-    title: "Image Search Engine",
-    badge: "API Integration",
-    tag: "React · REST API · Infinite Scroll",
+    title: "Unsplash Image Search Engine",
+    badge: "API Optimization",
+    tag: "HTML5 · CSS3 · JavaScript · Unsplash REST API",
     status: "Live Utility",
     statusType: "live",
-    desc: "Fast, responsive media search engine with instant query debounce, high-resolution downloads, and tag curation.",
+    desc: "Designed a high-speed web application integrating the Unsplash API to fetch real-time imagery. Implemented pagination, search debouncing, and UI enhancements, reducing asset load times by 30%.",
     github: "https://github.com/Jeevan-Shetty07",
     demo: "https://jeevan-image-search.vercel.app/",
     image: image1,
-    colSpan: "col-span-12 md:col-span-4",
+    colSpan: "col-span-12 lg:col-span-4",
     accentBg: "bg-gradient-to-br from-[#1450C6]/5 to-[#FFBFA6]/10",
     type: "frontend",
     featured: false
   },
   {
-    id: "quote-generator",
-    title: "Dynamic Quote Generator",
-    badge: "Web Tool",
-    tag: "JavaScript · Web APIs · CSS3",
-    status: "Live Utility",
+    id: "bingo-game",
+    title: "Interactive Multiplayer Bingo",
+    badge: "Interactive Web App",
+    tag: "React · Game Logic · Web Audio",
+    status: "Live Game",
     statusType: "live",
-    desc: "Inspirational quote curator with 1-click clipboard copy, instant Twitter/X sharing, and randomized themes.",
+    desc: "Engaging multiplayer Bingo game with instant synchronization, sound effects, dynamic board generation, and automated victory verification.",
     github: "https://github.com/Jeevan-Shetty07",
-    demo: "https://quote-generator-g1.vercel.app/",
-    image: qr1,
+    demo: "https://bingo.jeevanshetty.me/",
+    image: bingo1,
     colSpan: "col-span-12 md:col-span-4",
-    accentBg: "bg-gradient-to-br from-[#FF7448]/5 to-[#FF7448]/10",
+    accentBg: "bg-gradient-to-br from-[#FF7448]/10 to-[#FF7448]/5",
     type: "frontend",
+    featured: false
+  },
+  {
+    id: "carpooling",
+    title: "Carpooling & Ride Sharing Platform",
+    badge: "System Architecture",
+    tag: "PHP · MySQL · Bootstrap · Google Maps API",
+    status: "Full Solution",
+    statusType: "system",
+    desc: "Comprehensive ride-sharing portal featuring route matching, seat reservation, fare estimation, driver license verification, and booking history.",
+    github: "https://github.com/Jeevan-Shetty07/carpoooling",
+    demo: "",
+    image: carpool1,
+    colSpan: "col-span-12 md:col-span-4",
+    accentBg: "bg-gradient-to-br from-[#0F151D]/5 to-[#0F151D]/10",
+    type: "fullstack",
     featured: false
   },
   {
@@ -113,7 +113,7 @@ const DEFAULT_PROJECTS = [
     tag: "React · Canvas API · SVG Export",
     status: "Live Tool",
     statusType: "live",
-    desc: "Custom QR code generator supporting text, URLs, and vCards with instant image download in multiple resolutions.",
+    desc: "Custom QR code generator supporting text, URLs, and vCards with instant client-side canvas rendering and SVG/PNG download.",
     github: "https://github.com/Jeevan-Shetty07",
     demo: "https://qrcode-genrator-g1.vercel.app/",
     image: qr,
@@ -126,49 +126,76 @@ const DEFAULT_PROJECTS = [
 
 const DEFAULT_SKILLS = [
   {
+    id: "react",
+    category: "frontend",
+    title: "React 19 & Modern UI",
+    desc: "Component lifecycle, custom hooks, state management, and high-performance DOM rendering.",
+    status: "Production Ready",
+    statusColor: "#61DAFB",
+    iconName: "FaReact"
+  },
+  {
     id: "nodejs",
     category: "backend",
-    title: "Node.js Runtime",
-    desc: "Event-driven, asynchronous execution, server-side REST APIs, and npm package ecosystem.",
+    title: "Node.js & Express.js",
+    desc: "Asynchronous RESTful APIs, custom middleware, Multer file handling, and server security.",
     status: "High Performance",
-    statusColor: "#22C55E",
+    statusColor: "#339933",
     iconName: "FaNodeJs"
   },
   {
-    id: "express",
+    id: "spring-boot",
     category: "backend",
-    title: "Express.js Framework",
-    desc: "Robust routing, custom middleware pipelines, authentication, error handling, and API security.",
-    status: "Core Strength",
-    statusColor: "#0F151D",
-    iconName: "SiExpress"
+    title: "Spring Boot & Java",
+    desc: "Enterprise backend services, JPA / Hibernate ORM, dependency injection, and REST endpoints.",
+    status: "Enterprise Tested",
+    statusColor: "#6DB33F",
+    iconName: "SiSpringboot"
   },
   {
     id: "mongodb",
     category: "database",
-    title: "MongoDB & NoSQL",
-    desc: "Document modeling, aggregation pipelines, Mongoose ODM, indexing, and high-volume data storage.",
+    title: "MongoDB & Mongoose",
+    desc: "Document data modeling, aggregation pipelines, schema validation with Mongoose, and indexing.",
     status: "Production Ready",
     statusColor: "#47A248",
     iconName: "SiMongodb"
   },
   {
+    id: "mysql",
+    category: "database",
+    title: "MySQL & Relational JPA",
+    desc: "Schema normalization, ACID transactions, complex joins, and JPA entity relationships.",
+    status: "High Performance",
+    statusColor: "#4479A1",
+    iconName: "SiMysql"
+  },
+  {
+    id: "n8n",
+    category: "devops",
+    title: "n8n Workflow & AI Bots",
+    desc: "Automated workflow pipelines, AI chatbot integrations, webhook orchestration, and data sync.",
+    status: "Workflow & AI",
+    statusColor: "#EA2D2E",
+    iconName: "SiN8N"
+  },
+  {
     id: "postman",
     category: "devops",
-    title: "Postman API Studio",
-    desc: "Endpoint verification, automated test collections, environment variables, and API documentation.",
+    title: "Postman API Testing",
+    desc: "Endpoint verification, automated test collections, mock servers, and API documentation.",
     status: "Testing Essential",
     statusColor: "#FF6C37",
     iconName: "SiPostman"
   },
   {
-    id: "react",
-    category: "frontend",
-    title: "React.js & Modern UI",
-    desc: "Component lifecycle, state management, custom hooks, and high-performance DOM rendering.",
-    status: "Production Ready",
-    statusColor: "#22C55E",
-    iconName: "FaReact"
+    id: "java",
+    category: "core",
+    title: "Java & Data Structures",
+    desc: "Object-oriented design patterns, algorithmic problem solving, trees, graphs, and dynamic programming.",
+    status: "DSA & LeetCode",
+    statusColor: "#EA2D2E",
+    iconName: "FaJava"
   },
   {
     id: "javascript",
@@ -176,87 +203,178 @@ const DEFAULT_SKILLS = [
     title: "JavaScript (ES6+)",
     desc: "Asynchronous programming, closures, event loop, Promises, and modern web APIs.",
     status: "Core Strength",
-    statusColor: "#FF7448",
+    statusColor: "#F7DF1E",
     iconName: "FaJs"
   },
   {
     id: "tailwind",
     category: "frontend",
     title: "Tailwind CSS & Styling",
-    desc: "Design tokens, utility-first layouts, dark mode systems, and responsive micro-animations.",
+    desc: "Design tokens, responsive layouts, glassmorphism, and smooth micro-animations.",
     status: "Daily Driver",
     statusColor: "#06B6D4",
     iconName: "SiTailwindcss"
   },
   {
+    id: "c-lang",
+    category: "core",
+    title: "C Programming",
+    desc: "Memory management, pointers, foundational data structures, and algorithmic principles.",
+    status: "Foundational",
+    statusColor: "#00599C",
+    iconName: "SiC"
+  },
+  {
     id: "php",
     category: "backend",
-    title: "PHP Backend Architecture",
-    desc: "Object-oriented server scripting, MVC structures, session security, and API endpoints.",
-    status: "Enterprise Tested",
+    title: "PHP Backend Scripting",
+    desc: "Object-oriented server scripting, MVC structures, session management, and CRUD APIs.",
+    status: "Tested",
     statusColor: "#777BB4",
     iconName: "FaPhp"
-  },
-  {
-    id: "mysql",
-    category: "database",
-    title: "MySQL & Relational Data",
-    desc: "Schema design, normalization, ACID transactions, complex joins, and indexing strategies.",
-    status: "High Performance",
-    statusColor: "#4479A1",
-    iconName: "SiMysql"
-  },
-  {
-    id: "java",
-    category: "core",
-    title: "Java & Data Structures",
-    desc: "Object-oriented design patterns, algorithmic problem solving, trees, graphs, and dynamic programming.",
-    status: "Academic & DSA",
-    statusColor: "#EA2D2E",
-    iconName: "FaJava"
-  },
-  {
-    id: "python",
-    category: "core",
-    title: "Python Programming",
-    desc: "Automation scripting, data manipulation, algorithm implementations, and CLI utilities.",
-    status: "Versatile",
-    statusColor: "#3776AB",
-    iconName: "FaPython"
   },
   {
     id: "git",
     category: "devops",
     title: "Git & Version Control",
-    desc: "Branching strategies, collaborative workflows, merge conflict resolution, and GitHub CI.",
+    desc: "Branching strategies, collaborative workflows, merge conflict resolution, and GitHub Actions.",
     status: "Workflow Essential",
     statusColor: "#F05032",
     iconName: "FaGitAlt"
   },
+];
+
+const DEFAULT_CERTIFICATIONS = [
   {
-    id: "html-css",
-    category: "frontend",
-    title: "HTML5 & Semantic Web",
-    desc: "Accessible markup, SEO best practices, Open Graph meta tags, and WCAG compliance.",
-    status: "Foundation",
-    statusColor: "#E34F26",
-    iconName: "FaHtml5"
+    id: "cert-1",
+    title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+    issuer: "Oracle",
+    year: "2025",
+    badge: "Cloud Certified",
+    badgeColor: "#EA2D2E",
+    desc: "Core OCI architecture, compute, storage, virtual cloud networks (VCN), security, and compliance foundations."
   },
+  {
+    id: "cert-2",
+    title: "MongoDB Developer Guide 2025",
+    issuer: "Udemy",
+    year: "2025",
+    badge: "NoSQL Certified",
+    badgeColor: "#47A248",
+    desc: "Comprehensive document modeling, aggregation framework, CRUD operations, indexing, and Mongoose ODM integration."
+  },
+  {
+    id: "cert-3",
+    title: "Microsoft Azure Fundamentals",
+    issuer: "Microsoft",
+    year: "2025",
+    badge: "Cloud Architecture",
+    badgeColor: "#0078D4",
+    desc: "Cloud computing principles, Azure core services, security, privacy, compliance, and cloud cost management."
+  }
+];
+
+const DEFAULT_ACHIEVEMENTS = [
+  {
+    id: "ach-1",
+    title: "1st Place Winner — National 24-Hour Hackathon",
+    desc: "Secured 1st place in a 24-hour national hackathon by architecting and developing an innovative, highly scalable full-stack solution under intense time constraints.",
+    badge: "🏆 National Champion",
+    metric: "1st Place"
+  },
+  {
+    id: "ach-2",
+    title: "Technical Mentorship (80+ Students)",
+    desc: "Mentored 80+ students in web development and full-stack project implementation, improving their code architecture and problem-solving skills.",
+    badge: "👥 Leader & Mentor",
+    metric: "80+ Mentored"
+  },
+  {
+    id: "ach-3",
+    title: "Active LeetCode Practice & DSA Specialization",
+    desc: "Consistent practice and problem solving in Data Structures and Algorithms (Trees, Graphs, DP, Arrays, HashMaps).",
+    badge: "⚡ Algorithmic Problem Solver",
+    metric: "Daily DSA"
+  },
+  {
+    id: "ach-4",
+    title: "Built & Deployed Production Full-Stack Apps",
+    desc: "Engineered, optimized, and deployed multiple live web applications focusing on real-time WebSockets, scalable REST APIs, and responsive UI.",
+    badge: "🚀 Full-Stack Shipper",
+    metric: "Multiple Live Apps"
+  }
+];
+
+const DEFAULT_EDUCATION = [
+  {
+    period: "2025 – Present",
+    role: "Master of Computer Applications (MCA)",
+    institution: "NMAM Institute of Technology, Nitte",
+    badge: "Current Degree",
+    badgeColor: "#22C55E",
+    desc: "Specializing in Data Structures & Algorithms, modern JavaScript/React architectures, Spring Boot backend systems, and distributed database design.",
+    highlights: [
+      "Advanced Data Structures & Algorithms (DSA)",
+      "Full-Stack Web Architectures (React, Node, Spring Boot)",
+      "Distributed Database Engineering (MySQL, MongoDB)",
+      "System Scalability & Performance Optimization"
+    ]
+  },
+  {
+    period: "2022 – 2025",
+    role: "Bachelor of Computer Applications (BCA)",
+    institution: "St. Philomena College, Puttur",
+    badge: "Graduated with Honors",
+    badgeColor: "#1450C6",
+    desc: "Graduated with a strong foundation in core computer science, software engineering principles, Java, database administration, and web applications.",
+    highlights: [
+      "Architected full-featured Carpooling System & Event Platform",
+      "Proficiency in Java, PHP, C, and Relational Databases",
+      "Elected Student Tech Event Coordinator & Mentor",
+      "Active participant in national coding hackathons"
+    ]
+  },
+  {
+    period: "2020 – 2022",
+    role: "Pre-University Course (PUC) – Commerce",
+    institution: "SDM College, Ujire",
+    badge: "Higher Secondary",
+    badgeColor: "#FF7448",
+    desc: "Completed Pre-University Education focusing on analytical reasoning, economics, and business statistics with strong academic standing.",
+    highlights: [
+      "Analytical & Quantitative Problem Solving",
+      "Business Logic & Information Systems"
+    ]
+  },
+  {
+    period: "2020",
+    role: "Secondary School Leaving Certificate (SSLC)",
+    institution: "St. Theresa High School, Belthangady",
+    badge: "Secondary Education",
+    badgeColor: "#0F151D",
+    desc: "Completed secondary education with distinction in mathematics and science fundamentals.",
+    highlights: [
+      "Mathematics & Science Academic Excellence"
+    ]
+  }
 ];
 
 const DEFAULT_PROFILE = {
-  name: "Jeevan Shetty",
+  name: "Jeevan Kumar",
   title: "Engineering scalable web apps with precision.",
-  bio: "Hi, I'm Jeevan Shetty — a full-stack developer blending clean code, fast databases, and modern UI.",
+  bio: "Aspiring Software Developer with a strong foundation in Java, JavaScript, and full-stack development. Skilled in building scalable, responsive web apps using React, Node.js, and Spring Boot with a passion for Data Structures & Algorithms.",
   location: "Bengaluru, Karnataka, India",
-  email: "jeevanshetty9481@gmail.com",
+  email: "Jeevanshetty9481@gmail.com",
   phone: "+91 93538 19063",
+  leetcode: "https://leetcode.com/",
+  github: "https://github.com/Jeevan-Shetty07",
+  linkedin: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
   statusBadge: "Open for opportunities",
-  availability: "Available for Full-time & High-impact Contracts",
+  availability: "Available for Full-time & Software Engineering Roles",
   roles: [
     "Full-Stack Web Architect",
-    "Node.js & Express API Developer",
-    "React & Modern Frontend Specialist",
+    "React & Node.js Developer",
+    "Spring Boot & Java API Engineer",
     "MongoDB & MySQL Data Architect",
     "DSA & Algorithmic Problem Solver",
   ]
@@ -267,8 +385,8 @@ const DEFAULT_MESSAGES = [
     id: "msg-1",
     name: "Alex Morgan",
     email: "alex.morgan@techventures.io",
-    subject: "Full Stack Engineer Opportunity",
-    message: "Hi Jeevan, we loved your portfolio and project work on realtime chat and carpooling systems. Would you be open to discussing a developer role on our product team?",
+    subject: "Full Stack Software Engineer Opportunity",
+    message: "Hi Jeevan, we reviewed your projects (BlinkChat, Blood Donor Management, Placement Pro) and your hackathon achievement. We would love to discuss a developer role with our team!",
     date: "2026-08-28T14:30:00.000Z",
     read: false
   }
@@ -277,7 +395,7 @@ const DEFAULT_MESSAGES = [
 export function PortfolioProvider({ children }) {
   const [projects, setProjects] = useState(() => {
     try {
-      const saved = localStorage.getItem("nomu_portfolio_projects");
+      const saved = localStorage.getItem("jk_portfolio_projects_v2");
       return saved ? JSON.parse(saved) : DEFAULT_PROJECTS;
     } catch {
       return DEFAULT_PROJECTS;
@@ -286,16 +404,43 @@ export function PortfolioProvider({ children }) {
 
   const [skills, setSkills] = useState(() => {
     try {
-      const saved = localStorage.getItem("nomu_portfolio_skills");
+      const saved = localStorage.getItem("jk_portfolio_skills_v2");
       return saved ? JSON.parse(saved) : DEFAULT_SKILLS;
     } catch {
       return DEFAULT_SKILLS;
     }
   });
 
+  const [certifications, setCertifications] = useState(() => {
+    try {
+      const saved = localStorage.getItem("jk_portfolio_certs_v2");
+      return saved ? JSON.parse(saved) : DEFAULT_CERTIFICATIONS;
+    } catch {
+      return DEFAULT_CERTIFICATIONS;
+    }
+  });
+
+  const [achievements, setAchievements] = useState(() => {
+    try {
+      const saved = localStorage.getItem("jk_portfolio_achieve_v2");
+      return saved ? JSON.parse(saved) : DEFAULT_ACHIEVEMENTS;
+    } catch {
+      return DEFAULT_ACHIEVEMENTS;
+    }
+  });
+
+  const [education, setEducation] = useState(() => {
+    try {
+      const saved = localStorage.getItem("jk_portfolio_edu_v2");
+      return saved ? JSON.parse(saved) : DEFAULT_EDUCATION;
+    } catch {
+      return DEFAULT_EDUCATION;
+    }
+  });
+
   const [profile, setProfile] = useState(() => {
     try {
-      const saved = localStorage.getItem("nomu_portfolio_profile");
+      const saved = localStorage.getItem("jk_portfolio_profile_v2");
       return saved ? JSON.parse(saved) : DEFAULT_PROFILE;
     } catch {
       return DEFAULT_PROFILE;
@@ -304,7 +449,7 @@ export function PortfolioProvider({ children }) {
 
   const [messages, setMessages] = useState(() => {
     try {
-      const saved = localStorage.getItem("nomu_portfolio_messages");
+      const saved = localStorage.getItem("jk_portfolio_messages_v2");
       return saved ? JSON.parse(saved) : DEFAULT_MESSAGES;
     } catch {
       return DEFAULT_MESSAGES;
@@ -313,7 +458,7 @@ export function PortfolioProvider({ children }) {
 
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     try {
-      return sessionStorage.getItem("nomu_admin_auth") === "true";
+      return sessionStorage.getItem("jk_admin_auth") === "true";
     } catch {
       return false;
     }
@@ -322,7 +467,7 @@ export function PortfolioProvider({ children }) {
   // Save changes to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem("nomu_portfolio_projects", JSON.stringify(projects));
+      localStorage.setItem("jk_portfolio_projects_v2", JSON.stringify(projects));
     } catch (e) {
       console.error("Storage error:", e);
     }
@@ -330,7 +475,7 @@ export function PortfolioProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("nomu_portfolio_skills", JSON.stringify(skills));
+      localStorage.setItem("jk_portfolio_skills_v2", JSON.stringify(skills));
     } catch (e) {
       console.error("Storage error:", e);
     }
@@ -338,7 +483,31 @@ export function PortfolioProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("nomu_portfolio_profile", JSON.stringify(profile));
+      localStorage.setItem("jk_portfolio_certs_v2", JSON.stringify(certifications));
+    } catch (e) {
+      console.error("Storage error:", e);
+    }
+  }, [certifications]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("jk_portfolio_achieve_v2", JSON.stringify(achievements));
+    } catch (e) {
+      console.error("Storage error:", e);
+    }
+  }, [achievements]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("jk_portfolio_edu_v2", JSON.stringify(education));
+    } catch (e) {
+      console.error("Storage error:", e);
+    }
+  }, [education]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("jk_portfolio_profile_v2", JSON.stringify(profile));
     } catch (e) {
       console.error("Storage error:", e);
     }
@@ -346,7 +515,7 @@ export function PortfolioProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("nomu_portfolio_messages", JSON.stringify(messages));
+      localStorage.setItem("jk_portfolio_messages_v2", JSON.stringify(messages));
     } catch (e) {
       console.error("Storage error:", e);
     }
@@ -354,7 +523,7 @@ export function PortfolioProvider({ children }) {
 
   const [adminPasscode, setAdminPasscode] = useState(() => {
     try {
-      return localStorage.getItem("nomu_admin_passcode") || "jeevan@2026";
+      return localStorage.getItem("jk_admin_passcode") || "jeevan@2026";
     } catch {
       return "jeevan@2026";
     }
@@ -365,7 +534,6 @@ export function PortfolioProvider({ children }) {
 
   // Auth methods
   const login = (inputPasscode) => {
-    // Check if locked out
     if (lockoutUntil && Date.now() < lockoutUntil) {
       const remainingSecs = Math.ceil((lockoutUntil - Date.now()) / 1000);
       return {
@@ -379,14 +547,14 @@ export function PortfolioProvider({ children }) {
       setFailedAttempts(0);
       setLockoutUntil(null);
       try {
-        sessionStorage.setItem("nomu_admin_auth", "true");
+        sessionStorage.setItem("jk_admin_auth", "true");
       } catch {}
       return { success: true };
     } else {
       const nextAttempts = failedAttempts + 1;
       setFailedAttempts(nextAttempts);
       if (nextAttempts >= 5) {
-        const lockoutTime = Date.now() + 3 * 60 * 1000; // 3 min lockout
+        const lockoutTime = Date.now() + 3 * 60 * 1000;
         setLockoutUntil(lockoutTime);
         return {
           success: false,
@@ -408,7 +576,7 @@ export function PortfolioProvider({ children }) {
       return { success: false, error: "New passcode must be at least 6 characters." };
     }
     try {
-      localStorage.setItem("nomu_admin_passcode", newPasscode);
+      localStorage.setItem("jk_admin_passcode", newPasscode);
       setAdminPasscode(newPasscode);
       return { success: true };
     } catch (e) {
@@ -419,7 +587,7 @@ export function PortfolioProvider({ children }) {
   const logout = () => {
     setIsAuthenticated(false);
     try {
-      sessionStorage.removeItem("nomu_admin_auth");
+      sessionStorage.removeItem("jk_admin_auth");
     } catch {}
   };
 
@@ -503,6 +671,9 @@ export function PortfolioProvider({ children }) {
       value={{
         projects,
         skills,
+        certifications,
+        achievements,
+        education,
         profile,
         messages,
         isAuthenticated,

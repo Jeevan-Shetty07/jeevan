@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { Sparkles, Terminal, Cpu, Database, Layout, GitBranch, Server, Code } from "lucide-react";
 import { FaReact, FaJs, FaPhp, FaJava, FaPython, FaGitAlt, FaGithub, FaHtml5, FaCss3Alt, FaDatabase, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiBootstrap, SiMysql, SiExpress, SiMongodb, SiPostman } from "react-icons/si";
+import { SiTailwindcss, SiBootstrap, SiMysql, SiExpress, SiMongodb, SiPostman, SiSpringboot, SiN8N, SiC } from "react-icons/si";
 import { usePortfolio } from "../context/PortfolioContext";
 
 const getSkillIcon = (skill) => {
   const name = (skill.title || "").toLowerCase();
+  if (name.includes("spring")) return <SiSpringboot className="text-[#6DB33F] text-3xl" />;
+  if (name.includes("n8n")) return <SiN8N className="text-[#EA2D2E] text-3xl" />;
   if (name.includes("react")) return <FaReact className="text-[#61DAFB] text-3xl" />;
   if (name.includes("node")) return <FaNodeJs className="text-[#339933] text-3xl" />;
   if (name.includes("express")) return <SiExpress className="text-[#0F151D] text-3xl" />;
   if (name.includes("mongo")) return <SiMongodb className="text-[#47A248] text-3xl" />;
   if (name.includes("postman")) return <SiPostman className="text-[#FF6C37] text-3xl" />;
   if (name.includes("tailwind")) return <SiTailwindcss className="text-[#06B6D4] text-3xl" />;
-  if (name.includes("mysql") || name.includes("sql") || name.includes("database")) return <SiMysql className="text-[#4479A1] text-3xl" />;
+  if (name.includes("mysql") || name.includes("sql") || name.includes("database") || name.includes("jpa")) return <SiMysql className="text-[#4479A1] text-3xl" />;
+  if (name.includes("c ") || name === "c" || name.includes("c programming")) return <SiC className="text-[#00599C] text-3xl" />;
   if (name.includes("php")) return <FaPhp className="text-[#777BB4] text-3xl" />;
   if (name.includes("java") && !name.includes("script")) return <FaJava className="text-[#EA2D2E] text-3xl" />;
   if (name.includes("python")) return <FaPython className="text-[#3776AB] text-3xl" />;

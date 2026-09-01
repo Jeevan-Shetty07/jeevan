@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { ArrowUpRight, FileText, Sparkles, Code2, Database, Layers, ExternalLink, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope, FaReact, FaPhp, FaJava, FaPython, FaGitAlt, FaHtml5, FaCss3Alt, FaJs, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiBootstrap, SiMysql, SiExpress, SiMongodb, SiPostman } from "react-icons/si";
+import { SiTailwindcss, SiBootstrap, SiMysql, SiExpress, SiMongodb, SiPostman, SiSpringboot, SiLeetcode, SiN8N, SiC } from "react-icons/si";
 import myPhoto from "../assets/myphoto.jpg";
 import resume from "../assets/resume.pdf";
 
 const ROLES = [
   "Full-Stack Web Architect",
-  "Node.js & Express API Developer",
-  "React & Modern Frontend Specialist",
+  "React & Node.js Developer",
+  "Spring Boot & Java API Engineer",
   "MongoDB & MySQL Data Architect",
   "DSA & Algorithmic Problem Solver",
 ];
 
 const TECH_ITEMS = [
-  { name: "React.js", icon: <FaReact className="text-[#61DAFB]" /> },
+  { name: "React 19", icon: <FaReact className="text-[#61DAFB]" /> },
   { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
+  { name: "Spring Boot", icon: <SiSpringboot className="text-[#6DB33F]" /> },
   { name: "Express.js", icon: <SiExpress className="text-[#0F151D]" /> },
   { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
+  { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
+  { name: "Java (DSA)", icon: <FaJava className="text-[#EA2D2E]" /> },
+  { name: "n8n AI Workflows", icon: <SiN8N className="text-[#EA2D2E]" /> },
   { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" /> },
   { name: "JavaScript", icon: <FaJs className="text-[#F7DF1E]" /> },
   { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
-  { name: "PHP", icon: <FaPhp className="text-[#777BB4]" /> },
-  { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
-  { name: "Java", icon: <FaJava className="text-[#EA2D2E]" /> },
-  { name: "Python", icon: <FaPython className="text-[#3776AB]" /> },
   { name: "Git", icon: <FaGitAlt className="text-[#F05032]" /> },
   { name: "GitHub", icon: <FaGithub className="text-[#181717]" /> },
-  { name: "Bootstrap", icon: <SiBootstrap className="text-[#7952B3]" /> },
+  { name: "C Language", icon: <SiC className="text-[#00599C]" /> },
+  { name: "PHP", icon: <FaPhp className="text-[#777BB4]" /> },
 ];
 
 import { usePortfolio } from "../context/PortfolioContext";
@@ -36,8 +37,8 @@ export default function Hero() {
   const { profile } = usePortfolio();
   const roles = profile?.roles && profile.roles.length > 0 ? profile.roles : [
     "Full-Stack Web Architect",
-    "Node.js & Express API Developer",
-    "React & Modern Frontend Specialist",
+    "React & Node.js Developer",
+    "Spring Boot & Java API Engineer",
     "MongoDB & MySQL Data Architect",
     "DSA & Algorithmic Problem Solver",
   ];
@@ -82,27 +83,32 @@ export default function Hero() {
     },
     {
       name: "LinkedIn",
-      icon: <FaLinkedin className="w-5 h-5" />,
+      icon: <FaLinkedin className="w-5 h-5 text-[#0A66C2]" />,
       link: "https://www.linkedin.com/in/jeevan-shetty-241613229/",
     },
     {
+      name: "LeetCode",
+      icon: <SiLeetcode className="w-5 h-5 text-[#FFA116]" />,
+      link: "https://leetcode.com/",
+    },
+    {
       name: "WhatsApp",
-      icon: <FaWhatsapp className="w-5 h-5" />,
+      icon: <FaWhatsapp className="w-5 h-5 text-[#25D366]" />,
       link: "https://wa.me/9353819063?text=Hello%20Jeevan%20👋",
     },
     {
       name: "Gmail",
-      icon: <FaEnvelope className="w-5 h-5" />,
+      icon: <FaEnvelope className="w-5 h-5 text-[#EA4335]" />,
       onClick: () => {
         window.open(
-          "https://mail.google.com/mail/?view=cm&fs=1&to=jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
+          "https://mail.google.com/mail/?view=cm&fs=1&to=Jeevanshetty9481@gmail.com&su=Hello%20Jeevan&body=Hello%20Jeevan",
           "_blank"
         );
       },
     },
     {
       name: "Instagram",
-      icon: <FaInstagram className="w-5 h-5" />,
+      icon: <FaInstagram className="w-5 h-5 text-[#E4405F]" />,
       link: "https://instagram.com/g1shetty07",
     },
   ];
@@ -239,26 +245,29 @@ export default function Hero() {
                 <div className="relative z-10 text-left flex-1">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-black/5 text-xs font-semibold text-[#0F151D]/80 shadow-sm mb-3">
                     <Code2 className="w-3.5 h-3.5 text-[#FF7448]" />
-                    <span>MCA Candidate 2026</span>
+                    <span>MCA Candidate 2026 · NMAMIT</span>
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F151D] tracking-tight">
-                    Jeevan Shetty
+                    {profile?.name || "Jeevan Kumar"}
                   </h3>
 
                   <p className="mt-2 text-sm sm:text-base text-[#0F151D]/70 max-w-md leading-relaxed">
-                    Passionate about building responsive, accessible, high-performance web products. Experienced in React ecosystem, server-side scripting, and relational data architecture.
+                    {profile?.bio || "Aspiring Software Developer with a strong foundation in Java, JavaScript, and full-stack development. Skilled in building scalable, responsive web applications using React, Node.js, and Spring Boot."}
                   </p>
 
                   {/* Highlights Pill Badges */}
                   <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-black/5 text-xs font-bold text-[#FF7448] shadow-sm">
+                      🏆 1st Place National Hackathon
+                    </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-black/5 text-xs font-medium text-[#0F151D]">
                       <Layers className="w-3 h-3 text-[#1450C6]" />
-                      Full Stack Systems
+                      React 19 · Node · Spring Boot
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-black/5 text-xs font-medium text-[#0F151D]">
                       <Database className="w-3 h-3 text-[#22C55E]" />
-                      SQL Database Optimization
+                      MySQL · MongoDB · JPA
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-black/5 text-xs font-medium text-[#0F151D]">
                       <MapPin className="w-3 h-3 text-[#FF7448]" />

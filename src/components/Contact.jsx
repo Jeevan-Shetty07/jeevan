@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Mail, MessageSquare, Send, Check, Copy, ArrowUpRight, Sparkles, MapPin, Phone } from "lucide-react";
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import { usePortfolio } from "../context/PortfolioContext";
 
 export default function Contact() {
@@ -14,7 +15,7 @@ export default function Contact() {
   });
   const [formSent, setFormSent] = useState(false);
 
-  const emailAddress = "jeevanshetty9481@gmail.com";
+  const emailAddress = "Jeevanshetty9481@gmail.com";
 
   const handleCopyEmail = async () => {
     try {
@@ -81,6 +82,13 @@ export default function Contact() {
       actionLabel: "Connect on LinkedIn",
       icon: <FaLinkedin className="text-xl text-[#1450C6]" />,
       link: "https://www.linkedin.com/in/jeevan-shetty-241613229/"
+    },
+    {
+      title: "LeetCode",
+      value: "LeetCode Profile",
+      actionLabel: "View Problem Solving",
+      icon: <SiLeetcode className="text-xl text-[#FFA116]" />,
+      link: "https://leetcode.com/"
     },
     {
       title: "GitHub",

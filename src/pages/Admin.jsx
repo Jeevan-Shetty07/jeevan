@@ -1270,7 +1270,7 @@ export default function Admin() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-mono font-semibold text-[#0F151D]/70 mb-1">
                     Badge Label
@@ -1326,7 +1326,7 @@ export default function Admin() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-mono font-semibold text-[#0F151D]/70 mb-1">
                     GitHub URL
@@ -1412,7 +1412,7 @@ export default function Admin() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-mono font-semibold text-[#0F151D]/70 mb-1">
                     Category

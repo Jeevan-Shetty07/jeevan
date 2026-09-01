@@ -104,12 +104,6 @@ export default function Footer() {
             >
               Resume PDF ↗
             </a>
-            <a
-              href="#admin"
-              className="inline-flex items-center gap-1 text-white/50 hover:text-white transition-colors"
-            >
-              <span>Admin Portal ⚙️</span>
-            </a>
           </div>
 
           {/* Back to Top Pill Button */}
@@ -160,15 +154,9 @@ export default function Footer() {
         {/* Bottom Tier: Copyright */}
         <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-white/40">
           <p>© {new Date().getFullYear()} Jeevan Shetty. All rights reserved.</p>
-          <div className="flex items-center gap-3">
-            <p className="flex items-center gap-1">
-              Designed with <span className="text-[#FF7448]">Nomu</span> aesthetics
-            </p>
-            <span>·</span>
-            <a href="#admin" className="hover:text-white transition-colors">
-              Admin Gateway
-            </a>
-          </div>
+          <p className="flex items-center gap-1">
+            Designed with <span className="text-[#FF7448]">Nomu</span> aesthetics
+          </p>
         </div>
       </div>
     </footer>

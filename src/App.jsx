@@ -3,7 +3,6 @@ import "./index.css";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import { PortfolioProvider } from "./context/PortfolioContext";
-import { Shield, Sparkles } from "lucide-react";
 
 const LOADING_PHRASES = [
   "Compiling modern architectures...",
@@ -18,24 +17,39 @@ const LOADING_PHRASES = [
 
 const ICONS = ["✢", "✳", "✶", "✻", "✽", "✺", "✷", "✣"];
 
+function checkIsAdminRoute() {
+  const hash = window.location.hash || "";
+  const path = window.location.pathname || "";
+  return (
+    hash === "#admin" ||
+    hash === "#/admin" ||
+    hash.startsWith("#admin") ||
+    hash.startsWith("#/admin") ||
+    path.endsWith("/admin") ||
+    path.endsWith("/admin/") ||
+    path.includes("/admin")
+  );
+}
+
 function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [iconIndex, setIconIndex] = useState(0);
-  const [route, setRoute] = useState(() => window.location.hash || "#home");
+  const [isAdmin, setIsAdmin] = useState(checkIsAdminRoute);
 
   useEffect(() => {
-    // Listen to hash change
-    const handleHashChange = () => {
-      setRoute(window.location.hash || "#home");
+    const handleRouteCheck = () => {
+      setIsAdmin(checkIsAdminRoute());
     };
-    window.addEventListener("hashchange", handleHashChange);
 
-    // Keyboard shortcut Ctrl+Shift+A for Admin
+    window.addEventListener("hashchange", handleRouteCheck);
+    window.addEventListener("popstate", handleRouteCheck);
+
+    // Keyboard shortcut Ctrl+Shift+A for direct Admin access
     const handleKeyDown = (e) => {
       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a") {
         e.preventDefault();
-        window.location.hash = window.location.hash === "#admin" ? "#home" : "#admin";
+        window.location.hash = window.location.hash.includes("admin") ? "#home" : "#admin";
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -56,15 +70,14 @@ function AppContent() {
     }, 1800);
 
     return () => {
-      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("hashchange", handleRouteCheck);
+      window.removeEventListener("popstate", handleRouteCheck);
       window.removeEventListener("keydown", handleKeyDown);
       clearInterval(phraseInterval);
       clearInterval(iconInterval);
       clearTimeout(timer);
     };
   }, []);
-
-  const isAdminRoute = route.startsWith("#admin");
 
   return (
     <div className="bg-[#FFF9F6] text-[#0F151D] min-h-screen font-sans selection:bg-[#FF7448] selection:text-white">
@@ -74,22 +87,8 @@ function AppContent() {
           showLoader ? "opacity-0" : "opacity-100"
         } transition-opacity duration-700`}
       >
-        {isAdminRoute ? <Admin /> : <Home />}
+        {isAdmin ? <Admin /> : <Home />}
       </div>
-
-      {/* Discreet Floating Admin Switcher Button */}
-      {!showLoader && !isAdminRoute && (
-        <div className="fixed bottom-4 left-4 z-40">
-          <a
-            href="#admin"
-            className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-[#0F151D] text-[#0F151D] hover:text-white border border-black/10 shadow-md backdrop-blur-md text-[11px] font-semibold transition-all duration-300"
-            title="Open Admin Dashboard (or press Ctrl+Shift+A)"
-          >
-            <Shield className="w-3 h-3 text-[#FF7448]" />
-            <span className="hidden sm:inline">Admin Portal</span>
-          </a>
-        </div>
-      )}
 
       {/* Nomu Minimalist Ambient Intro Loader */}
       {showLoader && (

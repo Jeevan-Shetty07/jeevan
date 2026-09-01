@@ -255,6 +255,16 @@ export default function Admin() {
   // Unread messages count
   const unreadCount = messages.filter((m) => !m.read).length;
 
+  const handleExitAdmin = (e) => {
+    e?.preventDefault();
+    if (window.location.pathname.includes("/admin")) {
+      const cleanPath = window.location.pathname.replace(/\/admin\/?$/, "") || "/";
+      window.history.pushState({}, "", cleanPath);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+    window.location.hash = "#home";
+  };
+
   // -------------------------------------------------------------
   // 🔒 Secure Login View (No Demo Bypass)
   // -------------------------------------------------------------
@@ -334,13 +344,13 @@ export default function Admin() {
 
                 {/* Return link */}
                 <div className="mt-6 pt-5 border-t border-black/[0.06]">
-                  <a
-                    href="#home"
-                    className="inline-flex items-center justify-center gap-1 text-xs text-[#0F151D]/50 hover:text-[#0F151D] transition-colors"
+                  <button
+                    onClick={handleExitAdmin}
+                    className="inline-flex items-center justify-center gap-1 text-xs text-[#0F151D]/50 hover:text-[#0F151D] transition-colors cursor-pointer"
                   >
                     <ArrowLeft className="w-3 h-3" />
                     <span>Return to Public Portfolio</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -399,13 +409,13 @@ export default function Admin() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            <a
-              href="#home"
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-black/10 text-[#0F151D] hover:bg-[#F8F5F2] shadow-sm transition-all"
+            <button
+              onClick={handleExitAdmin}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-black/10 text-[#0F151D] hover:bg-[#F8F5F2] shadow-sm transition-all cursor-pointer"
             >
               <span>View Site</span>
               <ExternalLink className="w-3 h-3" />
-            </a>
+            </button>
 
             <button
               onClick={logout}

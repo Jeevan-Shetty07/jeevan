@@ -1,4 +1,4 @@
-# 🌟 Jeevan Kumar (Jeevan Shetty) — Software Developer & Full-Stack Engineer
+# 🌟 Jeevan Kumar (Jeevan Shetty) - Software Developer & Full-Stack Engineer
 
 <div align="center">
 
@@ -38,7 +38,7 @@
 
 ## 💼 Featured Engineering Projects
 
-### 1. 💬 **BlinkChat — Real-Time Messaging Platform**
+### 1. 💬 **BlinkChat - Real-Time Messaging Platform**
 - **Architecture**: Real-time messaging platform supporting instantaneous message delivery and group chat using Socket.IO.
 - **Security**: Hierarchical admin roles and secure user authentication with Clerk.
 - **UI/UX & Files**: Responsive Glassmorphism UI with dynamic light/dark modes and multimedia sharing with Multer.
@@ -49,7 +49,7 @@
 - **Backend & Database**: High-performance RESTful APIs built with Spring Boot and integrated with MySQL via JPA/Hibernate ORM.
 - **Tech Stack**: `Spring Boot`, `React`, `MySQL`, `JPA / Hibernate`, `REST APIs`
 
-### 3. 🎓 **Placement Pro — Recruitment Management Ecosystem**
+### 3. 🎓 **Placement Pro - Recruitment Management Ecosystem**
 - **Architecture**: Placement portal streamlining university recruitment, student application tracking, and admin job postings.
 - **AI Automation**: Integrated an AI chatbot via n8n to automate candidate communication and multi-platform data syncing.
 - **Tech Stack**: `React`, `Node.js`, `Express.js`, `MongoDB`, `n8n AI Workflows`
@@ -76,10 +76,10 @@
 
 ## 🎓 Academic Background
 
-- **Master of Computer Applications (MCA)** — *NMAM Institute of Technology, Nitte* (2025 – Present)
-- **Bachelor of Computer Applications (BCA)** — *St. Philomena College, Puttur* (2022 – 2025) • *Graduated with Honors*
-- **PUC – Commerce** — *SDM College, Ujire* (2020 – 2022)
-- **SSLC** — *St. Theresa High School, Belthangady* (2020)
+- **Master of Computer Applications (MCA)** - *NMAM Institute of Technology, Nitte* (2025 - Present)
+- **Bachelor of Computer Applications (BCA)** - *St. Philomena College, Puttur* (2022 - 2025) • *Graduated with Honors*
+- **PUC - Commerce** - *SDM College, Ujire* (2020 - 2022)
+- **SSLC** - *St. Theresa High School, Belthangady* (2020)
 
 ---
 

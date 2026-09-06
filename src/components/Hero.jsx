@@ -183,7 +183,7 @@ export default function Hero() {
           {/* 📝 Subtitle & Typewriter Role */}
           <div className="mt-5 md:mt-7 max-w-2xl text-center">
             <p className="text-base sm:text-xl text-[#0F151D]/75 font-normal leading-relaxed">
-              Hi, I'm <strong className="text-[#0F151D] font-bold">Jeevan Shetty</strong> — a full-stack developer blending clean code, fast databases, and modern UI.
+              Hi, I'm <strong className="text-[#0F151D] font-bold">Jeevan Shetty</strong>, a full-stack developer blending clean code, fast databases, and modern UI.
             </p>
 
             <div className="mt-2.5 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF7448]/10 text-[#FF7448] font-mono text-xs sm:text-sm font-semibold border border-[#FF7448]/20">

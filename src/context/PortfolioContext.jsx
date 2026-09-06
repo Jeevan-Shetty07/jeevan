@@ -12,7 +12,7 @@ const PortfolioContext = createContext(null);
 const DEFAULT_PROJECTS = [
   {
     id: "blinkchat",
-    title: "BlinkChat — Real-Time Chat Application",
+    title: "BlinkChat - Real-Time Chat Application",
     badge: "Featured Full-Stack",
     tag: "React 19 · Node.js · Express · MongoDB · Socket.IO · Clerk",
     status: "Live Production",
@@ -44,7 +44,7 @@ const DEFAULT_PROJECTS = [
   },
   {
     id: "placement-pro",
-    title: "Placement Pro — Recruitment Portal",
+    title: "Placement Pro - Recruitment Portal",
     badge: "Workflow & AI Integration",
     tag: "React · Node.js · Express · MongoDB · n8n AI Chatbot",
     status: "Full Solution",
@@ -277,7 +277,7 @@ const DEFAULT_CERTIFICATIONS = [
 const DEFAULT_ACHIEVEMENTS = [
   {
     id: "ach-1",
-    title: "1st Place Winner — National 24-Hour Hackathon",
+    title: "1st Place Winner - National 24-Hour Hackathon",
     desc: "Secured 1st place in a 24-hour national hackathon by architecting and developing an innovative, highly scalable full-stack solution under intense time constraints.",
     badge: "🏆 National Champion",
     metric: "1st Place"
@@ -307,7 +307,7 @@ const DEFAULT_ACHIEVEMENTS = [
 
 const DEFAULT_EDUCATION = [
   {
-    period: "2025 – Present",
+    period: "2025 - Present",
     role: "Master of Computer Applications (MCA)",
     institution: "NMAM Institute of Technology, Nitte",
     badge: "Current Degree",
@@ -321,7 +321,7 @@ const DEFAULT_EDUCATION = [
     ]
   },
   {
-    period: "2022 – 2025",
+    period: "2022 - 2025",
     role: "Bachelor of Computer Applications (BCA)",
     institution: "St. Philomena College, Puttur",
     badge: "Graduated with Honors",
@@ -335,8 +335,8 @@ const DEFAULT_EDUCATION = [
     ]
   },
   {
-    period: "2020 – 2022",
-    role: "Pre-University Course (PUC) – Commerce",
+    period: "2020 - 2022",
+    role: "Pre-University Course (PUC) - Commerce",
     institution: "SDM College, Ujire",
     badge: "Higher Secondary",
     badgeColor: "#FF7448",
@@ -392,11 +392,21 @@ const DEFAULT_MESSAGES = [
   }
 ];
 
+const sanitizeSavedJson = (raw, fallback) => {
+  if (!raw) return fallback;
+  try {
+    const cleaned = raw.replace(/[\u2014\u2013]/g, " - ");
+    return JSON.parse(cleaned);
+  } catch {
+    return fallback;
+  }
+};
+
 export function PortfolioProvider({ children }) {
   const [projects, setProjects] = useState(() => {
     try {
       const saved = localStorage.getItem("jk_portfolio_projects_v2");
-      return saved ? JSON.parse(saved) : DEFAULT_PROJECTS;
+      return sanitizeSavedJson(saved, DEFAULT_PROJECTS);
     } catch {
       return DEFAULT_PROJECTS;
     }
@@ -405,7 +415,7 @@ export function PortfolioProvider({ children }) {
   const [skills, setSkills] = useState(() => {
     try {
       const saved = localStorage.getItem("jk_portfolio_skills_v2");
-      return saved ? JSON.parse(saved) : DEFAULT_SKILLS;
+      return sanitizeSavedJson(saved, DEFAULT_SKILLS);
     } catch {
       return DEFAULT_SKILLS;
     }
@@ -414,7 +424,7 @@ export function PortfolioProvider({ children }) {
   const [certifications, setCertifications] = useState(() => {
     try {
       const saved = localStorage.getItem("jk_portfolio_certs_v2");
-      return saved ? JSON.parse(saved) : DEFAULT_CERTIFICATIONS;
+      return sanitizeSavedJson(saved, DEFAULT_CERTIFICATIONS);
     } catch {
       return DEFAULT_CERTIFICATIONS;
     }
@@ -423,7 +433,7 @@ export function PortfolioProvider({ children }) {
   const [achievements, setAchievements] = useState(() => {
     try {
       const saved = localStorage.getItem("jk_portfolio_achieve_v2");
-      return saved ? JSON.parse(saved) : DEFAULT_ACHIEVEMENTS;
+      return sanitizeSavedJson(saved, DEFAULT_ACHIEVEMENTS);
     } catch {
       return DEFAULT_ACHIEVEMENTS;
     }
@@ -432,7 +442,7 @@ export function PortfolioProvider({ children }) {
   const [education, setEducation] = useState(() => {
     try {
       const saved = localStorage.getItem("jk_portfolio_edu_v2");
-      return saved ? JSON.parse(saved) : DEFAULT_EDUCATION;
+      return sanitizeSavedJson(saved, DEFAULT_EDUCATION);
     } catch {
       return DEFAULT_EDUCATION;
     }
@@ -441,7 +451,7 @@ export function PortfolioProvider({ children }) {
   const [profile, setProfile] = useState(() => {
     try {
       const saved = localStorage.getItem("jk_portfolio_profile_v2");
-      return saved ? JSON.parse(saved) : DEFAULT_PROFILE;
+      return sanitizeSavedJson(saved, DEFAULT_PROFILE);
     } catch {
       return DEFAULT_PROFILE;
     }
@@ -450,7 +460,7 @@ export function PortfolioProvider({ children }) {
   const [messages, setMessages] = useState(() => {
     try {
       const saved = localStorage.getItem("jk_portfolio_messages_v2");
-      return saved ? JSON.parse(saved) : DEFAULT_MESSAGES;
+      return sanitizeSavedJson(saved, DEFAULT_MESSAGES);
     } catch {
       return DEFAULT_MESSAGES;
     }

@@ -261,7 +261,7 @@ export default function About() {
             </h3>
 
             <p className="mt-2 text-sm sm:text-base text-white/70 max-w-xl leading-relaxed">
-              "To me, coding isn't just a career path — it’s a craft to transform complex human workflows into fast, reliable, intuitive digital experiences."
+              "To me, coding isn't just a career path, it’s a craft to transform complex human workflows into fast, reliable, intuitive digital experiences."
             </p>
           </div>
 
